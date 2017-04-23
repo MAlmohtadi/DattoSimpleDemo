@@ -27,6 +27,8 @@ import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.UnknownHostException;
 import java.sql.Connection;
 import java.util.List;
@@ -202,6 +204,12 @@ public class GenericPage extends FluentWebDriverPage {
 	public void addFile(String ipAddress, String nameOfVolume, String file) {
 		Writer writer = null;
 		try {
+			try {
+				new File(new URI("file:////" + ipAddress + "/" + nameOfVolume + "$/workspace/" + file)).createNewFile();
+			} catch (URISyntaxException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			writer = new BufferedWriter(
 					new OutputStreamWriter(new FileOutputStream(ipAddress + nameOfVolume + File.separator + file)));
 			writer.write(loremText());
@@ -295,7 +303,8 @@ public class GenericPage extends FluentWebDriverPage {
 	}
 
 	public void createTextFileRemotly(String fileNumber, String volumesName) {
-//		String ipAddress = StateHelper.getApplicationState("machineIP").toString();
+		// String ipAddress =
+		// StateHelper.getApplicationState("machineIP").toString();
 		String ipAddress = getProperty("Windows").toString();
 		int numberOfFiles = Integer.parseInt(fileNumber);
 		String[] volumesArray = volumesName.split(",");
