@@ -50,8 +50,11 @@ public class ProtectSteps extends BaseSteps {
 	}
 
 	@When("I take a backup")
+	@Composite(steps = { "When I select 'protect'", "When I wait 'Start Backup' image to be visible",
+			"When I select 'Start Backup'", "When I wait 'Cancel' image to be visible" })
+
 	public void takeBackup() throws IOException, FindFailed {
-		getProtectPage().takeBackup();
+		// getProtectPage().takeBackup();
 	}
 
 	@When("backup should be completed successfully")

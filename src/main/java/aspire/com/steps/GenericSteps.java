@@ -27,7 +27,6 @@ public class GenericSteps extends BaseSteps {
 
 	@Given("A new $fileType file is added in '$volumesName' volumes")
 	public void addFile(String fileType, String volumesName) {
-
 		getGenericPage().createTextFileRemotly("1", volumesName);
 	}
 
