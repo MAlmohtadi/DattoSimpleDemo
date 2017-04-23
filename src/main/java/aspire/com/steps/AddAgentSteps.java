@@ -36,7 +36,7 @@ public class AddAgentSteps extends BaseSteps {
 			"When I wait 'LocalBackups' to be visible", "When I click on 'NextButton'",
 			"When I wait 'CloudBackups' to be visible", "When I click on 'NextButton'",
 			"When I wait 'RetentionBackups' to be visible", "When I click on 'NextButton'",
-			"When I wait 'AlerAndReports' to be visible", "When I enter 'ValidEmail' inside EmailAddress",
+			"When I wait 'EmailAddress' to be visible", "When I enter 'ValidEmail' inside EmailAddress",
 			"When I click on 'NextButton'", "When I wait 'AlerAndReports' to be visible",
 			"When I enter 'ValidEmail' inside CriticalEmail", "When I click on 'NextButton'",
 			"When I wait 'EncryptSection' to be visible", "When I click on 'NextButton'" })
