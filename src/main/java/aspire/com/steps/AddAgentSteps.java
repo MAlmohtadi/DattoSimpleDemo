@@ -30,8 +30,8 @@ public class AddAgentSteps extends BaseSteps {
 
 	@When("I re-protect the system as not encrypted for $osType")
 	@Alias("I re-protect the system as not encrypted for <osType>")
-	@Composite(steps = { "When I wait 'AddBasedSystem' to be visible", "When I click 'AddBasedSystem'",
-			"When I click 'IpAddressOrHost'", "When I enter 'osType' inside IpAddressTextBox",
+	@Composite(steps = { "When I wait 'AddBasedSystem' to be visible", "When I click on 'AddBasedSystem'",
+			"When I click on 'IpAddressOrHost'", "When I enter 'osType' inside IpAddressTextBox",
 			"When I click on 'NextButton'", "When I click on 'IpAddressTextBox'", "When I click on 'NextButton'",
 			"When I wait 'LocalBackups' to be visible", "When I click on 'NextButton'",
 			"When I wait 'CloudBackups' to be visible", "When I click on 'NextButton'",

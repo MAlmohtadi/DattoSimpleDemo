@@ -27,7 +27,6 @@ public class RemoveAgentSteps extends BaseSteps {
 	@When("I remove a not encrypted system from Datto appliance")
 	@Composite(steps = { "When I wait 'Remove Agent' image to be visible", "When I select 'Remove Agent'",
 			"When I wait 'RecoverySection' to be visible", "When I click on 'RemoveRestore'",
-			"When I wait 'ForceUnmount' to be visible", "When I click 'ForceUnmount'",
 			"When I enter a 'DeleteTextConfirm' inside RemoveAgentConfirm",
 			"When I click on 'RemoveAgentDelete'" })
 	public void removeSystemFromDattoAppliance() throws FindFailed, IOException {

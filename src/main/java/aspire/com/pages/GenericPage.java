@@ -88,9 +88,16 @@ public class GenericPage extends FluentWebDriverPage {
 	 * @param elementName:
 	 *            name of element.
 	 */
-	public void waitElementToBeVisible(String elementName) {
+	public boolean waitElementToBeVisible(String elementName) {
 		WebDriverWait wait = new WebDriverWait(getDriverProvider().get(), CONST_WAIT_LOWER_VALUE);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(getProperty(elementName))));
+		try {
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(getProperty(elementName))));
+		} catch (Exception e) {
+			System.err.println(e);
+			return false;
+		}
+
+		return true;
 	}
 
 	/**
@@ -321,9 +328,16 @@ public class GenericPage extends FluentWebDriverPage {
 				+ "Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,";
 	}
 
-	public void waitImageToBeVisible(String imageName) throws FindFailed {
+	public boolean waitImageToBeVisible(String imageName) {
 		Screen screen = new Screen();
-		screen.wait(imgsPath + imageName + ".png", CONST_WAIT_LOWER_VALUE);
+		try {
+			screen.wait(imgsPath + imageName + ".png", CONST_WAIT_LOWER_VALUE);
+		} catch (FindFailed e) {
+
+			System.err.println(e);
+			return false;
+		}
+		return true;
 
 	}
 }

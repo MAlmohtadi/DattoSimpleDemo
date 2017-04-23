@@ -31,21 +31,14 @@
 <div class="step successful">When I remove a not encrypted system from Datto appliance</div>
 <div class="step successful">When I wait 'Remove Agent' image to be visible</div>
 <div class="step successful">When I select 'Remove Agent'</div>
-<div class="step failed">When I wait 'RecoverySection' to be visible <span class="keyword failed">(FAILED)</span><br/><span class="message failed">org.openqa.selenium.TimeoutException: Timed out after 30 seconds waiting for visibility of element located by By.cssSelector: [class=&quot;row-fluid recoveryRow&quot;]
-Build info: version: '2.53.1', revision: 'a36b8b1cd5757287168e54b817830adce9b0158d', time: '2016-06-30 19:26:09'
-System info: host: 'MAlmohtadis-MacBook-Pro.local', ip: '10.200.140.218', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.12.4', java.version: '1.8.0_121'
-Driver info: jo.aspire.web.automationUtil.FixedChromeDriver
-Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.29.461585 (0be2cd95f834e9ee7c46bcc7cf405b483f5ae83b), userDataDir=/var/folders/sm/c6ny976x7q71kk1ksqzlnx_40000gp/T/.org.chromium.Chromium.2h8S8l}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=57.0.2987.133, platform=MAC, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
-Session ID: 750c7c740c83a51b342fd18ab9885d5e</span><br/><a color="black" target="jb_scn_shot" href="../screenshots/failed-scenario-3afe8e87-2da5-48e7-a3f6-35983ef7cb77.png"><img src="images/failing_screenshot.png" alt="failing screenshot"/></a></div>
-<div class="step notPerformed">When I click on 'RemoveRestore' <span class="keyword notPerformed">(NOT PERFORMED)</span></div>
-<div class="step notPerformed">When I wait 'ForceUnmount' to be visible <span class="keyword notPerformed">(NOT PERFORMED)</span></div>
-<div class="step pending">When I click 'ForceUnmount' <span class="keyword pending">(PENDING)</span></div>
-<div class="step notPerformed">When I enter a 'DeleteTextConfirm' inside <span class="step parameter">RemoveAgentConfirm</span> <span class="keyword notPerformed">(NOT PERFORMED)</span></div>
-<div class="step notPerformed">When I click on 'RemoveAgentDelete' <span class="keyword notPerformed">(NOT PERFORMED)</span></div>
-<div class="step notPerformed">And I re-protect the system as not encrypted for <span class="step parameter">machineType</span> <span class="keyword notPerformed">(NOT PERFORMED)</span></div>
-<div class="step notPerformed">When I wait 'AddBasedSystem' to be visible <span class="keyword notPerformed">(NOT PERFORMED)</span></div>
-<div class="step pending">When I click 'AddBasedSystem' <span class="keyword pending">(PENDING)</span></div>
-<div class="step pending">When I click 'IpAddressOrHost' <span class="keyword pending">(PENDING)</span></div>
+<div class="step successful">When I wait 'RecoverySection' to be visible</div>
+<div class="step successful">When I click on 'RemoveRestore'</div>
+<div class="step successful">When I enter a 'DeleteTextConfirm' inside <span class="step parameter">RemoveAgentConfirm</span></div>
+<div class="step successful">When I click on 'RemoveAgentDelete'</div>
+<div class="step successful">And I re-protect the system as not encrypted for <span class="step parameter">machineType</span></div>
+<div class="step successful">When I wait 'AddBasedSystem' to be visible</div>
+<div class="step successful">When I click on 'AddBasedSystem'</div>
+<div class="step successful">When I click on 'IpAddressOrHost'</div>
 <div class="step pending">When I enter 'osType' inside IpAddressTextBox <span class="keyword pending">(PENDING)</span></div>
 <div class="step notPerformed">When I click on 'NextButton' <span class="keyword notPerformed">(NOT PERFORMED)</span></div>
 <div class="step notPerformed">When I click on 'IpAddressTextBox' <span class="keyword notPerformed">(NOT PERFORMED)</span></div>
@@ -65,24 +58,6 @@ Session ID: 750c7c740c83a51b342fd18ab9885d5e</span><br/><a color="black" target=
 <div class="step notPerformed">When I wait 'EncryptSection' to be visible <span class="keyword notPerformed">(NOT PERFORMED)</span></div>
 <div class="step notPerformed">When I click on 'NextButton' <span class="keyword notPerformed">(NOT PERFORMED)</span></div>
 <div class="step notPerformed">Then The system is protected <span class="keyword notPerformed">(NOT PERFORMED)</span></div>
-<div><pre class="pending">@When(&quot;I click 'ForceUnmount'&quot;)
-@Pending
-public void whenIClickForceUnmount() {
-  // PENDING
-}
-</pre></div>
-<div><pre class="pending">@When(&quot;I click 'AddBasedSystem'&quot;)
-@Pending
-public void whenIClickAddBasedSystem() {
-  // PENDING
-}
-</pre></div>
-<div><pre class="pending">@When(&quot;I click 'IpAddressOrHost'&quot;)
-@Pending
-public void whenIClickIpAddressOrHost() {
-  // PENDING
-}
-</pre></div>
 <div><pre class="pending">@When(&quot;I enter 'osType' inside IpAddressTextBox&quot;)
 @Pending
 public void whenIEnterosTypeInsideIpAddressTextBox() {
