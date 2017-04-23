@@ -1,0 +1,29 @@
+<div class="story">
+<h1></h1>
+<div class="path">stories/01.story</div>
+<div class="scenario">
+<h2>Scenario: 1-Before performing first backup after protecting system, select &#65533;Configure System Settings&#65533;, scroll down to &#65533;Volume Level Backup Control&#65533; and exclude 1 volume. Proceed to take numerous of backups.</h2>
+<div class="step failed">Given System is protected as no encrypted <span class="keyword failed">(FAILED)</span><br/><span class="message failed">FindFailed: C:/Users/malmohtadi/Documents/Automation-framework/imgs/protect.png: (69x21) seen at (221, 178) with 1.00 in S(0)[0,0 1366x768] E:Y, T:3.0
+  Line 2759, in file Region.java
+</span><br/><a color="black" target="jb_scn_shot" href="../screenshots/failed-scenario-7be0b641-0f7d-4a7c-a883-a6263ceed252.png"><img src="images/failing_screenshot.png" alt="failing screenshot"/></a></div>
+<div class="step notPerformed">And A file is a newly added in the system <span class="keyword notPerformed">(NOT PERFORMED)</span></div>
+<div class="step notPerformed">And I select 'Configure Agent Settings' <span class="keyword notPerformed">(NOT PERFORMED)</span></div>
+<div class="step notPerformed">And I scroll down to 'Volume Level Backup Control' <span class="keyword notPerformed">(NOT PERFORMED)</span></div>
+<div class="step notPerformed">And I exclude 1 volume <span class="keyword notPerformed">(NOT PERFORMED)</span></div>
+<div class="step notPerformed">When I take back up <span class="keyword notPerformed">(NOT PERFORMED)</span></div>
+<div class="step notPerformed">Then backup should be completed successfully <span class="keyword notPerformed">(NOT PERFORMED)</span></div>
+<pre class="failure">FindFailed: C:/Users/malmohtadi/Documents/Automation-framework/imgs/protect.png: (69x21) seen at (221, 178) with 1.00 in S(0)[0,0 1366x768] E:Y, T:3.0
+  Line 2759, in file Region.java
+
+	at org.sikuli.script.Region.wait(Region.java:2759)
+	at aspire.com.pages.StepsPage.systemIsProtected(StepsPage.java:103)
+	at aspire.com.steps.Steps.systemIsProtected(Steps.java:39)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.jbehave.core.steps.StepCreator$ParametrisedStep.perform(StepCreator.java:599)
+	at org.jbehave.core.embedder.PerformableTree$FineSoFar.run(PerformableTree.java:333)
+...</pre>
+</div>
+</div>

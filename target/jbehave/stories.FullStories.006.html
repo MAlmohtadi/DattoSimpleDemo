@@ -1,0 +1,24 @@
+<div class="story">
+<h1></h1>
+<div class="path">stories/FullStories/006.story</div>
+<div class="scenario">
+<h2>Scenario: 6-Before performing backup after protecting system, exclude 1 volume, perform a file restore of any desired timestamp.  Proceed include all volumes and retrieve 1 file from a backed up volume.</h2>
+<div class="step successful">Given System is protected as not encrypted</div>
+<div class="step successful">And There is 1 file in each volume</div>
+<div class="step successful">And I select 'Configure Agent Settings'</div>
+<div class="step successful">And I click on 'VolumeLevelBackupControl'</div>
+<div class="step successful">When I exclude 'E' volume</div>
+<div class="step successful">And I take a backup</div>
+<div class="step successful">And backup should be completed successfully</div>
+<div class="step successful">And I perform a file restore for 1 file from each backed up volume of specific timestamp.</div>
+<div class="step successful">Then I verify retrieved 1 file from each backed up volume</div>
+<div class="step successful">When I click on 'Protect'</div>
+<div class="step successful">And I select 'Configure Agent Settings'</div>
+<div class="step successful">And I click on 'VolumeLevelBackupControl'</div>
+<div class="step successful">And I include the excluded volume</div>
+<div class="step successful">And I take a backup</div>
+<div class="step successful">And backup should be completed successfully</div>
+<div class="step successful">And I perform a file restore for 1 file from each backed up volume of specific timestamp.</div>
+<div class="step successful">Then I verify retrieved 1 file from each backed up volume</div>
+</div>
+</div>

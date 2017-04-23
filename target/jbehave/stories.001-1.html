@@ -1,0 +1,25 @@
+<div class="story">
+<h1></h1>
+<div class="path">stories/001-1.story</div>
+<div class="scenario">
+<h2>Scenario: 1.1 - Remove any previous system then Add a new system as no enctypted.</h2>
+<div class="step successful">Given I remove any previous system from Datto appliance</div>
+<div class="step failed">When I re-protect the system as no encrypted <span class="keyword failed">(FAILED)</span><br/><span class="message failed">FindFailed: C:/Users/malmohtadi/Documents/Automation-framework/imgs/Agent Based System.png: (162x24) in S(0)[0,0 1366x768] E:Y, T:3.0
+  Line 2759, in file Region.java
+</span><br/><a color="black" target="jb_scn_shot" href="../screenshots/failed-scenario-5b17faaa-defd-4524-b3af-88af6d8b4dcd.png"><img src="images/failing_screenshot.png" alt="failing screenshot"/></a></div>
+<div class="step notPerformed">Then The system is protected <span class="keyword notPerformed">(NOT PERFORMED)</span></div>
+<pre class="failure">FindFailed: C:/Users/malmohtadi/Documents/Automation-framework/imgs/Agent Based System.png: (162x24) in S(0)[0,0 1366x768] E:Y, T:3.0
+  Line 2759, in file Region.java
+
+	at org.sikuli.script.Region.wait(Region.java:2759)
+	at aspire.com.pages.StepsPage.protectASystem(StepsPage.java:270)
+	at aspire.com.steps.Steps.protectASystem(Steps.java:142)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.jbehave.core.steps.StepCreator$ParametrisedStep.perform(StepCreator.java:599)
+	at org.jbehave.core.embedder.PerformableTree$FineSoFar.run(PerformableTree.java:333)
+...</pre>
+</div>
+</div>

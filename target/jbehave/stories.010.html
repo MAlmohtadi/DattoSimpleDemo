@@ -1,0 +1,40 @@
+<div class="story">
+<h1></h1>
+<div class="path">stories/010.story</div>
+<div class="scenario">
+<h2>Scenario: 10-Perform a file restore of any desired timestamp and retrieve 1 file from each backed up volume.</h2>
+<div class="step successful">Given System is protected as encrypted</div>
+<div class="step successful">When I click on 'Protect'</div>
+<div class="step successful">And I select 'Configure Agent Settings'</div>
+<div class="step successful">And I click on 'VolumeLevelBackupControl'</div>
+<div class="step successful">And I include the excluded volume</div>
+<div class="step successful">And I take back up</div>
+<div class="step successful">And backup should be completed successfully</div>
+<div class="step successful">When I delete 1 file from each volume</div>
+<div class="step failed">And I perform file restore of <span class="step parameter">any desired</span> timestamp <span class="keyword failed">(FAILED)</span><br/><span class="message failed">org.openqa.selenium.TimeoutException: Timed out after 30 seconds waiting for visibility of element located by By.cssSelector: #mountedBlock table + div a
+Build info: version: '2.53.1', revision: 'a36b8b1cd5757287168e54b817830adce9b0158d', time: '2016-06-30 19:26:09'
+System info: host: 'DATTO-MALMOHTADI', ip: '169.254.197.239', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_121'
+Driver info: jo.aspire.web.automationUtil.FixedChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.29.461591 (62ebf098771772160f391d75e589dc567915b233), userDataDir=C:\Users\MALMOH~1\AppData\Local\Temp\scoped_dir10540_23955}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=57.0.2987.133, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: e3cc21f1490958645ba1e3ec3093a768</span><br/><a color="black" target="jb_scn_shot" href="../screenshots/failed-scenario-e82a371d-6e6f-4df6-a300-168cfa12b799.png"><img src="images/failing_screenshot.png" alt="failing screenshot"/></a></div>
+<div class="step notPerformed">Then All files should be restored <span class="keyword notPerformed">(NOT PERFORMED)</span></div>
+<pre class="failure">org.openqa.selenium.TimeoutException: Timed out after 30 seconds waiting for visibility of element located by By.cssSelector: #mountedBlock table + div a
+Build info: version: '2.53.1', revision: 'a36b8b1cd5757287168e54b817830adce9b0158d', time: '2016-06-30 19:26:09'
+System info: host: 'DATTO-MALMOHTADI', ip: '169.254.197.239', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_121'
+Driver info: jo.aspire.web.automationUtil.FixedChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.29.461591 (62ebf098771772160f391d75e589dc567915b233), userDataDir=C:\Users\MALMOH~1\AppData\Local\Temp\scoped_dir10540_23955}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=57.0.2987.133, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: e3cc21f1490958645ba1e3ec3093a768
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:80)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:261)
+	at aspire.com.pages.StepsPage.waitElement(StepsPage.java:415)
+	at aspire.com.pages.StepsPage.performRestore(StepsPage.java:170)
+	at aspire.com.steps.Steps.performRestore(Steps.java:115)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.jbehave.core.steps.StepCreator$ParametrisedStep.perform(StepCreator.java:599)
+	at org.jbehave.core.embedder.PerformableTree$FineSoFar.run(PerformableTree.java:333)
+...</pre>
+</div>
+</div>

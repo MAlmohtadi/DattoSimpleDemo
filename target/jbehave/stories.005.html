@@ -1,0 +1,35 @@
+<div class="story">
+<h1></h1>
+<div class="path">stories/005.story</div>
+<div class="scenario">
+<h2>Scenario: 5-Perform a file restore of any desired timestamp and retrieve 10 files from each backed up volume.</h2>
+<div class="step successful">Given System is protected as no encrypted</div>
+<div class="step successful">And There are <span class="step parameter">10</span> files in each backed up volume</div>
+<div class="step successful">When I delete the <span class="step parameter">10</span> files in each backed up volume</div>
+<div class="step failed">And I perform file restore of <span class="step parameter">specific</span> timestamp <span class="keyword failed">(FAILED)</span><br/><span class="message failed">org.openqa.selenium.TimeoutException: Timed out after 40 seconds waiting for element to be clickable: By.cssSelector: #startRecovery
+Build info: version: '2.53.1', revision: 'a36b8b1cd5757287168e54b817830adce9b0158d', time: '2016-06-30 19:26:09'
+System info: host: 'DATTO-MALMOHTADI', ip: '169.254.197.239', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_121'
+Driver info: jo.aspire.web.automationUtil.FixedChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.29.461591 (62ebf098771772160f391d75e589dc567915b233), userDataDir=C:\Users\MALMOH~1\AppData\Local\Temp\scoped_dir10456_24451}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=57.0.2987.133, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: 17be28483642863811e45b565ecd4f64</span><br/><a color="black" target="jb_scn_shot" href="../screenshots/failed-scenario-056c606b-689b-4106-bb70-f01181f9133d.png"><img src="images/failing_screenshot.png" alt="failing screenshot"/></a></div>
+<div class="step notPerformed">Then I verify retrieved <span class="step parameter">10</span> files from each backed up volume <span class="keyword notPerformed">(NOT PERFORMED)</span></div>
+<pre class="failure">org.openqa.selenium.TimeoutException: Timed out after 40 seconds waiting for element to be clickable: By.cssSelector: #startRecovery
+Build info: version: '2.53.1', revision: 'a36b8b1cd5757287168e54b817830adce9b0158d', time: '2016-06-30 19:26:09'
+System info: host: 'DATTO-MALMOHTADI', ip: '169.254.197.239', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_121'
+Driver info: jo.aspire.web.automationUtil.FixedChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.29.461591 (62ebf098771772160f391d75e589dc567915b233), userDataDir=C:\Users\MALMOH~1\AppData\Local\Temp\scoped_dir10456_24451}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=57.0.2987.133, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: 17be28483642863811e45b565ecd4f64
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:80)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:261)
+	at aspire.com.pages.StepsPage.clickOnElement(StepsPage.java:425)
+	at aspire.com.pages.StepsPage.performRestore(StepsPage.java:159)
+	at aspire.com.steps.Steps.performRestore(Steps.java:115)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.jbehave.core.steps.StepCreator$ParametrisedStep.perform(StepCreator.java:599)
+	at org.jbehave.core.embedder.PerformableTree$FineSoFar.run(PerformableTree.java:333)
+...</pre>
+</div>
+</div>

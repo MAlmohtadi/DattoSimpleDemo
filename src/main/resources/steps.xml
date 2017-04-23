@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="driverProvider" class="jo.aspire.web.automationUtil.DriverProvider">
+	</bean>
+
+
+
+
+	<bean id="webDriverProvider" class="jo.aspire.generic.CustomPerStoryWebDriverSteps">
+		<constructor-arg ref="driverProvider" />
+	</bean>
+
+	<bean id="reportWebDriverHandler" class="com.aspire.automationReport.ReportWebDriverHandler">
+		<constructor-arg ref="driverProvider" />
+	</bean>
+
+	<bean id="pageFactory" class="aspire.com.pages.PageFactory">
+		<constructor-arg ref="driverProvider" />
+	</bean>
+
+	<bean id="GenericSteps" class="aspire.com.steps.GenericSteps">
+		<constructor-arg ref="pageFactory" />
+	</bean>
+	<bean id="AddAgentSteps" class="aspire.com.steps.AddAgentSteps">
+		<constructor-arg ref="pageFactory" />
+	</bean>
+	<bean id="ConfigureAgentSettingsSteps" class="aspire.com.steps.ConfigureAgentSettingsSteps">
+		<constructor-arg ref="pageFactory" />
+	</bean>
+	<bean id="LoginSteps" class="aspire.com.steps.LoginSteps">
+		<constructor-arg ref="pageFactory" />
+	</bean>
+	<bean id="ProtectSteps" class="aspire.com.steps.ProtectSteps">
+		<constructor-arg ref="pageFactory" />
+	</bean>
+	<bean id="RemoveAgentSteps" class="aspire.com.steps.RemoveAgentSteps">
+		<constructor-arg ref="pageFactory" />
+	</bean>
+	<bean id="RestoreSteps" class="aspire.com.steps.RestoreSteps">
+		<constructor-arg ref="pageFactory" />
+	</bean>
+
+	<bean id="lifecycleSteps" class="aspire.com.steps.LifecycleSteps">
+		<constructor-arg ref="pageFactory" />
+	</bean>
+
+</beans>

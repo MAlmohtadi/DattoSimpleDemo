@@ -1,0 +1,39 @@
+<div class="story">
+<h1></h1>
+<div class="path">stories/6th Story.story</div>
+<div class="scenario">
+<h2>Scenario: 6-Before performing backup after protecting system, exclude 1 volume, perform a file restore of any desired timestamp.  Proceed include all volumes and retrieve 1 file from a backed up volume.</h2>
+<div class="step successful">Given System is protected as no encrypted</div>
+<div class="step ignorable">!-- And There is 1 file in each volume</div>
+<div class="step ignorable">!-- And I select 'Configure Agent Settings'</div>
+<div class="step ignorable">!-- And I scroll down to 'Volume Level Backup Control'</div>
+<div class="step ignorable">!-- When I exclude 1 volume</div>
+<div class="step ignorable">!-- And I take back up</div>
+<div class="step ignorable">!-- And backup should be completed successfully</div>
+<div class="step ignorable">!-- And I perform a file restore for 1 file from each backed up volume of specific timestamp.</div>
+<div class="step ignorable">!-- Then I verify retrieved 1 file from each backed up volume</div>
+<div class="step ignorable">!-- When I select 'protect'</div>
+<div class="step ignorable">!-- And I select 'Configure Agent Settings'</div>
+<div class="step ignorable">!-- And I scroll down to 'Volume Level Backup Control'</div>
+<div class="step ignorable">!-- And I include the excluded volume</div>
+<div class="step successful">When I take back up</div>
+<div class="step failed">And backup should be completed successfully <span class="keyword failed">(FAILED)</span><br/><span class="message failed">java.lang.AssertionError: 
+Expected: &lt;true&gt;
+     but: was &lt;false&gt;</span><br/><a color="black" target="jb_scn_shot" href="../screenshots/failed-scenario-789031b1-6a23-4ea7-94e7-203141802a98.png"><img src="images/failing_screenshot.png" alt="failing screenshot"/></a></div>
+<div class="step notPerformed">And I perform a file restore for 1 file from each backed up volume of specific timestamp. <span class="keyword notPerformed">(NOT PERFORMED)</span></div>
+<div class="step notPerformed">Then I verify retrieved 1 file from each backed up volume <span class="keyword notPerformed">(NOT PERFORMED)</span></div>
+<pre class="failure">java.lang.AssertionError: 
+Expected: &lt;true&gt;
+     but: was &lt;false&gt;
+	at org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:20)
+	at org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:8)
+	at aspire.com.steps.Steps.verifyBuckupFunctionality(Steps.java:86)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.jbehave.core.steps.StepCreator$ParametrisedStep.perform(StepCreator.java:599)
+	at org.jbehave.core.embedder.PerformableTree$FineSoFar.run(PerformableTree.java:333)
+...</pre>
+</div>
+</div>

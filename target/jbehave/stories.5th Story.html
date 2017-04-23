@@ -1,0 +1,29 @@
+<div class="story">
+<h1></h1>
+<div class="path">stories/5th Story.story</div>
+<div class="scenario">
+<h2>Scenario: 5-Remove system from Datto appliance and re-protect the system once again. Do not exclude any volumes and perform numerous backups.</h2>
+<div class="step successful">Given System is protected as no encrypted</div>
+<div class="step successful">When I remove system from Datto appliance</div>
+<div class="step successful">And I re-protect the system as no encrypted</div>
+<div class="step successful">And The system is protected</div>
+<div class="step successful">And I do not exclude any volumes</div>
+<div class="step successful">And I proceed to take numerous of backups</div>
+<div class="step failed">Then System should be backed up <span class="keyword failed">(FAILED)</span><br/><span class="message failed">FindFailed: C:/Users/malmohtadi/Documents/Automation-framework/imgs/Cancel.png: (71x25) seen at (878, 462) with 1.00 in S(0)[0,0 1366x768] E:Y, T:3.0
+  Line 2759, in file Region.java
+</span><br/><a color="black" target="jb_scn_shot" href="../screenshots/failed-scenario-8f1322de-b129-48d3-b8a2-901dd26148a7.png"><img src="images/failing_screenshot.png" alt="failing screenshot"/></a></div>
+<pre class="failure">FindFailed: C:/Users/malmohtadi/Documents/Automation-framework/imgs/Cancel.png: (71x25) seen at (878, 462) with 1.00 in S(0)[0,0 1366x768] E:Y, T:3.0
+  Line 2759, in file Region.java
+
+	at org.sikuli.script.Region.wait(Region.java:2759)
+	at aspire.com.pages.StepsPage.verifyBuckupFunctionality(StepsPage.java:141)
+	at aspire.com.steps.Steps.systemIsBackedup(Steps.java:149)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.jbehave.core.steps.StepCreator$ParametrisedStep.perform(StepCreator.java:599)
+	at org.jbehave.core.embedder.PerformableTree$FineSoFar.run(PerformableTree.java:333)
+...</pre>
+</div>
+</div>

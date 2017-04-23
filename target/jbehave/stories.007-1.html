@@ -1,0 +1,28 @@
+<div class="story">
+<h1></h1>
+<div class="path">stories/007-1.story</div>
+<div class="scenario">
+<h2>Scenario: 7.1-Remove any previous system then Add a new system as enctypted.</h2>
+<div class="step failed">Given System is protected as no encrypted <span class="keyword failed">(FAILED)</span><br/><span class="message failed">FindFailed: C:/Users/malmohtadi/Documents/Automation-framework/imgs/protect.png: (69x21) seen at (221, 178) with 1.00 in S(0)[0,0 1366x768] E:Y, T:3.0
+  Line 2759, in file Region.java
+</span><br/><a color="black" target="jb_scn_shot" href="../screenshots/failed-scenario-e8f8a9d8-ff27-4b60-a529-f5b5e77a4b7f.png"><img src="images/failing_screenshot.png" alt="failing screenshot"/></a></div>
+<div class="step notPerformed">When I remove system from Datto appliance <span class="keyword notPerformed">(NOT PERFORMED)</span></div>
+<div class="step notPerformed">And I re-protect the system as encrypted <span class="keyword notPerformed">(NOT PERFORMED)</span></div>
+<div class="step notPerformed">Then The system is protected <span class="keyword notPerformed">(NOT PERFORMED)</span></div>
+<div class="step notPerformed">And I select 'protect' <span class="keyword notPerformed">(NOT PERFORMED)</span></div>
+<div class="step notPerformed">And I proceed to take numerous of backups <span class="keyword notPerformed">(NOT PERFORMED)</span></div>
+<pre class="failure">FindFailed: C:/Users/malmohtadi/Documents/Automation-framework/imgs/protect.png: (69x21) seen at (221, 178) with 1.00 in S(0)[0,0 1366x768] E:Y, T:3.0
+  Line 2759, in file Region.java
+
+	at org.sikuli.script.Region.wait(Region.java:2759)
+	at aspire.com.pages.StepsPage.systemIsProtected(StepsPage.java:104)
+	at aspire.com.steps.Steps.systemIsProtected(Steps.java:39)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.jbehave.core.steps.StepCreator$ParametrisedStep.perform(StepCreator.java:599)
+	at org.jbehave.core.embedder.PerformableTree$FineSoFar.run(PerformableTree.java:333)
+...</pre>
+</div>
+</div>
