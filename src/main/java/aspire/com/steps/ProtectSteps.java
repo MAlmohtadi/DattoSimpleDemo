@@ -30,7 +30,7 @@ public class ProtectSteps extends BaseSteps {
 	}
 
 	@Given("System is protected as not encrypted")
-	@Composite(steps = {"Given I login to the Datto", "When I click on 'Protect'" })
+	@Composite(steps = { "Given I login to the Datto", "When I click on 'Protect'" })
 	public void systemIsProtected() throws IOException, FindFailed {
 
 	}
@@ -43,8 +43,10 @@ public class ProtectSteps extends BaseSteps {
 
 	@When("The system is protected")
 	@Then("The system is protected")
+	@Composite(steps = { "When I wait 'AgentCreated' to be visible", "When I click on 'Continue'",
+			"When I wait 'ProtectedSystemsHeader' to be visible", "When ProtectedSystemsHeader should be displayed" })
 	public void checkSystemIsProteced() throws FindFailed, IOException {
-		getProtectPage().checkSystemIsCreatedAndProtected();
+		// getProtectPage().checkSystemIsCreatedAndProtected();
 	}
 
 	@When("I take a backup")
@@ -82,6 +84,11 @@ public class ProtectSteps extends BaseSteps {
 		getProtectPage().createTextFileRemotly(number, nameOfvolumes);
 		getProtectPage().takeBackup();
 		assertThat(getProtectPage().verifyBuckupFunctionality(), Matchers.equalTo(true));
+	}
+
+	@When("$element should be displayed")
+	public void isElementDisplayed(String element) {
+		assertThat(getGenericPage().isElementDisplayed(element), Matchers.equalTo(true));
 	}
 
 }

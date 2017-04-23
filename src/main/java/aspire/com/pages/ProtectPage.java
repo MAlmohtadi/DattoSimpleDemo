@@ -72,18 +72,18 @@ public class ProtectPage extends GenericPage {
 //		}
 //		takeBackup();
 //	}
-
-	/**
-	 * this method is used for DATTO system agent to check if the system agent
-	 * is protected or not.
-	 * 
-	 * @return Boolean.
-	 */
-	public boolean checkSystemIsCreatedAndProtected() {
-		waitElementToBeVisible("AgentCreated", CONST_WAIT_SPECIAL_USAGE);
-		clickOnElement("Continue");
-		waitElementToBeVisible("ProtectedSystemsHeader", CONST_WAIT_LOWER_VALUE);
-		return isElementDisplayed("ProtectedSystemsHeader");
-	}
+	//
+	// /**
+	// * this method is used for DATTO system agent to check if the system agent
+	// * is protected or not.
+	// *
+	// * @return Boolean.
+	// */
+	// public boolean checkSystemIsCreatedAndProtected() {
+	// waitElementToBeVisible("AgentCreated", CONST_WAIT_SPECIAL_USAGE);
+	// clickOnElement("Continue");
+	// waitElementToBeVisible("ProtectedSystemsHeader", CONST_WAIT_LOWER_VALUE);
+	// return isElementDisplayed("ProtectedSystemsHeader");
+	// }
 
 }

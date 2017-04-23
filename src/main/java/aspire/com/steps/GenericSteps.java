@@ -1,6 +1,10 @@
 package aspire.com.steps;
 
+import static org.junit.Assert.assertThat;
+
 import java.io.IOException;
+
+import org.hamcrest.Matchers;
 import org.jbehave.core.annotations.*;
 import org.sikuli.script.FindFailed;
 import aspire.com.pages.*;
@@ -62,13 +66,13 @@ public class GenericSteps extends BaseSteps {
 
 	@When("I wait '$element' to be visible")
 	public void waitElementToBeVisibile(String element) {
-		getGenericPage().waitElementToBeVisible(element);
+		assertThat(getGenericPage().waitElementToBeVisible(element), Matchers.equalTo(true));
 
 	}
 
 	@When("I wait '$name' image to be visible")
 	public void waitImageToBeVisible(String name) throws FindFailed {
-	getGenericPage().waitImageToBeVisible(name);
+		assertThat(getGenericPage().waitImageToBeVisible(name), Matchers.equalTo(true));
 	}
 
 	@When("I enter '$text' inside $element")

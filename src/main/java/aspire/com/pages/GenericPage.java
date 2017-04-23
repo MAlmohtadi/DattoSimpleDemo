@@ -268,7 +268,7 @@ public class GenericPage extends FluentWebDriverPage {
 	 * volumes.
 	 * 
 	 * @param number:
-	 *            of files to be removed.s
+	 *            of files to be removed.
 	 */
 	public void deleteFilesAndTakeBackup(String number) {
 		int counter = Integer.parseInt(number);
