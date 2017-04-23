@@ -24,11 +24,10 @@ public class RemoveAgentSteps extends BaseSteps {
 	public void beforeCucmberScenario() {
 	}
 
-	@When("I remove a not encrypted system from Datto appliance")
-	@Composite(steps = { "When I wait 'Remove Agent' image to be visible", "When I select 'Remove Agent'",
-			"When I wait 'RecoverySection' to be visible", "When I click on 'RemoveRestore'",
-			"When I enter a 'DeleteTextConfirm' inside RemoveAgentConfirm",
-			"When I click on 'RemoveAgentDelete'" })
+	@When("I remove system from Datto appliance")
+	@Composite(steps = { "And I wait 'Remove Agent' image to be visible", "And I select 'Remove Agent'",
+			"And I wait 'RecoverySection' to be visible", "And I click on 'RemoveRestore'",
+			"And I enter a 'DeleteTextConfirm' inside RemoveAgentConfirm", "And I click on 'RemoveAgentDelete'" })
 	public void removeSystemFromDattoAppliance() throws FindFailed, IOException {
 		// getRemoveAgentPage().removeSystemFromDattoAppliance();
 
