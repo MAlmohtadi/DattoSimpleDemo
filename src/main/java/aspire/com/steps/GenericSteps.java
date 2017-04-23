@@ -71,7 +71,7 @@ public class GenericSteps extends BaseSteps {
 	getGenericPage().waitImageToBeVisible(name);
 	}
 
-	@When("I enter a '$text' inside $element")
+	@When("I enter '$text' inside $element")
 	public void waitImageToBeVisible(String text, String element) throws FindFailed {
 		getGenericPage().enterTextInElement(text, element);
 	}
