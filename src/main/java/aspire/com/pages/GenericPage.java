@@ -295,7 +295,8 @@ public class GenericPage extends FluentWebDriverPage {
 	}
 
 	public void createTextFileRemotly(String fileNumber, String volumesName) {
-		String ipAddress = StateHelper.getApplicationState("machineIP").toString();
+//		String ipAddress = StateHelper.getApplicationState("machineIP").toString();
+		String ipAddress = getProperty("Windows").toString();
 		int numberOfFiles = Integer.parseInt(fileNumber);
 		String[] volumesArray = volumesName.split(",");
 		for (int i = 0; i < numberOfFiles; i++) {
