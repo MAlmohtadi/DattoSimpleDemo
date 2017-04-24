@@ -46,10 +46,10 @@ And I select 'Configure Agent Settings'
 And I click on 'Volume Level Backup Control'
 And I exclude '<largeVolume>' volume
 And I do not exclude any volume
-And I wait 'AgentCreated' to be visible
-And I click on 'Continue'
-And I wait 'ProtectedSystemsHeader' to be visible
-And ProtectedSystemsHeader should be displayed
+And I select 'protect'
+And I wait 'Start Backup' image to be visible
+And I select 'Start Backup'
+And I wait 'Cancel' image to be visible
 Then backup should be completed successfully
 
 Examples:

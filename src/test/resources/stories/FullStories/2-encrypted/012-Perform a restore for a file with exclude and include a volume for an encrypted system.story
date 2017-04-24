@@ -14,8 +14,6 @@ And I select 'Start Backup'
 And I wait 'Cancel' image to be visible
 And backup should be completed successfully
 And I click on 'RestoreMenu'
-And I wait 'RemoveRestore' to be visible
-And I click on 'RemoveRestore'
 And I click on 'ChooseSystemRadioButton'
 And I click on 'FileRestoreRadioButton'
 And I click on 'StartFileRestore'
@@ -37,6 +35,7 @@ And backup should be completed successfully
 And I click on 'RestoreMenu'
 And I wait 'RemoveRestore' to be visible
 And I click on 'RemoveRestore'
+And I wait 'ManageRestore' to be invisible
 And I click on 'ChooseSystemRadioButton'
 And I click on 'FileRestoreRadioButton'
 And I click on 'StartFileRestore'
@@ -45,7 +44,7 @@ And I wait 'PassphraseTextBox' to be visible
 And I enter 'ValidPassphrase' inside PassphraseTextBox
 And I click on 'VerifyPhraseButton'
 And I wait 'Unmount' to be visible
-Then I verify retrieved <number> file/files from '<secondRetriveForVolumes>' volumes
+Then I verify retrieved <number> file/files from '<firstRetriveForVolumes>' volumes
 
 Examples:
 |volumeName|firstRetriveForVolumes|secondRetriveForVolumes|volumes|number|

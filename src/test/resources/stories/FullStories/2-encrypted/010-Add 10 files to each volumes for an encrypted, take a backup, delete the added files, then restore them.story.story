@@ -14,6 +14,7 @@ And I delete <number> file/files in <NameOfVolumesSeperatedByComma> volumes
 And I click on 'RestoreMenu'
 And I wait 'RemoveRestore' to be visible
 And I click on 'RemoveRestore'
+And I wait 'ManageRestore' to be invisible
 And I click on 'ChooseSystemRadioButton'
 And I click on 'FileRestoreRadioButton'
 And I click on 'StartFileRestore'
