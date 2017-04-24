@@ -57,17 +57,17 @@ public class RestoreSteps extends BaseSteps {
 
 	}
 
-	@When("I verify retrieved $number file$specialCharacter from '$volumesName' volumes")
-	@Then("I verify retrieved $number file$specialCharacter from '$volumesName' volumes")
+	@When("I verify retrieved $number file/files from '$volumesName' volumes")
+	@Then("I verify retrieved $number file/files from '$volumesName' volumes")
 	public void verifyAFileRestored(String number, String specialCharacter, String volumesName)
 			throws MalformedURLException, SmbException {
-
 		assertThat(getRestorePage().verifyRestoredFiles(number, volumesName), Matchers.equalTo(true));
 	}
 
-//	@When("I perform a file restore for 1 file from each backed up volume of specific timestamp.")
-//	public void performRestoreOfSpecificTimestamp() {
-//		getRestorePage().performRestore();
-//	}
+	// @When("I perform a file restore for 1 file from each backed up volume of
+	// specific timestamp.")
+	// public void performRestoreOfSpecificTimestamp() {
+	// getRestorePage().performRestore();
+	// }
 
 }

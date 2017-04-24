@@ -65,25 +65,26 @@ public class ProtectSteps extends BaseSteps {
 		assertThat(getProtectPage().verifyBuckupFunctionality(), Matchers.equalTo(true));
 	}
 
-	@Then("System should be backed up")
-	public void systemIsBackedup() throws FindFailed, UnknownHostException {
-
-		assertThat(getProtectPage().verifyBuckupFunctionality(), Matchers.equalTo(true));
-	}
+//	@Then("System should be backed up")
+//	public void systemIsBackedup() throws FindFailed, UnknownHostException {
+//		assertThat(getProtectPage().verifyBuckupFunctionality(), Matchers.equalTo(true));
+//	}
 
 	@Given("Backup is available for multiple volumes")
 	public void BackupIsAvailable() throws IOException, FindFailed {
 
 	}
 
-//	@When("I proceed to take one backup")
-//	@Then("I proceed to take one backup")
-//	@Composite(steps = { "When I take a backup", "When backup should be completed successfully" })
-//	public void takeMultipleBackups() throws FindFailed, IOException {
-//		getProtectPage().takeBackup();
-//		assertThat(getProtectPage().verifyBuckupFunctionality(), Matchers.equalTo(true));
-//
-//	}
+	// @When("I proceed to take one backup")
+	// @Then("I proceed to take one backup")
+	// @Composite(steps = { "When I take a backup", "When backup should be
+	// completed successfully" })
+	// public void takeMultipleBackups() throws FindFailed, IOException {
+	// getProtectPage().takeBackup();
+	// assertThat(getProtectPage().verifyBuckupFunctionality(),
+	// Matchers.equalTo(true));
+	//
+	// }
 
 	@Given("There are $number text files in '$nameOfvolumes' volumes")
 	public void createFilesAndTakeBackup(String number, String nameOfvolumes) throws IOException, FindFailed {

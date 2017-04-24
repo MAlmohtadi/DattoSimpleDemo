@@ -2,16 +2,48 @@ Meta:
 @Not_Encrypted
 Scenario: 005-Remove system from Datto appliance and re-protect the system once again. Do not exclude any volume except the large volume and perform one backup. 
 
-Given System is protected as not encrypted
-When I remove system from Datto appliance
-And I re-protect the system as not encrypted for <machineType>
-And The system is protected
+Given I login to the Datto
+And I click on 'Protect'
+When I wait 'Remove Agent' image to be visible
+And I select 'Remove Agent'
+And I wait 'RecoverySection' to be visible
+And I click on 'RemoveRestore'
+And I enter 'DeleteTextConfirm' inside RemoveAgentConfirm
+And I click on 'RemoveAgentDelete'
+And I wait 'AddBasedSystem' to be visible
+And I click on 'AddBasedSystem'
+And I click on 'IpAddressOrHost'
+And I enter '<osType>' inside IpAddressTextBox
+And I click on 'NextButton'
+And I wait 'nextIcon' to be visible
+And I click on 'NextButton'
+And I wait 'LocalBackups' to be visible
+And I click on 'NextButton'
+And I wait 'CloudBackups' to be visible
+And I click on 'NextButton'
+And I wait 'RetentionBackups' to be visible
+And I click on 'NextButton'
+And I wait 'EmailAddress' to be visible
+And I enter 'ValidEmail' inside EmailAddress
+And I click on 'NextButton'
+And I wait 'AlerAndReports' to be visible
+And I enter 'ValidEmail' inside CriticalEmail
+And I click on 'NextButton'
+And I wait 'EncryptSection' to be visible
+And I click on 'NextButton'
+And I wait 'AgentCreated' to be visible
+And I click on 'Continue'
+And I wait 'ProtectedSystemsHeader' to be visible
+And ProtectedSystemsHeader should be displayed
 And I select 'Configure Agent Settings'
 And I click on 'Volume Level Backup Control'
 And I exclude '<largeVolume>' volume
 And I do not exclude any volume
-And I take a backup
-Then System should be backed up
+And I select 'protect'
+And I wait 'Start Backup' image to be visible
+And I select 'Start Backup'
+And I wait 'Cancel' image to be visible
+Then backup should be completed successfully
 
 Examples:
 |largeVolume|machineType|
