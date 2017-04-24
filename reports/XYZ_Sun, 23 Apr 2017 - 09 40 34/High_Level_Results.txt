@@ -1,4 +1,0 @@
-tc_ran =  1
-tc_passed = 0
-tc_failed = 0
-tc_skipped = 1
