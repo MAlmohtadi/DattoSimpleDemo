@@ -8,12 +8,14 @@ When I wait 'Remove Agent' image to be visible
 And I select 'Remove Agent'
 And I wait 'RecoverySection' to be visible
 And I click on 'RemoveRestore'
+And I wait 'ForceUnmount' to be visible
+And I click on 'ForceUnmount'
 And I enter 'DeleteTextConfirm' inside RemoveAgentConfirm
 And I click on 'RemoveAgentDelete'
 And I wait 'AddBasedSystem' to be visible
 And I click on 'AddBasedSystem'
 And I click on 'IpAddressOrHost'
-And I enter '<osType>' inside IpAddressTextBox
+And I enter '<machineType>' inside IpAddressTextBox
 And I click on 'NextButton'
 And I wait 'nextIcon' to be visible
 And I click on 'NextButton'
