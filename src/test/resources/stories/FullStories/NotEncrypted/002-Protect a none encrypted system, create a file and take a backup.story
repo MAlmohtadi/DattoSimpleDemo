@@ -6,7 +6,7 @@ Scenario: 002-Before performing first backup after protecting system, select "Co
 Given System is protected as not encrypted
 And A new text file is added in '<volumes>' volumes
 And I select 'Configure Agent Settings'
-And I click on 'VolumeLevelBackupControl'
+And I click on 'Volume Level Backup Control'
 And I exclude '<largeVolume>' volume
 And I exclude '<volumeToBeExcluded>' volume
 When I take a backup

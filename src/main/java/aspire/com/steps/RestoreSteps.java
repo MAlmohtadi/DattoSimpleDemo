@@ -65,9 +65,9 @@ public class RestoreSteps extends BaseSteps {
 		assertThat(getRestorePage().verifyRestoredFiles(number, volumesName), Matchers.equalTo(true));
 	}
 
-	@When("I perform a file restore for 1 file from each backed up volume of specific timestamp.")
-	public void performRestoreOfSpecificTimestamp() {
-		getRestorePage().performRestore();
-	}
+//	@When("I perform a file restore for 1 file from each backed up volume of specific timestamp.")
+//	public void performRestoreOfSpecificTimestamp() {
+//		getRestorePage().performRestore();
+//	}
 
 }

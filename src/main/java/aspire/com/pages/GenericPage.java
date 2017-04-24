@@ -169,6 +169,7 @@ public class GenericPage extends FluentWebDriverPage {
 	 */
 	public void clickOnElement(String elementName) {
 		waitElementToBeClickable(elementName, CONST_WAIT_LOWER_VALUE);
+		elementName = elementName.replace(" ", "").trim();
 		getElementByCssSelector(elementName).click();
 	}
 
@@ -234,11 +235,12 @@ public class GenericPage extends FluentWebDriverPage {
 	public void addFile(String ipAddress, String nameOfVolume, String file) {
 		File f = null;
 		try {
-			f = new File(new URI("file:////" + ipAddress +File.separator + nameOfVolume + "$"+File.separator + file));
-			
+			f = new File(
+					new URI("file:////" + ipAddress + File.separator + nameOfVolume + "$" + File.separator + file));
+
 			System.out.println(f.getName());
 			System.out.println(f.getPath());
-			
+
 			f.createNewFile();
 			FileUtils.writeStringToFile(f, loremText());
 		} catch (FileNotFoundException e) {
