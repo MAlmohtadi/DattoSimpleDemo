@@ -1,5 +1,6 @@
 package aspire.com.pages;
 
+import org.apache.commons.io.FileUtils;
 import org.jbehave.web.selenium.FluentWebDriverPage;
 import org.jbehave.web.selenium.WebDriverProvider;
 import org.openqa.selenium.By;
@@ -202,20 +203,15 @@ public class GenericPage extends FluentWebDriverPage {
 	 * 
 	 */
 	public void addFile(String ipAddress, String nameOfVolume, String file) {
-		Writer writer = null;
+		File f = null;
 		try {
-			try {
-				new File(new URI("file:////" + ipAddress + "/" + nameOfVolume + "$/workspace/" + file)).createNewFile();
-			} catch (URISyntaxException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			writer = new BufferedWriter(
-					new OutputStreamWriter(new FileOutputStream(ipAddress + nameOfVolume + File.separator + file)));
-			writer.write(loremText());
+			new File(new URI("file:////" + ipAddress + "/" + nameOfVolume + "$/workspace/" + file)).createNewFile();
+			FileUtils.writeStringToFile(f, loremText());
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}
 
