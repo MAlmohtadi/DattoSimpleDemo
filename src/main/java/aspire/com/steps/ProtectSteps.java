@@ -94,7 +94,8 @@ public class ProtectSteps extends BaseSteps {
 	}
 
 	@Given("A backup is captured for all volumes")
-	@Composite(steps = { "Given I take a backup", "Given backup should be completed successfully" })
+	@When("A backup is captured for all volumes")
+	@Composite(steps = { "When I take a backup", "When backup should be completed successfully" })
 	public void backupIsCaptured() throws IOException, FindFailed {
 
 	}
