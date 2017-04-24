@@ -41,7 +41,7 @@ public class GenericSteps extends BaseSteps {
 
 	@Given("$number text file$specialCharacter is deleted from '$volumesName' volume")
 	@When("$number text file$specialCharacter is deleted from '$volumesName' volume")
-	public void deleteFiles(String number,String specialCharacter, String volumesName ) {
+	public void deleteFiles(String number, String specialCharacter, String volumesName) {
 
 		getGenericPage().deleteTextFiles(number, volumesName);
 	}
@@ -75,5 +75,10 @@ public class GenericSteps extends BaseSteps {
 	@When("I enter '$text' inside $element")
 	public void waitImageToBeVisible(String text, String element) throws FindFailed {
 		getGenericPage().enterTextInElement(text, element);
+	}
+
+	@When("$element should be displayed")
+	public void isElementDisplayed(String element) {
+		assertThat(getGenericPage().isElementDisplayed(element), Matchers.equalTo(true));
 	}
 }

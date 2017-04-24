@@ -74,46 +74,49 @@ public class RestorePage extends GenericPage {
 	 *            name of the file to be checked.
 	 * @param volumeName:
 	 *            volume name that has the given file.
-	 * @return Boolean.
+	 * @return Integer.
 	 * @throws MalformedURLException.
 	 * @throws SmbException.
 	 */
-	public boolean checkIfFileShared(String volumeName) throws MalformedURLException, SmbException {
+	public int getHashCodeForSharedFile(String nameOfFile, String volumeName)
+			throws MalformedURLException, SmbException {
 		String tempText = getElementByCssSelector("ShareURL").getText().replace("Samba Share:\n\\\\", "")
 				.replace("\\", "/").trim();
 		String url = "smb://" + tempText;
 		SmbFile dir = new SmbFile(url);
-		String[] volumes = volumeName.split(",");
-		HashMap<String, Integer> files = (HashMap<String, Integer>) StateHelper.getStoryState(volumes[0]);
-		int numberOfFiles = files.size();
-		boolean fileCorrect = true;
-		for (int i = 0; i < volumes.length; i++) {
-			for (int j = 1; j <= numberOfFiles; j++) {
-				url = url + File.separator + volumes[i] + File.separator + "Test" + j + ".txt";
-				dir = new SmbFile(url);
-				fileCorrect = (dir.hashCode() == files.get("Test" + j));
-				if (!fileCorrect) {
-					System.err.println("The hash code for file Test" + j + " not equivalent");
+		url = url + File.separator + volumeName + File.separator + nameOfFile;
+		dir = new SmbFile(url);
+		return dir.hashCode();
+	}
+
+	/**
+	 * check files that have been saved and compare hash codes with the saved
+	 * hashes for the files that have been removed.
+	 * 
+	 * @param numberOfFiles:
+	 *            number of files.
+	 * @param volumesName:
+	 *            volumes name separated by comma.
+	 * @return boolean
+	 * @throws MalformedURLException
+	 * @throws SmbException
+	 */
+	public boolean verifyRestoredFiles(String numberOfFiles, String volumesName)
+			throws MalformedURLException, SmbException {
+		int counter = Integer.parseInt(numberOfFiles);
+		boolean isRestored = true;
+		String[] volumesArray = volumesName.split(",");
+		HashMap<String, Integer> files = (HashMap<String, Integer>) StateHelper.getStoryState(volumesArray[0]);
+
+		for (int i = 0; i < volumesArray.length; i++) {
+			for (int j = 1; j <= counter; j++) {
+				isRestored = (getHashCodeForSharedFile("Test" + j + ".txt", volumesArray[i]) == files.get("Test" + j));
+				if (!isRestored) {
+					return isRestored;
 				}
 			}
 		}
-		return fileCorrect;
+		return isRestored;
 	}
-
-	//public Boolean verifyFilesRestored(String number, String volumesName) throws MalformedURLException, SmbException {
-		//int counter = Integer.parseInt(number);
-		//boolean isRestored = true;
-		//String[] volumesArray = volumesName.split(",");
-		//for (int i = 1; i <= counter; i++) {
-			//for (int j = 0; j < volumesArray.length; j++) {
-				//isRestored = isRestored && checkIfFileShared("Test" + i + ".txt", volumesArray[j]);
-				//if (!isRestored) {
-					//return isRestored;
-				//}
-			//}
-		//}
-
-		//return isRestored;
-	//}
 
 }

@@ -11,4 +11,4 @@ Then I verify retrieved 10 files from 'NameOfVolumesSeperatedByComma' volumes
 
 Examples:
 |NameOfVolumesSeperatedByComma|
-|H, I|
+|H,I|

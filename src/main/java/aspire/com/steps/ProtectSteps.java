@@ -89,9 +89,10 @@ public class ProtectSteps extends BaseSteps {
 		assertThat(getProtectPage().verifyBuckupFunctionality(), Matchers.equalTo(true));
 	}
 
-	@When("$element should be displayed")
-	public void isElementDisplayed(String element) {
-		assertThat(getGenericPage().isElementDisplayed(element), Matchers.equalTo(true));
+	@Given("A backup is captured for all volumes")
+	public void takeBackup(String number, String nameOfvolumes) throws IOException, FindFailed {
+
+		getProtectPage().takeBackup();
 	}
 
 }
