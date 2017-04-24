@@ -7,9 +7,6 @@ And I click on 'Protect'
 And Backup is available for multiple volumes
 And number text file/files deleted from '<NameOfVolumesSeperatedByComma>' volumes
 When I click on 'RestoreMenu'
-And I wait 'RemoveRestore' to be visible
-And I click on 'RemoveRestore'
-And I click on 'ChooseSystemRadioButton'
 And I click on 'FileRestoreRadioButton'
 And I click on 'StartFileRestore'
 And I click on 'Mount'
