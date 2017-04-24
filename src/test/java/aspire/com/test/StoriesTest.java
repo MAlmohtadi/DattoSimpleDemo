@@ -254,6 +254,7 @@ public class StoriesTest extends JUnitStories {
 				embedder.systemProperties().setProperty("browser", browser);
 				ReportName = "Automation_Report_BuildNumber-" + buildName + "-" + browser + "_" + dateAndTime + ".html";
 				AspireReport.getInstance().getReportDataManager().setReportFileName(ReportName);
+
 				skipScenariosList(embedder);
 				startStories(embedder, false);
 				if (rerunFailed) {
@@ -293,7 +294,6 @@ public class StoriesTest extends JUnitStories {
 					"No executable brwosers set as true inisde drivers.json \n  Run Terminated", Log4jLevels.INFO);
 
 		}
-
 	}
 
 	private Embedder getEmbedder() {
@@ -426,7 +426,7 @@ public class StoriesTest extends JUnitStories {
 		try {
 
 			FileUtils.copyFile(latestLogFile, new File(ReportDataManager.getReportPath() + latestLogFileName));
-			
+
 			isLogFileCopied = true;
 		} catch (Exception exception) {
 

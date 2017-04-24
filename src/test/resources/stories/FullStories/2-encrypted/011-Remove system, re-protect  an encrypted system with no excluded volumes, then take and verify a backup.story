@@ -34,7 +34,7 @@ And I click on 'EncryptYes'
 And I click on 'IAgreeButton'
 And I wait 'EnterPassphrase' to be visible
 And I enter 'ValidPassphrase' inside EnterPassphrase
-And I enter 'RepeatPassphrase' inside EnterPassphrase
+And I enter 'ValidPassphrase' inside RepeatPassphrase
 And I click on 'NextButton'
 And I wait 'AgentCreated' to be visible
 And I click on 'Continue'

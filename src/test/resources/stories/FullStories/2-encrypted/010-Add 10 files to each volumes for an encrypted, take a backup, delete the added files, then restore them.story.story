@@ -26,4 +26,4 @@ Then I verify retrieved <number> file/files from '<NameOfVolumesSeperatedByComma
 
 Examples:
 |NameOfVolumesSeperatedByComma|number|
-|H, I|
+|H, I|1|

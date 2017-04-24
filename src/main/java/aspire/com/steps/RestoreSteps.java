@@ -59,7 +59,7 @@ public class RestoreSteps extends BaseSteps {
 
 	@When("I verify retrieved $number file/files from '$volumesName' volumes")
 	@Then("I verify retrieved $number file/files from '$volumesName' volumes")
-	public void verifyAFileRestored(String number, String specialCharacter, String volumesName)
+	public void verifyAFileRestored(String number, String volumesName)
 			throws MalformedURLException, SmbException {
 		assertThat(getRestorePage().verifyRestoredFiles(number, volumesName), Matchers.equalTo(true));
 	}
