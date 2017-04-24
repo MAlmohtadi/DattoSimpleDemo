@@ -10,4 +10,4 @@ Then All files should be restored for '<NameOfVolumesSeperatedByComma>' volumes
 
 Examples:
 |NameOfVolumesSeperatedByComma|
-|H, I|
+|H,I|

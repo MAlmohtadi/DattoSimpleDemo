@@ -175,19 +175,29 @@ public class GenericPage extends FluentWebDriverPage {
 	 * @param nameOfVolume:
 	 *            name of the volume that contains the file.
 	 */
-	public void deleteFiles(String nameOfFile, String nameOfVolume) {
-		try {
+	public void deleteTextFiles(String numberOfFiles, String nameOfVolume) {
+		// String ipAddress =
+		// StateHelper.getApplicationState("machineIP").toString();
+		String ipAddress = System.getProperty("Windows");
+		String[] volumes = nameOfVolume.split(",");
+		int numberOfFilesToBeDeleted = Integer.parseInt(numberOfFiles);
+		File file = null;
+		for (int i = 0; i < volumes.length; i++) {
+			for (int j = 1; j <= numberOfFilesToBeDeleted; j++) {
+				try {
+					file = new File(new URI("file:////" + ipAddress + File.separator + nameOfVolume + "$"
+							+ File.separator + "Test" + j + ".txt"));
+					if (FileUtils.deleteQuietly(file)) {
+						System.out.println(file.getName() + " is deleted!");
+					} else {
+						System.out.println("Delete operation is failed.");
+						Assert.assertEquals(true, false);
+					}
 
-			File file = new File(nameOfVolume + File.separator + nameOfFile + ".txt");
-			if (file.delete()) {
-				System.out.println(file.getName() + " is deleted!");
-			} else {
-				System.out.println("Delete operation is failed.");
-				Assert.assertEquals(true, false);
+				} catch (Exception e) {
+					System.out.println("File Path not exist");
+				}
 			}
-
-		} catch (Exception e) {
-			System.out.println("File Path not exist");
 		}
 	}
 
@@ -278,9 +288,9 @@ public class GenericPage extends FluentWebDriverPage {
 	public void deleteFilesAndTakeBackup(String number) {
 		int counter = Integer.parseInt(number);
 		for (int i = 1; i <= counter; i++) {
-			deleteFiles("Test" + i, "E");
-			deleteFiles("Test" + i, "H");
-			deleteFiles("Test" + i, "I");
+			deleteTextFiles("Test" + i, "E");
+			deleteTextFiles("Test" + i, "H");
+			deleteTextFiles("Test" + i, "I");
 		}
 
 	}
@@ -300,9 +310,8 @@ public class GenericPage extends FluentWebDriverPage {
 	}
 
 	public void createTextFileRemotly(String fileNumber, String volumesName) {
-		// String ipAddress =
-		// StateHelper.getApplicationState("machineIP").toString();
-		String ipAddress = getProperty("Windows").toString();
+		String ipAddress = StateHelper.getApplicationState("machineIP").toString();
+		// String ipAddress = getProperty("Windows").toString();
 		int numberOfFiles = Integer.parseInt(fileNumber);
 		String[] volumesArray = volumesName.split(",");
 		for (int i = 1; i <= numberOfFiles; i++) {
@@ -314,8 +323,7 @@ public class GenericPage extends FluentWebDriverPage {
 	}
 
 	public String loremText() {
-		return "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n"
-				+ "Aenean commodo ligula eget dolor.\n"
+		return "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n" + "Aenean commodo ligula eget dolor.\n"
 				+ "Aenean massa.\n"
 				+ "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\n"
 				+ "Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.\n"

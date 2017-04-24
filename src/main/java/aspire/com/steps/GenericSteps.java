@@ -43,9 +43,7 @@ public class GenericSteps extends BaseSteps {
 	@When("$number text file$specialCharacter is deleted from '$volumesName' volume")
 	public void deleteFiles(String number, String volumesName, String specialCharacter) {
 
-		getGenericPage().deleteFiles("Test", "E");
-		getGenericPage().deleteFiles("Test", "H");
-		getGenericPage().deleteFiles("Test", "I");
+		getGenericPage().deleteTextFiles(number, volumesName);
 	}
 
 	@When("I delete the $number files in each backed up volume")
