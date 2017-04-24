@@ -10,7 +10,7 @@ And I select 'Configure Agent Settings'
 And I click on 'VolumeLevelBackupControl'
 And I exclude '<largeVolume>' volume
 And I do not exclude any volume
-And I proceed to take one backup
+And I take a backup
 Then System should be backed up
 
 Examples:

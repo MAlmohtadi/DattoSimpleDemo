@@ -76,13 +76,14 @@ public class ProtectSteps extends BaseSteps {
 
 	}
 
-	@When("I proceed to take one backup")
-	@Then("I proceed to take one backup")
-	public void takeMultipleBackups() throws FindFailed, IOException {
-		getProtectPage().takeBackup();
-		assertThat(getProtectPage().verifyBuckupFunctionality(), Matchers.equalTo(true));
-
-	}
+//	@When("I proceed to take one backup")
+//	@Then("I proceed to take one backup")
+//	@Composite(steps = { "When I take a backup", "When backup should be completed successfully" })
+//	public void takeMultipleBackups() throws FindFailed, IOException {
+//		getProtectPage().takeBackup();
+//		assertThat(getProtectPage().verifyBuckupFunctionality(), Matchers.equalTo(true));
+//
+//	}
 
 	@Given("There are $number text files in '$nameOfvolumes' volumes")
 	public void createFilesAndTakeBackup(String number, String nameOfvolumes) throws IOException, FindFailed {
