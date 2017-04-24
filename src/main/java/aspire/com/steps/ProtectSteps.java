@@ -83,6 +83,7 @@ public class ProtectSteps extends BaseSteps {
 	}
 
 	@Given("There are $number text files in '$nameOfvolumes' volumes")
+	@Composite(step={""})
 	public void createFilesAndTakeBackup(String number, String nameOfvolumes) throws IOException, FindFailed {
 		getProtectPage().createTextFileRemotly(number, nameOfvolumes);
 		getProtectPage().takeBackup();

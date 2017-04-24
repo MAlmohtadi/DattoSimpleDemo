@@ -5,7 +5,7 @@ Scenario: 003-Perform a file restore of last timestamp and retrieve 1 file from 
 Given System is protected as not encrypted
 And Backup is available for multiple volumes
 And 1 text file, is deleted from '<NameOfVolumesSeperatedByComma>' volume
-When I perform file restore of last timestamp
+When I perform file restore of last timestamp for not encrypted system
 Then All files should be restored for '<NameOfVolumesSeperatedByComma>' volumes
 
 Examples:
