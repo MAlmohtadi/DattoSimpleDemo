@@ -19,7 +19,7 @@ And I click on 'FileRestoreRadioButton'
 And I click on 'StartFileRestore'
 And I click on 'Mount'
 And I wait 'Unmount' to be visible
-Then I verify retrieved 1 file/files from '<firstRetriveForVolumes>' volumes
+Then I verify retrieved <number> file/files from '<firstRetriveForVolumes>' volumes
 When I click on 'Protect'
 And I select 'Configure Agent Settings'
 And I click on 'VolumeLevelBackupControl'
@@ -38,9 +38,9 @@ And I click on 'FileRestoreRadioButton'
 And I click on 'StartFileRestore'
 And I click on 'Mount'
 And I wait 'Unmount' to be visible
-Then I verify retrieved 1 file/files from '<firstRetriveForVolumes>' volumes
+Then I verify retrieved <number> file/files from '<firstRetriveForVolumes>' volumes
 
 
 Examples:
-|volumeName|firstRetriveForVolumes|secondRetriveForVolumes|volumes|
-|E|H, I|E, H, I|E, H, I|
+|volumeName|firstRetriveForVolumes|secondRetriveForVolumes|volumes|number|
+|E|H, I|E, H, I|E, H, I|1|
