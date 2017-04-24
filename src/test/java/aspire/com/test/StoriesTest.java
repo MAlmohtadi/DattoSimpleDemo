@@ -55,6 +55,8 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import aspire.com.zap.ZapScan;
+import ch.qos.logback.core.util.FileUtil;
+
 import org.apache.commons.io.FileUtils;
 
 /**
@@ -424,6 +426,7 @@ public class StoriesTest extends JUnitStories {
 		try {
 
 			FileUtils.copyFile(latestLogFile, new File(ReportDataManager.getReportPath() + latestLogFileName));
+			
 			isLogFileCopied = true;
 		} catch (Exception exception) {
 

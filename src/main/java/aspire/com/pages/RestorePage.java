@@ -1,5 +1,6 @@
 package aspire.com.pages;
 
+import org.apache.commons.io.FileUtils;
 import org.jbehave.web.selenium.WebDriverProvider;
 import org.openqa.selenium.By;
 import org.sikuli.script.FindFailed;
@@ -12,6 +13,8 @@ import jo.aspire.web.automationUtil.BrowserAlertHelper;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.util.HashMap;
 
@@ -68,30 +71,34 @@ public class RestorePage extends GenericPage {
 	}
 
 	/**
-	 * this method is used if the file exist in the given URL.
+	 * this method is used if the file exist in the given URL and copy it to
+	 * project directory.
 	 * 
 	 * @param nameOfFile:
 	 *            name of the file to be checked.
 	 * @param volumeName:
 	 *            volume name that has the given file.
-	 * @return Integer.
-	 * @throws MalformedURLException.
-	 * @throws SmbException.
+	 * @return String.
+	 * @throws IOException
+	 * @throws URISyntaxException
+	 * @throws MalformedURLException.F
 	 */
-	public int getHashCodeForSharedFile(String nameOfFile, String volumeName)
-			throws MalformedURLException, SmbException {
+	public String getSharedFileURI(String nameOfFile, String volumeName) throws IOException, URISyntaxException {
 		String tempText = getElementByCssSelector("ShareURL").getText().replace("Samba Share:\n\\\\", "")
 				.replace("\\", "/").trim();
 		String url = "smb://" + tempText;
-		SmbFile dir = new SmbFile(url);
+		SmbFile file = new SmbFile(url);
 		url = url + File.separator + volumeName + File.separator + nameOfFile;
-		dir = new SmbFile(url);
-		return dir.hashCode();
+		file = new SmbFile(url);
+		url = file.getURL().toString();
+		url = url.replace("smb://", "").replace("\\", "/");
+		return url;
+		// return file;
 	}
 
 	/**
-	 * check files that have been saved and compare hash codes with the saved
-	 * hashes for the files that have been removed.
+	 * check files that have been restores and compare if the content
+	 * equivalent.
 	 * 
 	 * @param numberOfFiles:
 	 *            number of files.
@@ -104,15 +111,23 @@ public class RestorePage extends GenericPage {
 	public boolean verifyRestoredFiles(String numberOfFiles, String volumesName)
 			throws MalformedURLException, SmbException {
 		int counter = Integer.parseInt(numberOfFiles);
-		boolean isRestored = true;
-		String[] volumesArray = volumesName.split(",");
-		HashMap<String, Integer> files = (HashMap<String, Integer>) StateHelper.getStoryState(volumesArray[0]);
+		boolean isRestored = false;
+		String[] volumes = volumesName.split(",");
+		File file = new File(System.getProperty("user.dir") + File.separator + "files" + File.separator + "Test1.txt");
 
-		for (int i = 0; i < volumesArray.length; i++) {
+		File sharedFile = null;
+		for (int i = 0; i < volumes.length; i++) {
 			for (int j = 1; j <= counter; j++) {
-				isRestored = (getHashCodeForSharedFile("Test" + j + ".txt", volumesArray[i]) == files.get("Test" + j));
-				if (!isRestored) {
-					return isRestored;
+				try {
+					sharedFile = new File(new URI("file:////" + getSharedFileURI("Test" + j + ".txt", volumes[i])));
+					isRestored = FileUtils.contentEquals(sharedFile, file);
+					if (!isRestored) {
+						return isRestored;
+					}
+				} catch (URISyntaxException e1) {
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					e1.printStackTrace();
 				}
 			}
 		}

@@ -32,19 +32,14 @@ public class RestoreSteps extends BaseSteps {
 
 	@When("I perform file restore of $to timestamp")
 	public void performRestore(String to) {
-
 		getRestorePage().performRestore();
 	}
 
 	@Then("All files should be restored for '$names' volumes")
 	@Alias("All files should be restored for '<names>' volumes")
-	@Composite(steps = { "Then I verify retrieved 1 file$specialCharacter from '<names>' volumes" })
+	@Composite(steps = { "Then I verify retrieved 1 file, from '<names>' volumes" })
 	public void verifyFilesRestored(String names) throws MalformedURLException, SmbException {
-		// String[] volumes = names.split(",");
-		// for (int i = 0; i < volumes.length; i++) {
-		// assertThat(getRestorePage().checkIfFileShared(),
-		// Matchers.equalTo(true));
-		// }
+		
 
 	}
 

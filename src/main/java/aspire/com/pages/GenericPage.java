@@ -35,6 +35,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 import static org.openqa.selenium.By.cssSelector;
 import static org.seleniumhq.selenium.fluent.Period.secs;
@@ -180,30 +181,24 @@ public class GenericPage extends FluentWebDriverPage {
 	public void deleteTextFiles(String numberOfFiles, String nameOfVolume) {
 		// String ipAddress =
 		// StateHelper.getApplicationState("machineIP").toString();
-		String ipAddress = System.getProperty("Windows");
+		String ipAddress = getProperty("Windows");
 		String[] volumes = nameOfVolume.split(",");
 		int numberOfFilesToBeDeleted = Integer.parseInt(numberOfFiles);
 		File file = null;
-		HashMap<String, Integer> fileHashCode = null;
 		for (int i = 0; i < volumes.length; i++) {
 			for (int j = 1; j <= numberOfFilesToBeDeleted; j++) {
 				try {
-					file = new File(new URI("file:////" + ipAddress + File.separator + nameOfVolume + "$"
-							+ File.separator + "Test" + j + ".txt"));
-					fileHashCode.put("Test" + j, file.hashCode());
+					file = new File(new URI("file:////" + ipAddress + "/" + volumes[i].trim() + "$/Test" + j + ".txt"));
 					if (FileUtils.deleteQuietly(file)) {
 						System.out.println(file.getName() + " is deleted!");
 					} else {
 						System.out.println("Delete operation is failed.");
 						Assert.assertEquals(true, false);
 					}
-
 				} catch (Exception e) {
 					System.out.println("File Path not exist");
 				}
 			}
-			StateHelper.setStoryState(volumes[i], fileHashCode);
-			fileHashCode.clear();
 		}
 	}
 
@@ -316,8 +311,9 @@ public class GenericPage extends FluentWebDriverPage {
 	}
 
 	public void createTextFileRemotly(String fileNumber, String volumesName) {
-		String ipAddress = StateHelper.getApplicationState("machineIP").toString();
-		// String ipAddress = getProperty("Windows").toString();
+		// String ipAddress =
+		// StateHelper.getApplicationState("machineIP").toString();
+		String ipAddress = getProperty("Windows").toString();
 		int numberOfFiles = Integer.parseInt(fileNumber);
 		String[] volumesArray = volumesName.split(",");
 		for (int i = 1; i <= numberOfFiles; i++) {
