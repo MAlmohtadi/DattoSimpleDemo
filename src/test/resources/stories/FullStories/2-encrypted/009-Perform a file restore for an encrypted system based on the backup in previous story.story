@@ -15,7 +15,7 @@ And I wait 'PassphraseTextBox' to be visible
 And I enter 'ValidPassphrase' inside PassphraseTextBox
 And I click on 'VerifyPhraseButton'
 And I wait 'Unmount' to be visible
-Then I verify retrieved <number> file/files from '<names>' volumes
+Then I verify retrieved <number> file/files from '<NameOfVolumesSeperatedByComma>' volumes
 
 Examples:
 |NameOfVolumesSeperatedByComma|number|
