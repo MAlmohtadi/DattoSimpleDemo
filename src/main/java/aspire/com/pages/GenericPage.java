@@ -32,6 +32,8 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.UnknownHostException;
 import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import static org.openqa.selenium.By.cssSelector;
@@ -182,11 +184,13 @@ public class GenericPage extends FluentWebDriverPage {
 		String[] volumes = nameOfVolume.split(",");
 		int numberOfFilesToBeDeleted = Integer.parseInt(numberOfFiles);
 		File file = null;
+		HashMap<String, Integer> fileHashCode = null;
 		for (int i = 0; i < volumes.length; i++) {
 			for (int j = 1; j <= numberOfFilesToBeDeleted; j++) {
 				try {
 					file = new File(new URI("file:////" + ipAddress + File.separator + nameOfVolume + "$"
 							+ File.separator + "Test" + j + ".txt"));
+					fileHashCode.put("Test" + j, file.hashCode());
 					if (FileUtils.deleteQuietly(file)) {
 						System.out.println(file.getName() + " is deleted!");
 					} else {
@@ -198,6 +202,8 @@ public class GenericPage extends FluentWebDriverPage {
 					System.out.println("File Path not exist");
 				}
 			}
+			StateHelper.setStoryState(volumes[i], fileHashCode);
+			fileHashCode.clear();
 		}
 	}
 

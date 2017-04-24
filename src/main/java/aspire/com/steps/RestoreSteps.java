@@ -36,10 +36,10 @@ public class RestoreSteps extends BaseSteps {
 
 	@Then("All files should be restored for '$names' volumes")
 	public void verifyFilesRestored(String names) throws MalformedURLException, SmbException {
-		String[] volumes = names.split(",");
-		for (int i = 0; i < volumes.length; i++) {
-			assertThat(getRestorePage().checkIfFileShared("Test", volumes[i]), Matchers.equalTo(true));
-		}
+		//String[] volumes = names.split(",");
+		//for (int i = 0; i < volumes.length; i++) {
+			assertThat(getRestorePage().checkIfFileShared(), Matchers.equalTo(true));
+		//}
 
 	}
 
@@ -48,7 +48,7 @@ public class RestoreSteps extends BaseSteps {
 	public void verifyAFileRestored(String number, String specialCharacter, String volumesName)
 			throws MalformedURLException, SmbException {
 
-		assertThat(getRestorePage().verifyFilesRestored(number, volumesName), Matchers.equalTo(true));
+		//assertThat(getRestorePage().verifyFilesRestored(number, volumesName), Matchers.equalTo(true));
 	}
 
 	@When("I perform a file restore for 1 file from each backed up volume of specific timestamp.")

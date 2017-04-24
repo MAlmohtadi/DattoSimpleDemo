@@ -1,6 +1,0 @@
-#org.jbehave.core.embedder.StoryManager
-#Sun Apr 23 21:41:13 EEST 2017
-stories/FullStories/001-Remove\ system\ re-protect\ a\ none\ encrypted\ system\ and\ take\ a\ backup.story=37000
-threads=1
-total=37000
-threadAverage=37000

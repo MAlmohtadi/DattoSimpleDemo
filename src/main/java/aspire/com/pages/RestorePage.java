@@ -6,12 +6,15 @@ import org.sikuli.script.FindFailed;
 
 import jcifs.smb.SmbException;
 import jcifs.smb.SmbFile;
+import jo.aspire.generic.StateHelper;
 import jo.aspire.web.automationUtil.BrowserAlertHelper;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.sql.Connection;
+import java.util.HashMap;
+
 import static org.openqa.selenium.By.cssSelector;
 
 /**
@@ -75,30 +78,42 @@ public class RestorePage extends GenericPage {
 	 * @throws MalformedURLException.
 	 * @throws SmbException.
 	 */
-	public boolean checkIfFileShared(String nameOfFile, String volumeName) throws MalformedURLException, SmbException {
+	public boolean checkIfFileShared(String volumeName) throws MalformedURLException, SmbException {
 		String tempText = getElementByCssSelector("ShareURL").getText().replace("Samba Share:\n\\\\", "")
 				.replace("\\", "/").trim();
 		String url = "smb://" + tempText;
 		SmbFile dir = new SmbFile(url);
-		url = url + File.separator + volumeName + File.separator + nameOfFile;
-		dir = new SmbFile(url);
-		return dir.exists();
-	}
-
-	public Boolean verifyFilesRestored(String number, String volumesName) throws MalformedURLException, SmbException {
-		int counter = Integer.parseInt(number);
-		boolean isRestored = true;
-		String[] volumesArray = volumesName.split(",");
-		for (int i = 1; i <= counter; i++) {
-			for (int j = 0; j < volumesArray.length; j++) {
-				isRestored = isRestored && checkIfFileShared("Test" + i + ".txt", volumesArray[j]);
-				if (!isRestored) {
-					return isRestored;
+		String[] volumes = volumeName.split(",");
+		HashMap<String, Integer> files = (HashMap<String, Integer>) StateHelper.getStoryState(volumes[0]);
+		int numberOfFiles = files.size();
+		boolean fileCorrect = true;
+		for (int i = 0; i < volumes.length; i++) {
+			for (int j = 1; j <= numberOfFiles; j++) {
+				url = url + File.separator + volumes[i] + File.separator + "Test" + j + ".txt";
+				dir = new SmbFile(url);
+				fileCorrect = (dir.hashCode() == files.get("Test" + j));
+				if (!fileCorrect) {
+					System.err.println("The hash code for file Test" + j + " not equivalent");
 				}
 			}
 		}
-
-		return isRestored;
+		return fileCorrect;
 	}
+
+	//public Boolean verifyFilesRestored(String number, String volumesName) throws MalformedURLException, SmbException {
+		//int counter = Integer.parseInt(number);
+		//boolean isRestored = true;
+		//String[] volumesArray = volumesName.split(",");
+		//for (int i = 1; i <= counter; i++) {
+			//for (int j = 0; j < volumesArray.length; j++) {
+				//isRestored = isRestored && checkIfFileShared("Test" + i + ".txt", volumesArray[j]);
+				//if (!isRestored) {
+					//return isRestored;
+				//}
+			//}
+		//}
+
+		//return isRestored;
+	//}
 
 }

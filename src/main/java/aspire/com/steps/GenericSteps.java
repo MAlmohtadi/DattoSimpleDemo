@@ -41,7 +41,7 @@ public class GenericSteps extends BaseSteps {
 
 	@Given("$number text file$specialCharacter is deleted from '$volumesName' volume")
 	@When("$number text file$specialCharacter is deleted from '$volumesName' volume")
-	public void deleteFiles(String number, String volumesName, String specialCharacter) {
+	public void deleteFiles(String number,String specialCharacter, String volumesName ) {
 
 		getGenericPage().deleteTextFiles(number, volumesName);
 	}
