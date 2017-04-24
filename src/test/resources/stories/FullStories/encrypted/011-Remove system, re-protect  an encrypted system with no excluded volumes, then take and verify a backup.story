@@ -4,14 +4,13 @@ Scenario: 011-Remove system from Datto appliance and re-protect the system once 
 
 Given System is protected as encrypted
 When I remove system from Datto appliance
-And I re-protect the system as encrypted for machineType
+And I re-protect the system as encrypted for <machineType>
 And The system is protected
 And I select 'Configure Agent Settings'
-And I click on 'VolumeLevelBackupControl'
-And I exclude 'biggestVolume' volume
-And The system is protected
+And I click on 'Volume Level Backup Control'
+And I exclude '<largeVolume>' volume
 And I do not exclude any volume
-And I proceed to take one backup
+And I take a backup
 Then System should be backed up
 
 Examples:

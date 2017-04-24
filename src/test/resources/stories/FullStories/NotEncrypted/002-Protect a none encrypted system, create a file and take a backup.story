@@ -14,4 +14,4 @@ Then backup should be completed successfully
 
 Examples:
 |largeVolume|volumeToBeExcluded|volumes|
-|C|E|H,I|
+|C|E|H, I|
