@@ -85,12 +85,12 @@ public class ProtectSteps extends BaseSteps {
 	}
 
 	@Given("There are $number text files in '$nameOfvolumes' volumes")
-	@Alias("There are <number> text files in '<nameOfvolumes>' volumes")
-	@Composite(steps = { "Given A new <number> files is added in '<nameOfvolumes>' volumes" })
 	public void createFilesAndTakeBackup(String number, String nameOfvolumes) throws IOException, FindFailed {
+		getGenericPage().createTextFileRemotly(number, nameOfvolumes);
 		// getProtectPage().createTextFileRemotly(number, nameOfvolumes);
 		// getProtectPage().takeBackup();
-//		assertThat(getProtectPage().verifyBuckupFunctionality(), Matchers.equalTo(true));
+		// assertThat(getProtectPage().verifyBuckupFunctionality(),
+		// Matchers.equalTo(true));
 	}
 
 	@Given("A backup is captured for all volumes")
