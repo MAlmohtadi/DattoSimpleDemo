@@ -32,9 +32,9 @@ public class RestoreSteps extends BaseSteps {
 
 	@When("I perform file restore of $to timestamp for not encrypted system")
 	@Composite(steps = { "When I click on 'RestoreMenu'", "When I wait 'RemoveRestore' to be visible",
-			"When I click 'RemoveRestore'", "When I click on 'ChooseSystemRadioButton'",
-			"When I click on 'FileRestoreRadioButton'", "When I click on 'StartFileRestore'", "When I click on 'Mount'",
-			"When I wait 'Unmount' to be visible" })
+			"When I click on 'RemoveRestore'", "When I wait 'ManageRestore' to be invisible",
+			"When I click on 'ChooseSystemRadioButton'", "When I click on 'FileRestoreRadioButton'",
+			"When I click on 'StartFileRestore'", "When I click on 'Mount'", "When I wait 'Unmount' to be visible" })
 	public void performRestoreForNoneEncryptedSystem(String to) {
 		// getRestorePage().performRestore();
 
@@ -42,7 +42,7 @@ public class RestoreSteps extends BaseSteps {
 
 	@When("I perform file restore of $to timestamp for encrypted system")
 	@Composite(steps = { "When I click on 'RestoreMenu'", "When I wait 'RemoveRestore' to be visible",
-			"When I click 'RemoveRestore'", "When I click on 'ChooseSystemRadioButton'",
+			"When I click on 'RemoveRestore'", "When I click on 'ChooseSystemRadioButton'",
 			"When I click on 'FileRestoreRadioButton'", "When I click on 'StartFileRestore'", "When I click on 'Mount'",
 			"When I wait 'PassphraseTextBox' to be visible", "When I enter 'ValidPassphrase' inside PassphraseTextBox",
 			"When I click on 'VerifyPhraseButton'", "When I wait 'Unmount' to be visible" })

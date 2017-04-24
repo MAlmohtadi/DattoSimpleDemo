@@ -27,6 +27,11 @@ public class RemoveAgentPage extends GenericPage {
 	private By Version = cssSelector("td.mh22-text a");
 	private final int CONST_WAIT_LOWER_VALUE = 30;
 
+	public void removeSystemFromDattoAppliance() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	// /**
 	// * This method is used to remove existed system from DATTO appliance
 	// whether

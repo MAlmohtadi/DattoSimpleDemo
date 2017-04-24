@@ -107,6 +107,24 @@ public class GenericPage extends FluentWebDriverPage {
 	}
 
 	/**
+	 * Wait an element to be invisible on it for a period of time.
+	 * 
+	 * @param elementName:
+	 *            name of element.
+	 */
+	public boolean waitElementToBeInvisible(String elementName) {
+		WebDriverWait wait = new WebDriverWait(getDriverProvider().get(), CONST_WAIT_LOWER_VALUE);
+		try {
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(getProperty(elementName))));
+		} catch (Exception e) {
+			System.err.println(e);
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
 	 * Wait an element to be able to click on it for a period of time.
 	 * 
 	 * @param elementName:

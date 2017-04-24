@@ -46,10 +46,10 @@ public class GenericSteps extends BaseSteps {
 		getGenericPage().deleteTextFiles(number, volumesName);
 	}
 
-	@When("I delete the $number files in each backed up volume")
-	public void deleteFilesAndTakeBackup(String number) {
+	@When("I delete the $number files in $nameOfVolumesSeperatedByComma volume")
+	public void deleteTextFiles(String number, String nameOfVolumesSeperatedByComma) {
 
-		getGenericPage().deleteFilesAndTakeBackup(number);
+		getGenericPage().deleteTextFiles(number, nameOfVolumesSeperatedByComma);
 
 	}
 
@@ -64,6 +64,12 @@ public class GenericSteps extends BaseSteps {
 	@When("I wait '$element' to be visible")
 	public void waitElementToBeVisibile(String element) {
 		assertThat(getGenericPage().waitElementToBeVisible(element), Matchers.equalTo(true));
+
+	}
+
+	@When("I wait '$element' to be invisible")
+	public void waitElementToBeInvisibile(String element) {
+		assertThat(getGenericPage().waitElementToBeInvisible(element), Matchers.equalTo(true));
 
 	}
 

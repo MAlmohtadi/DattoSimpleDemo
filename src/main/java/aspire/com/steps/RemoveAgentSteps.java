@@ -29,7 +29,7 @@ public class RemoveAgentSteps extends BaseSteps {
 			"When I wait 'RecoverySection' to be visible", "When I click on 'RemoveRestore'",
 			"When I enter 'DeleteTextConfirm' inside RemoveAgentConfirm", "When I click on 'RemoveAgentDelete'" })
 	public void removeSystemFromDattoAppliance() throws FindFailed, IOException {
-		// getRemoveAgentPage().removeSystemFromDattoAppliance();
+//		 getRemoveAgentPage().removeSystemFromDattoAppliance();
 
 	}
 

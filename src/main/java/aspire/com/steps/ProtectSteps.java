@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.net.UnknownHostException;
 
 import org.hamcrest.Matchers;
+import org.jbehave.core.annotations.Alias;
 import org.jbehave.core.annotations.Composite;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
@@ -49,14 +50,15 @@ public class ProtectSteps extends BaseSteps {
 		// getProtectPage().checkSystemIsCreatedAndProtected();
 	}
 
+	@Given("I take a backup")
 	@When("I take a backup")
 	@Composite(steps = { "When I select 'protect'", "When I wait 'Start Backup' image to be visible",
 			"When I select 'Start Backup'", "When I wait 'Cancel' image to be visible" })
-
 	public void takeBackup() throws IOException, FindFailed {
 		// getProtectPage().takeBackup();
 	}
 
+	@Given("backup should be completed successfully")
 	@When("backup should be completed successfully")
 	@Then("backup should be completed successfully")
 	public void verifyBuckupFunctionality() throws IOException, FindFailed {
@@ -83,17 +85,18 @@ public class ProtectSteps extends BaseSteps {
 	}
 
 	@Given("There are $number text files in '$nameOfvolumes' volumes")
-	@Composite(step={""})
+	@Alias("There are <number> text files in '<nameOfvolumes>' volumes")
+	@Composite(steps = { "Given A new <number> files is added in '<nameOfvolumes>' volumes" })
 	public void createFilesAndTakeBackup(String number, String nameOfvolumes) throws IOException, FindFailed {
-		getProtectPage().createTextFileRemotly(number, nameOfvolumes);
-		getProtectPage().takeBackup();
-		assertThat(getProtectPage().verifyBuckupFunctionality(), Matchers.equalTo(true));
+		// getProtectPage().createTextFileRemotly(number, nameOfvolumes);
+		// getProtectPage().takeBackup();
+//		assertThat(getProtectPage().verifyBuckupFunctionality(), Matchers.equalTo(true));
 	}
 
 	@Given("A backup is captured for all volumes")
-	public void takeBackup(String number, String nameOfvolumes) throws IOException, FindFailed {
+	@Composite(steps = { "Given I take a backup", "Given backup should be completed successfully" })
+	public void backupIsCaptured() throws IOException, FindFailed {
 
-		getProtectPage().takeBackup();
 	}
 
 }
