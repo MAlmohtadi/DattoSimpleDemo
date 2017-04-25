@@ -8,6 +8,8 @@ When I wait 'Remove Agent' image to be visible
 And I select 'Remove Agent'
 And I wait 'RecoverySection' to be visible
 And I click on 'RemoveRestore'
+And I wait 'ForceUnmount' to be visible
+And I click on 'ForceUnmount'
 And I enter 'DeleteTextConfirm' inside RemoveAgentConfirm
 And I click on 'RemoveAgentDelete'
 And I wait 'AddBasedSystem' to be visible
