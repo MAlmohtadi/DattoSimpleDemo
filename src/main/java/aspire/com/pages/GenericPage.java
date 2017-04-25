@@ -52,7 +52,7 @@ public class GenericPage extends FluentWebDriverPage {
 	}
 
 	public static boolean isExecluded = false;
-	String imgsPath = System.getProperty("user.dir") + File.separator + "imgs/";
+	String imgsPath = System.getProperty("user.dir") + File.separator + "imgs"+ File.separator ;
 	/**
 	 * Default Selector within the class
 	 */
@@ -60,9 +60,6 @@ public class GenericPage extends FluentWebDriverPage {
 	public final int CONST_WAIT_LOWER_VALUE = 30;
 	public final int CONST_WAIT_HIGHER_VALUE = 90;
 
-	public FluentWebElement getWorkSmartVersion() {
-		return within(secs(CONST_WAIT_LOWER_VALUE)).link(Version);
-	}
 
 	/**
 	 * Get value of the key from properties.
@@ -86,6 +83,7 @@ public class GenericPage extends FluentWebDriverPage {
 	public void waitElementToBeVisible(String elementName, int timeInSeconds) {
 		WebDriverWait wait = new WebDriverWait(getDriverProvider().get(), timeInSeconds);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(getProperty(elementName))));
+		
 	}
 
 	/**
@@ -209,7 +207,7 @@ public class GenericPage extends FluentWebDriverPage {
 	public void selectElement(String imageName) throws FindFailed {
 
 		Screen screen = new Screen();
-		screen.wait(imgsPath + imageName + ".png", 20);
+		screen.wait(imgsPath + imageName + ".png", CONST_WAIT_LOWER_VALUE);
 		screen.click(imgsPath + imageName + ".png");
 	}
 

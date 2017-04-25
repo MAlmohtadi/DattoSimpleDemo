@@ -4,8 +4,7 @@ Scenario: 001-Remove system from Datto appliance and re-protect the system
 
 Given I login to the Datto
 And I click on 'Protect'
-When I wait 'Remove Agent' image to be visible
-And I select 'Remove Agent'
+When I select 'Remove Agent'
 And I wait 'RecoverySection' to be visible
 And I click on 'RemoveRestore'
 And I enter 'DeleteTextConfirm' inside RemoveAgentConfirm
