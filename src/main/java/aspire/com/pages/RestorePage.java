@@ -37,39 +37,7 @@ public class RestorePage extends GenericPage {
 	private By Version = cssSelector("td.mh22-text a");
 	private final int CONST_WAIT_LOWER_VALUE = 30;
 
-	/**
-	 * This method is used to remove any previous restored points and perform
-	 * new restore point.
-	 *
-	 */
-	public void performRestore() {
-		clickOnElement("RestoreMenu");
-		sleepTime(1000);
-		try {
-			waitElementToBeVisible("RemoveRestore", 10);
-			clickOnElement("RemoveRestore");
-			sleepTime(5000);
-			waitElementToBeVisible("ForceUnmount", 10);
-			clickOnElement("ForceUnmount");
-		} catch (Exception e) {
-			System.out.println("there is no previous restored points");
-		}
-		clickOnElement("ChooseSystemRadioButton");
-		clickOnElement("FileRestoreRadioButton");
-		clickOnElement("StartFileRestore");
-		sleepTime(2000);
-		clickOnElement("Mount");
-		try {
-			waitElementToBeVisible("PassphraseTextBox", 10);
-			enterTextInElement("123", "PassphraseTextBox");
-			sleepTime(3000);
-			clickOnElement("VerifyPhraseButton");
-		} catch (Exception e) {
-			System.out.println("system not encrypted");
-		}
-		waitElementToBeVisible("Unmount", CONST_WAIT_LOWER_VALUE);
-	}
-
+	
 	/**
 	 * this method is used if the file exist in the given URL and copy it to
 	 * project directory.
@@ -93,7 +61,6 @@ public class RestorePage extends GenericPage {
 		url = file.getURL().toString();
 		url = url.replace("smb://", "").replace("\\", "/");
 		return url;
-		// return file;
 	}
 
 	/**

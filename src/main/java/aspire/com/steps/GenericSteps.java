@@ -25,32 +25,11 @@ public class GenericSteps extends BaseSteps {
 		System.out.println("ttt");
 	}
 
-	@Given("A new $fileType file is added in '$volumesName' volumes")
-	public void addFile(String fileType, String volumesName) {
-		getGenericPage().createTextFileRemotly("1", volumesName);
-	}
-
 	@Given("I select '$element'")
 	@When("I select '$element'")
 	@Then("I select '$element'")
 	public void selectElement(String element) throws IOException, FindFailed {
-
 		getGenericPage().selectElement(element);
-
-	}
-
-	@Given("$number text file/files deleted from '$volumesName' volumes")
-	@When("$number text file/files deleted from '$volumesName' volumes")
-	public void deleteFiles(String number, String volumesName) {
-
-		getGenericPage().deleteTextFiles(number, volumesName);
-	}
-
-	@When("I delete $number file/files in $nameOfVolumesSeperatedByComma volumes")
-	public void deleteTextFiles(String number, String nameOfVolumesSeperatedByComma) {
-
-		getGenericPage().deleteTextFiles(number, nameOfVolumesSeperatedByComma);
-
 	}
 
 	@Given("I click on '$element'")

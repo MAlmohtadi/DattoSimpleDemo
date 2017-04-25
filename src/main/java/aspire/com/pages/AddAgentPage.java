@@ -28,46 +28,5 @@ public class AddAgentPage extends GenericPage {
 	 */
 	private By Version = cssSelector("td.mh22-text a");
 
-	/**
-	 * add an Agent Based System in DATTO appliance.
-	 * 
-	 * @param typeOfSystem:
-	 *            type of system to be added.
-	 * @param osType:
-	 *            type of the operating system to work on it.
-	 */
-	public void addAgentBasedSystem(String typeOfSystem, String osType) {
-//		waitElementToBeVisible("AddBasedSystem", CONST_WAIT_HIGHER_VALUE);
-//		clickOnElement("AddBasedSystem");
-//		clickOnElement("IpAddressOrHost");
-//		enterTextInElement(getProperty(osType), "IpAddressTextBox");
-
-		clickOnElement("NextButton");
-		sleepTime(2000);
-		clickOnElement("NextButton");
-		waitElementToBeVisible("LocalBackups", CONST_WAIT_LOWER_VALUE);
-		clickOnElement("NextButton");
-		waitElementToBeVisible("CloudBackups", CONST_WAIT_LOWER_VALUE);
-		clickOnElement("NextButton");
-		waitElementToBeVisible("RetentionBackups", CONST_WAIT_LOWER_VALUE);
-		clickOnElement("NextButton");
-		enterTextInElement("malmohtadi@aspire-infotech.net", "EmailAddress");
-		clickOnElement("NextButton");
-		waitElementToBeVisible("AlerAndReports", CONST_WAIT_LOWER_VALUE);
-		enterTextInElement("malmohtadi@aspire-infotech.net", "CriticalEmail");
-		clickOnElement("NextButton");
-		waitElementToBeVisible("EncryptSection", CONST_WAIT_LOWER_VALUE);
-		if (typeOfSystem.contains("not")) {
-			clickOnElement("EncryptYes");
-			clickOnElement("IAgreeButton");
-//			clickOnElement("NextButton");
-			sleepTime(2000);
-			enterTextInElement("123", "EnterPassphrase");
-			sleepTime(2000);
-			enterTextInElement("123", "RepeatPassphrase");
-			sleepTime(2000);
-		}
-		clickOnElement("NextButton");
-	}
 
 }

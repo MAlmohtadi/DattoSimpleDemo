@@ -30,33 +30,6 @@ public class RestoreSteps extends BaseSteps {
 	public void beforeCucmberScenario() {
 	}
 
-	@When("I perform file restore of $to timestamp for not encrypted system")
-	@Composite(steps = { "When I click on 'RestoreMenu'", "When I wait 'RemoveRestore' to be visible",
-			"When I click on 'RemoveRestore'", "When I wait 'ManageRestore' to be invisible",
-			"When I click on 'ChooseSystemRadioButton'", "When I click on 'FileRestoreRadioButton'",
-			"When I click on 'StartFileRestore'", "When I click on 'Mount'", "When I wait 'Unmount' to be visible" })
-	public void performRestoreForNoneEncryptedSystem(String to) {
-		// getRestorePage().performRestore();
-
-	}
-
-	@When("I perform file restore of $to timestamp for encrypted system")
-	@Composite(steps = { "When I click on 'RestoreMenu'", "When I wait 'RemoveRestore' to be visible",
-			"When I click on 'RemoveRestore'", "When I click on 'ChooseSystemRadioButton'",
-			"When I click on 'FileRestoreRadioButton'", "When I click on 'StartFileRestore'", "When I click on 'Mount'",
-			"When I wait 'PassphraseTextBox' to be visible", "When I enter 'ValidPassphrase' inside PassphraseTextBox",
-			"When I click on 'VerifyPhraseButton'", "When I wait 'Unmount' to be visible" })
-	public void performRestoreForEncryptedSystem(String to) {
-
-	}
-
-	@Then("All files should be restored for '$names' volumes")
-	@Alias("All files should be restored for '<names>' volumes")
-	@Composite(steps = { "Then I verify retrieved 1 file, from '<names>' volumes" })
-	public void verifyFilesRestored(String names) throws MalformedURLException, SmbException {
-
-	}
-
 	@When("I verify retrieved $number file/files from '$volumesName' volumes")
 	@Then("I verify retrieved $number file/files from '$volumesName' volumes")
 	public void verifyAFileRestored(String number, String volumesName)
@@ -64,10 +37,5 @@ public class RestoreSteps extends BaseSteps {
 		assertThat(getRestorePage().verifyRestoredFiles(number, volumesName), Matchers.equalTo(true));
 	}
 
-	// @When("I perform a file restore for 1 file from each backed up volume of
-	// specific timestamp.")
-	// public void performRestoreOfSpecificTimestamp() {
-	// getRestorePage().performRestore();
-	// }
 
 }
