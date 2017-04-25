@@ -53,5 +53,5 @@ And I wait 'Cancel' image to be visible
 Then backup should be completed successfully
 
 Examples:
-|biggestVolume|machineType|
+|largeVolume|machineType|
 |C|Windows|
