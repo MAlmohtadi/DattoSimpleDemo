@@ -30,10 +30,9 @@ public class RestoreSteps extends BaseSteps {
 	public void beforeCucmberScenario() {
 	}
 
-	@When("I verify retrieved $number file/files from '$volumesName' volumes")
-	@Then("I verify retrieved $number file/files from '$volumesName' volumes")
-	public void verifyAFileRestored(String number, String volumesName) throws MalformedURLException, SmbException {
-		assertThat(getRestorePage().verifyRestoredFiles(number, volumesName), Matchers.equalTo(true));
+	@Then("'$fileName' file is retrieved from '$volumesName' volumes")
+	public void verifyAFileRestored(String fileName, String volumesName) throws MalformedURLException, SmbException {
+		assertThat(getRestorePage().verifyRestoredFiles("1", fileName, volumesName), Matchers.equalTo(true));
 	}
 
 	// ############
@@ -46,6 +45,17 @@ public class RestoreSteps extends BaseSteps {
 	@When("Choosing a '$option' {system to be restored|recovery type|recovery point}")
 	public void chooseOptionInForRestore(String option) {
 		getRestorePage().chooseOptionInForRestore(option);
+	}
+
+	@Then("$number '$fileName' files are retrieved from '$volumesName' volumes")
+	public void verifyFilesAreRestored(String number, String fileName, String volumesName)
+			throws MalformedURLException, SmbException {
+		assertThat(getRestorePage().verifyRestoredFiles(number, fileName, volumesName), Matchers.equalTo(true));
+	}
+	
+	@Then("'$fileName' file is not retrieved from '$volumes' volumes")
+	public void verifyAFileNotRestored(String fileName, String volumesName) throws MalformedURLException, SmbException {
+		assertThat(getRestorePage().verifyRestoredFiles("1", fileName, volumesName), Matchers.equalTo(true));
 	}
 
 }

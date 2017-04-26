@@ -29,23 +29,11 @@ public class ProtectSteps extends BaseSteps {
 	@Before
 	public void beforeCucmberScenario() {
 	}
-
-	// @Given("There are $number text files in '$nameOfvolumes' volumes")
-	// public void createFilesAndTakeBackup(String number, String nameOfvolumes)
-	// throws IOException, FindFailed {
-	// getProtectPage().createTextFile(number, nameOfvolumes);
-	// }
-
 	@Given("A new $fileName file is added in '$volumesName' volumes")
+	@When("A new $fileName file is added in '$volumesName' volumes")
 	public void addFile(String fileName, String volumesName) {
 		getProtectPage().createTextFile("1", fileName, volumesName);
 	}
-
-//	@Given("$number text file/files deleted from '$volumesName' volumes")
-//	@When("$number text file/files deleted from '$volumesName' volumes")
-//	public void deleteFiles(String number, String volumesName) {
-//		getProtectPage().deleteTextFiles(number, volumesName);
-//	}
 
 	// ##################
 	@Given("There is a protected system")
@@ -64,9 +52,25 @@ public class ProtectSteps extends BaseSteps {
 	}
 
 	@Given("Delete '$fileName' file from '$volumesName' volumes")
-	@When("Delete '$fileName' file from '$volumesName' volumes")
+	@When("Deleting '$fileName' file from '$volumesName' volumes")
 	public void deleteTextFiles(String fileName, String volumesName) {
 		getProtectPage().deleteTextFiles("1", fileName, volumesName);
 	}
 
+	@Given("$number new '$fileName' files are added in '$volumesName' volumes")
+	public void addFiles(String number, String fileName, String volumesName) {
+		getProtectPage().createTextFile(number, fileName, volumesName);
+	}
+
+	@Given("A backup is taken")
+	@When("A backup is taken")
+	public void backupIsTaken() throws FindFailed {
+		assertThat(getProtectPage().takeOneBackup(), Matchers.equalTo(true));
+		assertThat(getProtectPage().verifyBuckupFunctionality(), Matchers.equalTo(true));
+	}
+
+	@When("Deleting $number '$fileName' files from '$volumesName' volumes")
+	public void deleteTextFiles(String number, String fileName, String volumesName) {
+		getProtectPage().deleteTextFiles(number, fileName, volumesName);
+	}
 }

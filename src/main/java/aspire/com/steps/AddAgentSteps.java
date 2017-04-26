@@ -45,7 +45,7 @@ public class AddAgentSteps extends BaseSteps {
 
 	@When("Keeping the default settings in '$windowName' window")
 	public void keepTheDefaultSettingsInWindow(String windowName) {
-		getAddAgentPage().keepTheDefaultSettingsInWindow(windowName);
+		assertThat(getAddAgentPage().keepTheDefaultSettingsInWindow(windowName), Matchers.equalTo(true));
 	}
 
 	@When("Filling '$text' {email|emails} in '$windowName' window")
@@ -69,8 +69,8 @@ public class AddAgentSteps extends BaseSteps {
 		getGenericPage().clickOnElement("IAgreeButton");
 	}
 
-	@When("Filling '$text' in '$element' field")
-	public void fillTextInElement(String text,String element){
-		getAddAgentPage().fillTextInElement(text,element);
+	@When("Filling '$text' in '$element' {field|popup}")
+	public void fillTextInElement(String text, String element) {
+		getAddAgentPage().fillTextInElement(text, element);
 	}
 }

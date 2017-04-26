@@ -68,24 +68,33 @@ public class RestorePage extends GenericPage {
 	 * 
 	 * @param numberOfFiles:
 	 *            number of files.
+	 * @param fileName:
+	 *            name of the file.
 	 * @param volumesName:
 	 *            volumes name separated by comma.
 	 * @return boolean
 	 * @throws MalformedURLException
 	 * @throws SmbException
 	 */
-	public boolean verifyRestoredFiles(String numberOfFiles, String volumesName)
+	public boolean verifyRestoredFiles(String numberOfFiles, String fileName, String volumesName)
 			throws MalformedURLException, SmbException {
 		int counter = Integer.parseInt(numberOfFiles);
 		boolean isRestored = false;
 		String[] volumes = volumesName.split(",");
-		File file = new File(System.getProperty("user.dir") + File.separator + "files" + File.separator + "Test1.txt");
-
+		File file = new File(System.getProperty("user.dir") + File.separator + "files" + File.separator + "Test.txt");
+		boolean isOneFile = false;
 		File sharedFile = null;
+		if (counter == 1) {
+			isOneFile = true;
+		}
 		for (int i = 0; i < volumes.length; i++) {
 			for (int j = 1; j <= counter; j++) {
 				try {
-					sharedFile = new File(new URI("file:////" + getSharedFileURI("Test" + j + ".txt", volumes[i])));
+					if (isOneFile) {
+						sharedFile = new File(new URI("file:////" + getSharedFileURI(fileName, volumes[i])));
+					} else {
+						sharedFile = new File(new URI("file:////" + getSharedFileURI(j + fileName, volumes[i])));
+					}
 					isRestored = FileUtils.contentEquals(sharedFile, file);
 					if (!isRestored) {
 						return isRestored;
@@ -109,10 +118,10 @@ public class RestorePage extends GenericPage {
 	}
 
 	public void chooseOptionInForRestore(String option) {
-		if(option.equalsIgnoreCase("last")){
-			
+		if (option.equalsIgnoreCase("last")) {
+
 		}
-		
+
 	}
 
 }

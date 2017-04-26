@@ -25,48 +25,53 @@ public class GenericSteps extends BaseSteps {
 		System.out.println("ttt");
 	}
 
-	@Given("I select '$element'")
-	@When("I select '$element'")
-	@Then("I select '$element'")
-	public void selectElement(String element) throws IOException, FindFailed {
-		getGenericPage().selectElement(element);
-	}
-
-	@Given("I click on '$element'")
-	@When("I click on '$element'")
-	@Then("I click on '$element'")
+	@When("Clicking '$element'")
 	public void clickOnElement(String element) {
 		getGenericPage().clickOnElement(element);
 
 	}
 
-	@When("I wait '$element' to be visible")
-	@Then("I wait '$element' to be visible")
-	public void waitElementToBeVisibile(String element) {
-		assertThat(getGenericPage().waitElementToBeVisible(element), Matchers.equalTo(true));
+	@When("Clicking '$element' to $word")
+	public void clickOnElementWithExplain(String element, String word) {
+		getGenericPage().clickOnElement(element);
 
 	}
+	// @When("I wait '$element' to be visible")
+	// @Then("I wait '$element' to be visible")
+	// public void waitElementToBeVisibile(String element) {
+	// assertThat(getGenericPage().waitElementToBeVisible(element),
+	// Matchers.equalTo(true));
+	//
+	// }
+	//
+	// @When("I wait '$element' to be invisible")
+	// public void waitElementToBeInvisibile(String element) {
+	// assertThat(getGenericPage().waitElementToBeInvisible(element),
+	// Matchers.equalTo(true));
+	//
+	// }
+	//
+	// @When("I wait '$name' image to be visible")
+	// public void waitImageToBeVisible(String name) throws FindFailed {
+	// assertThat(getGenericPage().waitImageToBeVisible(name),
+	// Matchers.equalTo(true));
+	// }
 
-	@When("I wait '$element' to be invisible")
-	public void waitElementToBeInvisibile(String element) {
-		assertThat(getGenericPage().waitElementToBeInvisible(element), Matchers.equalTo(true));
-
-	}
-
-	@When("I wait '$name' image to be visible")
-	public void waitImageToBeVisible(String name) throws FindFailed {
-		assertThat(getGenericPage().waitImageToBeVisible(name), Matchers.equalTo(true));
-	}
-
-	@When("I enter '$text' inside $element")
-	public void waitImageToBeVisible(String text, String element) throws FindFailed {
-		getGenericPage().enterTextInElement(text, element);
-	}
+	// @When("I enter '$text' inside $element")
+	// public void waitImageToBeVisible(String text, String element) throws
+	// FindFailed {
+	// getGenericPage().enterTextInElement(text, element);
+	// }
 
 	@When("$element should be displayed")
 	@Then("$element should be displayed")
 	public void isElementDisplayed(String element) {
 		assertThat(getGenericPage().isElementDisplayed(element), Matchers.equalTo(true));
+	}
+
+	@Then("'$element' Url should display")
+	public void urlShouldDisplay(String element) {
+		assertThat(getGenericPage().urlShouldDisplay(element), Matchers.equalTo(true));
 	}
 
 	// ############

@@ -164,8 +164,7 @@ public class ProtectPage extends GenericPage {
 	 *            name of the volume that contains the file.
 	 */
 	public void deleteTextFiles(String numberOfFiles, String nameOfFile, String nameOfVolume) {
-		// String ipAddress =
-		// StateHelper.getApplicationState("machineIP").toString();
+
 		String ipAddress = getProperty("Windows");
 		String[] volumes = nameOfVolume.split(",");
 		int numberOfFilesToBeDeleted = Integer.parseInt(numberOfFiles);

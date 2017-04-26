@@ -166,7 +166,7 @@ public class GenericPage extends FluentWebDriverPage {
 	 */
 	public void clickOnElement(String elementName) {
 		elementName = elementName.replace(" ", "").trim();
-		waitElementToBeClickable(elementName, CONST_WAIT_LOWER_VALUE);
+		waitElementToBeClickable(elementName, CONST_WAIT_HIGHER_VALUE);
 		getElementByCssSelector(elementName).click();
 	}
 
@@ -232,5 +232,10 @@ public class GenericPage extends FluentWebDriverPage {
 	// ##################
 	public void navigateUsingClick(String name) throws FindFailed {
 		selectElement(name);
+	}
+
+	public Boolean urlShouldDisplay(String element) {
+		element = element.replace(" ", "_");
+		return waitElementToBeVisible(element);
 	}
 }

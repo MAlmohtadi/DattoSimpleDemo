@@ -2,29 +2,19 @@ Meta:
 @Encrypted
 Scenario: 010-Perform a file restore of any desired timestamp and retrieve 10 files from each backed up volume. 
 
-Given I am logged in to Datto App
-And I click on 'Protect'
-And There are <number> text files in '<NameOfVolumesSeperatedByComma>' volumes
-When I select 'protect'
-And I wait 'Start Backup' image to be visible
-And I select 'Start Backup'
-And I wait 'Cancel' image to be visible
-And backup should be completed successfully
-And I delete <number> file/files in <NameOfVolumesSeperatedByComma> volumes
-And I click on 'RestoreMenu'
-And I wait 'RemoveRestore' to be visible
-And I click on 'RemoveRestore'
-And I wait 'ManageRestore' to be invisible
-And I click on 'ChooseSystemRadioButton'
-And I click on 'FileRestoreRadioButton'
-And I click on 'StartFileRestore'
-And I click on 'Mount'
-And I wait 'PassphraseTextBox' to be visible
-And I enter 'ValidPassphrase' inside PassphraseTextBox
-And I click on 'VerifyPhraseButton'
-And I wait 'Unmount' to be visible
-Then I verify retrieved <number> file/files from '<NameOfVolumesSeperatedByComma>' volumes
+Given User is logged in to Datto App
+And A backup is taken
+When Deleting <number> '<fileName>' files from '<volumesName>' volumes
+And Navigating to 'Restore' page
+And Choosing a 'system' system to be restored
+And Choosing a '<recoveryType>' recovery type
+And Choosing a '<recoveryPoint>' recovery point
+And Clicking 'START FILE RESTORE'
+And Clicking 'MOUNT' to shere file recovery
+And Filling '<validPassphrase>' in 'Verify Passphrase' popup
+Then 'Samba Share' Url should display
+And <number> '<fileName>' files are retrieved from '<volumesName>' volumes
 
 Examples:
-|NameOfVolumesSeperatedByComma|number|
-|H, I|1|
+|volumesName|number|fileName|validPassphrase|
+|H,I|10|Test.txt|123|

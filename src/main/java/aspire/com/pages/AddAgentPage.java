@@ -49,8 +49,13 @@ public class AddAgentPage extends GenericPage {
 		return false;
 	}
 
-	public void keepTheDefaultSettingsInWindow(String windowName) {
-		clickOnElement("NextButton");
+	public boolean keepTheDefaultSettingsInWindow(String windowName) {
+		windowName = windowName.replace(" ", "_");
+		boolean isWindowDisplay = waitElementToBeVisible(windowName);
+		if (isWindowDisplay) {
+			clickOnElement("NextButton");
+		}
+		return isWindowDisplay;
 	}
 
 	public void fillEmails(String text, String windowName) {
@@ -75,6 +80,9 @@ public class AddAgentPage extends GenericPage {
 		enterTextInElement(text, element);
 		if (element.contains("Repeat")) {
 			clickOnElement("NextButton");
+		}
+		if (element.contains("Verify")) {
+			clickOnElement("Verify");
 		}
 
 	}

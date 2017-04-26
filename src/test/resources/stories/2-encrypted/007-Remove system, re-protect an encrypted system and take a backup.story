@@ -6,7 +6,7 @@ Given User is logged in to Datto App
 And There is a protected system
 When Navigating to 'Remove System' page
 And Removing all restored points from recovery section related to selected system
-And Inserting 'DeleteTextConfirm' text in the 'RemoveAgentConfirm' field to confirm
+And Inserting '<ValidDeleteText>' text in the 'RemoveAgentConfirm' field to confirm
 And Selecting 'AGENT BASED SYSTEM' from system backup wizard
 And Filling '<MachineIP>' Address in 'Hostname'
 And Keeping the default settings in 'take local backups' window
@@ -21,5 +21,5 @@ And Filling '<Passphrase>' in 'Repeat Passphrase' field
 Then system should be protected successfully
 
 Examples:
-|MachineIP|validEmail|Passphrase|
-|Windows|malmohtadi@aspire-infotech.net|123|
+|MachineIP|validEmail|Passphrase|ValidDeleteText|
+|Windows|malmohtadi@aspire-infotech.net|123|delete my local and cloud data|
