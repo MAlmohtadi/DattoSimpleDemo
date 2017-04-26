@@ -83,7 +83,7 @@ public class StoriesTest extends JUnitStories {
 			.withFailureTraceCompression(true).withDefaultFormats().withFormats(formats)
 			.withCrossReference(crossReference);
 
-	static String storiesPathToRun = "004-Add 10 files to each volumes for a none encrypted, take a backup, delete the added files, then restore them";
+	static String storiesPathToRun = "*";
 
 	@Override
 	public Configuration configuration() {

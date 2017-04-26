@@ -28,6 +28,7 @@ public class RemoveAgentPage extends GenericPage {
 	private final int CONST_WAIT_LOWER_VALUE = 30;
 
 	public void removeAgent(String text, String element) {
+		
 		enterTextInElement(text, element);
 		clickOnElement("RemoveAgentDelete");
 	}
