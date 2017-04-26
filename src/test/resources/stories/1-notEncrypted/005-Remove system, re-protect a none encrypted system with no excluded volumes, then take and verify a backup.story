@@ -4,7 +4,7 @@ Scenario: 005-Remove system from Datto appliance and re-protect the system once 
 
 Given User is logged in to Datto App
 And There is a protected system
-When Navigating to 'Remove System' page
+When Navigating to 'Remove Agent' page
 And Removing all restored points from recovery section related to selected system
 And Inserting 'DeleteTextConfirm' text in the 'RemoveAgentConfirm' field to confirm
 And Selecting 'AGENT BASED SYSTEM' from system backup wizard

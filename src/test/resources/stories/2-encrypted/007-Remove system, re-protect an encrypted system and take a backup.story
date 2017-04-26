@@ -4,7 +4,7 @@ Scenario: 007-Remove any previous system then Add a new system as encrypted.
 
 Given User is logged in to Datto App
 And There is a protected system
-When Navigating to 'Remove System' page
+When Navigating to 'Remove Agent' page
 And Removing all restored points from recovery section related to selected system
 And Inserting '<ValidDeleteText>' text in the 'RemoveAgentConfirm' field to confirm
 And Selecting 'AGENT BASED SYSTEM' from system backup wizard

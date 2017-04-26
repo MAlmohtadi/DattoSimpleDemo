@@ -231,6 +231,7 @@ public class GenericPage extends FluentWebDriverPage {
 
 	// ##################
 	public void navigateUsingClick(String name) throws FindFailed {
+		
 		selectElement(name);
 	}
 
