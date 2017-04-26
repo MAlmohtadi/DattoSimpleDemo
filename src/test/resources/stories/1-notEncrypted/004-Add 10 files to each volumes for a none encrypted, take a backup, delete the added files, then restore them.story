@@ -6,7 +6,7 @@ Given User is logged in to Datto App
 And A backup is taken
 When Deleting <number> '<fileName>' files from '<volumesName>' volumes
 And Navigating to 'Restore' page
-And Choosing a 'system' system to be restored
+And Choosing a '<system>' system to be restored
 And Choosing a '<recoveryType>' recovery type
 And Choosing a '<recoveryPoint>' recovery point
 And Clicking 'START FILE RESTORE'
