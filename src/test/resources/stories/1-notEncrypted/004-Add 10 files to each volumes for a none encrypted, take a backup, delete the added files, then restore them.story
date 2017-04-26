@@ -9,7 +9,7 @@ When Deleting <number> '<fileName>' files from '<volumesName>' volumes
 And Navigating to 'Restore' page
 And Choosing a '<system>' system to be restored
 And Choosing a '<recoveryType>' recovery type
-And Choosing a '<recoveryPoint>' recovery point
+And Choosing a 'last' recovery point
 And Clicking 'START FILE RESTORE'
 And Clicking 'MOUNT' to shere file recovery
 Then 'Samba Share' Url should display
