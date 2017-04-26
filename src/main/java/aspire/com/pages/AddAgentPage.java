@@ -47,6 +47,8 @@ public class AddAgentPage extends GenericPage {
 		if (text.equalsIgnoreCase("windows")) {
 			text = getProperty(text);
 		}
+		// an example on state helper to use value in other step
+		StateHelper.setStoryState("machineIP", text);
 		clickOnElement("IpAddressOrHost");
 		enterTextInElement(text, "IpAddressTextBox");
 		clickOnElement("NextButton");
@@ -85,17 +87,17 @@ public class AddAgentPage extends GenericPage {
 	 *
 	 */
 	public void fillEmails(String text, String windowName) {
-	
-			if (windowName.equals("receive screenshot proof")) {
-				enterTextInElement(text, "EmailAddress");
-			} else {
-				enterTextInElement(text, "WarningEmail");
-				clickOnElement("CriticalEmail");
-				enterTextInElement(text, "CriticalEmail");
-				clickOnElement("LogDigestEmail");
-				enterTextInElement(text, "LogDigestEmail");
-			}
-			clickOnElement("NextButton");
+
+		if (windowName.equals("receive screenshot proof")) {
+			enterTextInElement(text, "EmailAddress");
+		} else {
+			enterTextInElement(text, "WarningEmail");
+			clickOnElement("CriticalEmail");
+			enterTextInElement(text, "CriticalEmail");
+			clickOnElement("LogDigestEmail");
+			enterTextInElement(text, "LogDigestEmail");
+		}
+		clickOnElement("NextButton");
 	}
 
 	/**
@@ -105,7 +107,11 @@ public class AddAgentPage extends GenericPage {
 	 * @return boolean
 	 */
 	public boolean systemShouldBeProtected() {
-		return waitElementToBeVisible("AgentCreated");
+		boolean isAgentCreated = waitElementToBeVisible("AgentCreated");
+		clickOnElement("Continue");
+		waitElementToBeVisible("ProtectedSystemsHeader");
+		boolean isMachineAdded = findElement(By.id(StateHelper.getStoryState("machineIP").toString())).isDisplayed();
+		return isAgentCreated && isMachineAdded;
 	}
 
 }
