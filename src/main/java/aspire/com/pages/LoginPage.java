@@ -33,8 +33,8 @@ public class LoginPage extends GenericPage {
 		get(getProperty("LoginPage"));
 		getDriverProvider().get().manage().window().maximize();
 		waitElementToBeVisible("Username", CONST_WAIT_HIGHER_VALUE);
-		enterTextInElement("ValidUsername", "Username");
-		enterTextInElement("ValidPassword", "Password");
+		enterTextInElement(getProperty("ValidUsername"), "Username");
+		enterTextInElement(getProperty("ValidPassword"), "Password");
 		clickOnElement("LoginButton");
 		waitElementToBeVisible("TopMenu", CONST_WAIT_HIGHER_VALUE);
 	}
