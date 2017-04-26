@@ -49,7 +49,7 @@ public class AddAgentSteps extends BaseSteps {
 
 	@When("Filling '$text' {email|emails} in '$windowName' window")
 	public void fillEmails(String text, String windowName) {
-		assertThat(getAddAgentPage().fillEmails(text, windowName), Matchers.equalTo(true));
+		getAddAgentPage().fillEmails(text, windowName);
 	}
 
 	@Then("system should be protected successfully")

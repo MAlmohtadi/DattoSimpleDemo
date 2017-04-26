@@ -76,20 +76,16 @@ public class AddAgentPage extends GenericPage {
 
 	/**
 	 * this method is used to enter text in email text box in system backup
-	 * wizard windows ("receive screenshot proof","send alerts & reports") and
-	 * return true or false based on window displaying.
+	 * wizard windows ("receive screenshot proof","send alerts & reports").
 	 * 
 	 * @param text:
 	 *            text to be filled.
 	 * @param windowName:
 	 *            window name to be checked.
-	 * 
-	 * @return boolean
+	 *
 	 */
-	public boolean fillEmails(String text, String windowName) {
-		sleepTime(2000);
-		boolean isWindowDisplayed = isElementDisplayed(windowName);
-		if (isWindowDisplayed) {
+	public void fillEmails(String text, String windowName) {
+	
 			if (windowName.equals("receive screenshot proof")) {
 				enterTextInElement(text, "EmailAddress");
 			} else {
@@ -100,8 +96,6 @@ public class AddAgentPage extends GenericPage {
 				enterTextInElement(text, "LogDigestEmail");
 			}
 			clickOnElement("NextButton");
-		}
-		return isWindowDisplayed;
 	}
 
 	/**
