@@ -65,6 +65,7 @@ public class ProtectSteps extends BaseSteps {
 	@Given("A backup is taken")
 	@When("A backup is taken")
 	public void backupIsTaken() throws FindFailed {
+		getGenericPage().clickOnElement("PROTECT");
 		assertThat(getProtectPage().takeOneBackup(), Matchers.equalTo(true));
 		assertThat(getProtectPage().verifyBuckupFunctionality(), Matchers.equalTo(true));
 	}
