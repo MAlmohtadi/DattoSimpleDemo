@@ -195,7 +195,7 @@ public class GenericPage extends FluentWebDriverPage {
 	public boolean isElementDisplayed(String nameOfElement) {
 		boolean isDisplayed=true;
 		try{
-			isDisplayed=getElementByCssSelector("ProtectedSystemsHeader").isDisplayed();
+			isDisplayed=getElementByCssSelector(nameOfElement).isDisplayed();
 		}catch(Exception e){
 			isDisplayed=false;
 		}
