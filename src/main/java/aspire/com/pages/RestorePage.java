@@ -123,6 +123,9 @@ public class RestorePage extends GenericPage {
 				element = removeButtons.next();
 				element.click();
 				sleepTime(5000);
+				if (isElementDisplayed("ForceUnmount")) {
+					clickOnElement("ForceUnmount");
+				}
 				removeButtons = findElements(By.cssSelector(getProperty("RemoveRestore"))).iterator();
 			}
 		}
