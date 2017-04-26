@@ -18,6 +18,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 import static org.openqa.selenium.By.cssSelector;
@@ -116,14 +117,16 @@ public class RestorePage extends GenericPage {
 		boolean isDisplayed = isElementDisplayed("RecoverySection");
 		if (isDisplayed) {
 			waitElementToBeClickable("RemoveRestore", CONST_WAIT_LOWER_VALUE);
-			List<WebElement> removeButtons = findElements(By.cssSelector(getProperty("RemoveRestore")));
-			int counter=removeButtons.size();
-			for(int i=0;i<counter;i++){
-				removeButtons.get(i).click();
+			Iterator<WebElement> removeButtons = findElements(By.cssSelector(getProperty("RemoveRestore"))).iterator();
+			WebElement element = null;
+			while (removeButtons.hasNext()) {
+				element = removeButtons.next();
+				element.click();
 				sleepTime(5000);
+				removeButtons = findElements(By.cssSelector(getProperty("RemoveRestore"))).iterator();
 			}
-			
 		}
+
 	}
 
 	public void chooseOptionInForRestore(String option) {

@@ -25,7 +25,7 @@ Then backup should be completed successfully
 
 Examples:
 |MachineIP|validEmail|ValidDeleteText|largeVolume|fileName|
-||Windows|malmohtadi@aspire-infotech.net|delete my local and cloud data|C|Test.txt|
+|Windows|malmohtadi@aspire-infotech.net|delete my local and cloud data|C|Test.txt|
 
 
 
