@@ -25,15 +25,6 @@ public class ConfigureAgentSettingsSteps extends BaseSteps {
 	public void beforeCucmberScenario() {
 	}
 
-	@Given("I exclude '$name' volume")
-	@When("I exclude '$name' volume")
-	@Then("I exclude '$name' volume")
-	public void excludeVolumes(String name) throws IOException, FindFailed {
-
-		getConfigureAgentSettingsPage().excludeVolumes(name);
-
-	}
-
 	@When("I do not exclude any volume")
 	public void doNotExcludeAnyVolumes() throws FindFailed, UnknownHostException {
 
@@ -44,4 +35,15 @@ public class ConfigureAgentSettingsSteps extends BaseSteps {
 		getConfigureAgentSettingsPage().includeTheExcludedVolumes(nameOfVolume);
 	}
 
+	// ############
+
+	@When("Excluding '$name' volume")
+	public void excludeVolumes(String name) throws IOException, FindFailed {
+		getConfigureAgentSettingsPage().excludeVolumes(name);
+	}
+
+	@When("Confirming excluding the '$volumeName' volume")
+	public void confirmExcluding() {
+		getGenericPage().clickOnElement("PopupConfirmExclude");
+	}
 }

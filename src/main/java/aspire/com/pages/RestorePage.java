@@ -37,7 +37,6 @@ public class RestorePage extends GenericPage {
 	private By Version = cssSelector("td.mh22-text a");
 	private final int CONST_WAIT_LOWER_VALUE = 30;
 
-	
 	/**
 	 * this method is used if the file exist in the given URL and copy it to
 	 * project directory.
@@ -99,6 +98,21 @@ public class RestorePage extends GenericPage {
 			}
 		}
 		return isRestored;
+	}
+
+	public void removeRestoredPoints() {
+		sleepTime(2000);
+		boolean isDisplayed = isElementDisplayed("RecoverySection");
+		if (isDisplayed) {
+			clickOnElement("RemoveRestore");
+		}
+	}
+
+	public void chooseOptionInForRestore(String option) {
+		if(option.equalsIgnoreCase("last")){
+			
+		}
+		
 	}
 
 }

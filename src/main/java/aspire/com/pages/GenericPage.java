@@ -52,14 +52,13 @@ public class GenericPage extends FluentWebDriverPage {
 	}
 
 	public static boolean isExecluded = false;
-	String imgsPath = System.getProperty("user.dir") + File.separator + "imgs"+ File.separator ;
+	String imgsPath = System.getProperty("user.dir") + File.separator + "imgs" + File.separator;
 	/**
 	 * Default Selector within the class
 	 */
 	public By Version = cssSelector("td.mh22-text a");
 	public final int CONST_WAIT_LOWER_VALUE = 30;
 	public final int CONST_WAIT_HIGHER_VALUE = 90;
-
 
 	/**
 	 * Get value of the key from properties.
@@ -83,7 +82,7 @@ public class GenericPage extends FluentWebDriverPage {
 	public void waitElementToBeVisible(String elementName, int timeInSeconds) {
 		WebDriverWait wait = new WebDriverWait(getDriverProvider().get(), timeInSeconds);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(getProperty(elementName))));
-		
+
 	}
 
 	/**
@@ -93,7 +92,7 @@ public class GenericPage extends FluentWebDriverPage {
 	 *            name of element.
 	 */
 	public boolean waitElementToBeVisible(String elementName) {
-		WebDriverWait wait = new WebDriverWait(getDriverProvider().get(), CONST_WAIT_LOWER_VALUE);
+		WebDriverWait wait = new WebDriverWait(getDriverProvider().get(), CONST_WAIT_HIGHER_VALUE);
 		try {
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(getProperty(elementName))));
 		} catch (Exception e) {
@@ -156,7 +155,7 @@ public class GenericPage extends FluentWebDriverPage {
 	 */
 	public void enterTextInElement(String text, String elementName) {
 		waitElementToBeVisible(elementName, CONST_WAIT_LOWER_VALUE);
-		getElementByCssSelector(elementName).sendKeys(getProperty(text));
+		getElementByCssSelector(elementName).sendKeys(text);
 	}
 
 	/**
@@ -228,6 +227,10 @@ public class GenericPage extends FluentWebDriverPage {
 			return false;
 		}
 		return true;
+	}
 
+	// ##################
+	public void navigateUsingClick(String name) throws FindFailed {
+		selectElement(name);
 	}
 }

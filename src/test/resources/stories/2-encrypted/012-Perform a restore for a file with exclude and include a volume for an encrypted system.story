@@ -2,7 +2,7 @@ Meta:
 @Encrypted
 Scenario: 012-Before performing backup after protecting system, exclude 1 volume, perform a file restore of any desired timestamp.  Proceed include all volumes and retrieve 1 file from a backed up volume. 
 
-Given I login to the Datto
+Given I am logged in to Datto App
 And I click on 'Protect'
 And A new text file is added in '<volumes>' volumes
 And I select 'Configure Agent Settings'

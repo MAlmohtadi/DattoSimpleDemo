@@ -27,4 +27,9 @@ public class RemoveAgentPage extends GenericPage {
 	private By Version = cssSelector("td.mh22-text a");
 	private final int CONST_WAIT_LOWER_VALUE = 30;
 
+	public void removeAgent(String text, String element) {
+		enterTextInElement(text, element);
+		clickOnElement("RemoveAgentDelete");
+	}
+
 }

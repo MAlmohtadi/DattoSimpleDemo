@@ -2,7 +2,7 @@ Meta:
 @Encrypted
 Scenario: 011-Remove system from Datto appliance and re-protect the system once again. Do not exclude any volume except the bigest one and perform one backup. 
 
-Given I login to the Datto
+Given I am logged in to Datto App
 And I click on 'Protect'
 When I wait 'Remove Agent' image to be visible
 And I select 'Remove Agent'

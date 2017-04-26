@@ -32,10 +32,20 @@ public class RestoreSteps extends BaseSteps {
 
 	@When("I verify retrieved $number file/files from '$volumesName' volumes")
 	@Then("I verify retrieved $number file/files from '$volumesName' volumes")
-	public void verifyAFileRestored(String number, String volumesName)
-			throws MalformedURLException, SmbException {
+	public void verifyAFileRestored(String number, String volumesName) throws MalformedURLException, SmbException {
 		assertThat(getRestorePage().verifyRestoredFiles(number, volumesName), Matchers.equalTo(true));
 	}
 
+	// ############
+	@When("Removing all restored points from recovery section related to selected system")
+	public void removeRestoredPoints() {
+		getRestorePage().removeRestoredPoints();
+
+	}
+
+	@When("Choosing a '$option' {system to be restored|recovery type|recovery point}")
+	public void chooseOptionInForRestore(String option) {
+		getRestorePage().chooseOptionInForRestore(option);
+	}
 
 }

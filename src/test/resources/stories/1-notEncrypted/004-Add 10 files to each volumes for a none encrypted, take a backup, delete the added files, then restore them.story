@@ -2,8 +2,21 @@ Meta:
 @Not_Encrypted
 Scenario: 004-Perform a file restore of any desired timestamp and retrieve 10 files from each backed up volume. 
 
-Given I login to the Datto
-And I click on 'Protect'
+Given User is logged in to Datto App
+And 10 new 'Test.txt' files are added in '<NameOfVolumesSeperatedByComma>' volumes
+And A backup is taken
+When Deleting 10 'Test.txt' files from '<NameOfVolumesSeperatedByComma>' volumes
+And Navigating to 'Restore' page
+And Choosing a 'system' to be restored
+And Choosing a '<recoveryType>' recovery type
+And Choosing a '<recoveryPoint>' recovery point
+And Clicking 'START FILE RESTORE'
+And Clicking 'MOUNT' to shere file recovery
+Then 'Samba Share' Url should display
+And 10 file is retrieved from '<NameOfVolumesSeperatedByComma>' volumes
+
+
+
 And There are <number> text files in '<NameOfVolumesSeperatedByComma>' volumes
 When I select 'protect'
 And I wait 'Start Backup' image to be visible

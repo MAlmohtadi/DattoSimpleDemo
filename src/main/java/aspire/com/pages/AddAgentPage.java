@@ -28,5 +28,55 @@ public class AddAgentPage extends GenericPage {
 	 */
 	private By Version = cssSelector("td.mh22-text a");
 
+	public void selectElementFromSystemBackupWizard(String element) {
+		waitElementToBeVisible(element, CONST_WAIT_HIGHER_VALUE);
+		clickOnElement(element);
+
+	}
+
+	public boolean fillTextInHostName(String text) {
+		if (text.equalsIgnoreCase("windows")) {
+			text = getProperty(text);
+		}
+		clickOnElement("IpAddressOrHost");
+		enterTextInElement(text, "IpAddressTextBox");
+		clickOnElement("NextButton");
+
+		if (waitElementToBeVisible("nextIcon")) {
+			clickOnElement("NextButton");
+			return true;
+		}
+		return false;
+	}
+
+	public void keepTheDefaultSettingsInWindow(String windowName) {
+		clickOnElement("NextButton");
+	}
+
+	public void fillEmails(String text, String windowName) {
+		if (windowName.equals("receive screensot proof")) {
+			enterTextInElement(text, "EmailAddress");
+		} else {
+			enterTextInElement(text, "WarningEmail");
+			clickOnElement("CriticalEmail");
+			enterTextInElement(text, "CriticalEmail");
+			clickOnElement("LogDigestEmail");
+			enterTextInElement(text, "LogDigestEmail");
+		}
+		clickOnElement("NextButton");
+	}
+
+	public boolean systemShouldBeProtected() {
+		return waitElementToBeVisible("AgentCreated");
+	}
+
+	public void fillTextInElement(String text, String element) {
+		element = element.replace(" ", "");
+		enterTextInElement(text, element);
+		if (element.contains("Repeat")) {
+			clickOnElement("NextButton");
+		}
+
+	}
 
 }

@@ -2,15 +2,25 @@ Meta:
 @Encrypted
 Scenario: 009-Perform a file restore of last timestamp and retrieve 1 file from each backed up volume.
 
-Given I login to the Datto
-And I click on 'Protect'
-And Backup is available for multiple volumes
-And <number> text file/files deleted from '<NameOfVolumesSeperatedByComma>' volumes
-When I click on 'RestoreMenu'
-And I click on 'ChooseSystemRadioButton'
-And I click on 'FileRestoreRadioButton'
-And I click on 'StartFileRestore'
-And I click on 'Mount'
+
+Given User is logged in to Datto App
+And There is a protected system
+And Delete 'Test.txt' file from 'NameOfVolumesSeperatedByComma' volumes
+When Navigating to 'Restore' page
+And Choosing a '<system>' system to be restored
+And Choosing a '<recoveryType>' recovery type
+And Choosing a '<recoveryPoint>' recovery point
+And Clicking 'START FILE RESTORE'
+And Clicking 'MOUNT' to shere file recovery
+And Filling 'ValidPassphrase' in 'Verify Passphrase' popup
+Then 'Samba Share' Url should display
+And File is retrieved from '<NameOfVolumesSeperatedByComma>' volumes
+
+
+
+
+
+
 And I wait 'PassphraseTextBox' to be visible
 And I enter 'ValidPassphrase' inside PassphraseTextBox
 And I click on 'VerifyPhraseButton'

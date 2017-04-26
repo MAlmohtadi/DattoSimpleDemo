@@ -2,7 +2,7 @@ Meta:
 @Encrypted
 Scenario: 010-Perform a file restore of any desired timestamp and retrieve 10 files from each backed up volume. 
 
-Given I login to the Datto
+Given I am logged in to Datto App
 And I click on 'Protect'
 And There are <number> text files in '<NameOfVolumesSeperatedByComma>' volumes
 When I select 'protect'

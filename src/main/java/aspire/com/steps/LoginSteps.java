@@ -21,9 +21,10 @@ public class LoginSteps extends BaseSteps {
 	public void beforeCucmberScenario() {
 	}
 
-	@Given("I login to the Datto")
+	@Given("User is logged in to Datto App")
 	public void login() throws IOException {
 		getloginPage().login();
+		
 	}
 
 }

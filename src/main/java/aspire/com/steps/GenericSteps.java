@@ -68,4 +68,10 @@ public class GenericSteps extends BaseSteps {
 	public void isElementDisplayed(String element) {
 		assertThat(getGenericPage().isElementDisplayed(element), Matchers.equalTo(true));
 	}
+
+	// ############
+	@When("Navigating to '$name' page")
+	public void navigateUsingClick(String name) throws FindFailed {
+		getGenericPage().navigateUsingClick(name);
+	}
 }

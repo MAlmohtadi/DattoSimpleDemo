@@ -48,15 +48,20 @@ public class ProtectPage extends GenericPage {
 		return screen.exists(imgsPath + "Last Successful backup.png") != null;
 	}
 
-	public void createTextFile(String fileNumber, String volumesName) {
-		// String ipAddress =
-		// StateHelper.getApplicationState("machineIP").toString();
+	public void createTextFile(String fileNumber, String nameOfFile, String volumesName) {
 		String ipAddress = getProperty("Windows").toString();
 		int numberOfFiles = Integer.parseInt(fileNumber);
+
 		String[] volumesArray = volumesName.split(",");
-		for (int i = 1; i <= numberOfFiles; i++) {
+		if (numberOfFiles != 1) {
+			for (int i = 1; i <= numberOfFiles; i++) {
+				for (int j = 0; j < volumesArray.length; j++) {
+					addFile(ipAddress, volumesArray[j], i + nameOfFile);
+				}
+			}
+		} else {
 			for (int j = 0; j < volumesArray.length; j++) {
-				addFile(ipAddress, volumesArray[j], "Test" + i + ".txt");
+				addFile(ipAddress, volumesArray[j], nameOfFile);
 			}
 		}
 
@@ -158,17 +163,34 @@ public class ProtectPage extends GenericPage {
 	 * @param nameOfVolume:
 	 *            name of the volume that contains the file.
 	 */
-	public void deleteTextFiles(String numberOfFiles, String nameOfVolume) {
+	public void deleteTextFiles(String numberOfFiles, String nameOfFile, String nameOfVolume) {
 		// String ipAddress =
 		// StateHelper.getApplicationState("machineIP").toString();
 		String ipAddress = getProperty("Windows");
 		String[] volumes = nameOfVolume.split(",");
 		int numberOfFilesToBeDeleted = Integer.parseInt(numberOfFiles);
 		File file = null;
-		for (int i = 0; i < volumes.length; i++) {
-			for (int j = 1; j <= numberOfFilesToBeDeleted; j++) {
+		if (numberOfFilesToBeDeleted != 1) {
+			for (int i = 0; i < volumes.length; i++) {
+				for (int j = 1; j <= numberOfFilesToBeDeleted; j++) {
+					try {
+						file = new File(
+								new URI("file:////" + ipAddress + "/" + volumes[i].trim() + "$/" + j + nameOfFile));
+						if (FileUtils.deleteQuietly(file)) {
+							System.out.println(file.getName() + " is deleted!");
+						} else {
+							System.out.println("Delete operation is failed.");
+							Assert.assertEquals(true, false);
+						}
+					} catch (Exception e) {
+						System.out.println("File Path not exist");
+					}
+				}
+			}
+		} else {
+			for (int i = 0; i < volumes.length; i++) {
 				try {
-					file = new File(new URI("file:////" + ipAddress + "/" + volumes[i].trim() + "$/Test" + j + ".txt"));
+					file = new File(new URI("file:////" + ipAddress + "/" + volumes[i].trim() + "$/" + nameOfFile));
 					if (FileUtils.deleteQuietly(file)) {
 						System.out.println(file.getName() + " is deleted!");
 					} else {
@@ -180,6 +202,20 @@ public class ProtectPage extends GenericPage {
 				}
 			}
 		}
+	}
+
+	// #############
+	public boolean checkIfSystemProtected() {
+		clickOnElement("PROTECT");
+		return waitElementToBeVisible("ProtectedSystemsHeader");
+	}
+
+	public boolean takeOneBackup() throws FindFailed {
+		if (waitImageToBeVisible("Start Backup")) {
+			selectElement("Start Backup");
+			return waitImageToBeVisible("Cancel");
+		}
+		return false;
 	}
 
 }
