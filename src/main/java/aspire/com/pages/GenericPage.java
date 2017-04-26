@@ -51,12 +51,7 @@ public class GenericPage extends FluentWebDriverPage {
 		super(driverProvider);
 	}
 
-	public static boolean isExecluded = false;
 	String imgsPath = System.getProperty("user.dir") + File.separator + "imgs" + File.separator;
-	/**
-	 * Default Selector within the class
-	 */
-	public By Version = cssSelector("td.mh22-text a");
 	public final int CONST_WAIT_LOWER_VALUE = 30;
 	public final int CONST_WAIT_HIGHER_VALUE = 90;
 
@@ -82,7 +77,6 @@ public class GenericPage extends FluentWebDriverPage {
 	public void waitElementToBeVisible(String elementName, int timeInSeconds) {
 		WebDriverWait wait = new WebDriverWait(getDriverProvider().get(), timeInSeconds);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(getProperty(elementName))));
-
 	}
 
 	/**
@@ -99,7 +93,6 @@ public class GenericPage extends FluentWebDriverPage {
 			System.err.println(e);
 			return false;
 		}
-
 		return true;
 	}
 
@@ -117,7 +110,6 @@ public class GenericPage extends FluentWebDriverPage {
 			System.err.println(e);
 			return false;
 		}
-
 		return true;
 	}
 
@@ -193,11 +185,11 @@ public class GenericPage extends FluentWebDriverPage {
 	 * @return Boolean.
 	 */
 	public boolean isElementDisplayed(String nameOfElement) {
-		boolean isDisplayed=true;
-		try{
-			isDisplayed=getElementByCssSelector(nameOfElement).isDisplayed();
-		}catch(Exception e){
-			isDisplayed=false;
+		boolean isDisplayed = true;
+		try {
+			isDisplayed = getElementByCssSelector(nameOfElement).isDisplayed();
+		} catch (Exception e) {
+			isDisplayed = false;
 		}
 		return isDisplayed;
 	}
@@ -235,14 +227,161 @@ public class GenericPage extends FluentWebDriverPage {
 		return true;
 	}
 
-	// ##################
-	public void navigateUsingClick(String name) throws FindFailed {
-		
-		selectElement(name);
+	/**
+	 * Delete files from volumes based on name of the file and name of the
+	 * volume.
+	 * 
+	 * @param nameOfFile:
+	 *            name of the file to be deleted.
+	 * @param nameOfVolume:
+	 *            name of the volume that contains the file.
+	 */
+	public void deleteTextFiles(String numberOfFiles, String nameOfFile, String nameOfVolume) {
+
+		String ipAddress = getProperty("Windows");
+		String[] volumes = nameOfVolume.split(",");
+		int numberOfFilesToBeDeleted = Integer.parseInt(numberOfFiles);
+		boolean isOneFile = false;
+		if (numberOfFilesToBeDeleted == 1) {
+			isOneFile = true;
+		}
+		File file = null;
+		for (int i = 0; i < volumes.length; i++) {
+			for (int j = 1; j <= numberOfFilesToBeDeleted; j++) {
+				try {
+					if (isOneFile) {
+						file = new File(new URI("file:////" + ipAddress + "/" + volumes[i].trim() + "$/" + nameOfFile));
+					} else {
+						file = new File(
+								new URI("file:////" + ipAddress + "/" + volumes[i].trim() + "$/" + j + nameOfFile));
+					}
+					if (FileUtils.deleteQuietly(file)) {
+						System.out.println(file.getName() + " is deleted!");
+					} else {
+						System.out.println("Delete operation is failed.");
+						Assert.assertEquals(true, false);
+					}
+				} catch (Exception e) {
+					System.out.println("File Path not exist");
+				}
+			}
+		}
 	}
 
-	public Boolean urlShouldDisplay(String element) {
-		element = element.replace(" ", "_");
-		return waitElementToBeVisible(element);
+	/**
+	 * this method is used to create text file in windows machine.
+	 * 
+	 * @param fileNumber:
+	 *            number file to be created.
+	 * @param nameOfFile:
+	 *            name file to be create.
+	 * @param volumesName:
+	 *            volumes to create files inside them.
+	 */
+	public void createTextFile(String fileNumber, String nameOfFile, String volumesName) {
+		String ipAddress = getProperty("Windows").toString();
+		int numberOfFiles = Integer.parseInt(fileNumber);
+		boolean isOneFile = false;
+		if (numberOfFiles == 1) {
+			isOneFile = true;
+		}
+		String[] volumesArray = volumesName.split(",");
+		for (int i = 1; i <= numberOfFiles; i++) {
+			for (int j = 0; j < volumesArray.length; j++) {
+				if (isOneFile) {
+					addFile(ipAddress, volumesArray[j], nameOfFile);
+				} else {
+					addFile(ipAddress, volumesArray[j], i + nameOfFile);
+				}
+			}
+		}
+	}
+
+	/**
+	 * Add a file to volumes based on name of the file and name of the volume.
+	 * 
+	 * @param ipAddress:
+	 *            IP To connect to machine.
+	 * @param file:
+	 *            name of the file to be added.
+	 * @param nameOfVolume:
+	 *            name of the volume to add the file to it.
+	 * 
+	 */
+	public void addFile(String ipAddress, String nameOfVolume, String file) {
+		File f = null;
+		try {
+			f = new File(new URI("file:////" + ipAddress + "/" + nameOfVolume.trim() + "$/" + file));
+			f.createNewFile();
+			FileUtils.writeStringToFile(f, loremText());
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	/**
+	 * lorem text.
+	 * 
+	 * @return String.
+	 */
+	public String loremText() {
+		return "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n" + "Aenean commodo ligula eget dolor.\n"
+				+ "Aenean massa.\n"
+				+ "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\n"
+				+ "Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.\n"
+				+ "Nulla consequat massa quis enim.\n"
+				+ "Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.\n"
+				+ "In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.\n"
+				+ "Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.\n"
+				+ "Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.\n"
+				+ "Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.\n"
+				+ "Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.\n"
+				+ "Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet.\n"
+				+ "Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui.\n"
+				+ "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.\n"
+				+ " Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.\n "
+				+ "Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.\n"
+				+ "Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo.\n"
+				+ "Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna.\n"
+				+ "Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero.\n"
+				+ "Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus.\n"
+				+ "Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla.\n"
+				+ " Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia.\n"
+				+ "Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum.\n"
+				+ "Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris.\n"
+				+ "Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc.\n"
+				+ "Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui.\n"
+				+ "Aenean ut eros et nisl sagittis vestibulum.\n"
+				+ "Nullam nulla eros, ultricies sit amet, nonummy id, imperdiet feugiat, pede. Sed lectus.\n "
+				+ "Donec mollis hendrerit risus. Phasellus nec sem in justo pellentesque facilisis.\n"
+				+ "Etiam imperdiet imperdiet orci. Nunc nec neque. Phasellus leo dolor, tempus non, auctor et, hendrerit quis, nisi.\n"
+				+ "Curabitur ligula sapien, tincidunt non, euismod vitae, posuere imperdiet, leo.\n"
+				+ "Maecenas malesuada. Praesent congue erat at massa. Sed cursus turpis vitae tortor.\n"
+				+ "Donec posuere vulputate arcu. Phasellus accumsan cursus velit.\n"
+				+ "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;";
+	}
+
+	/**
+	 * this method is used to fill text on element.
+	 * 
+	 * @param text:
+	 *            text to be filled
+	 * @param element:
+	 *            element to be filled in.
+	 */
+	public void fillTextInElement(String text, String element) {
+		element = element.replace(" ", "");
+		enterTextInElement(text, element);
+		if (element.contains("Repeat")) {
+			clickOnElement("NextButton");
+		}
+		if (element.contains("Verify")) {
+			clickOnElement("Verify");
+		}
 	}
 }

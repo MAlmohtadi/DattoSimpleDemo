@@ -20,12 +20,7 @@ public class LoginPage extends GenericPage {
 	}
 
 	/**
-	 * Default Selector within the class
-	 */
-	private By Version = cssSelector("td.mh22-text a");
-
-	/**
-	 * This method used to login using valid user name and password
+	 * This method used to login using valid user name and password.
 	 * 
 	 * @throws IOException
 	 */

@@ -32,7 +32,6 @@ public class AddAgentSteps extends BaseSteps {
 		System.out.println("ttt");
 	}
 
-	// ###########
 	@When("Selecting '$element' from system backup wizard")
 	public void selectElementFromSystemBackupWizard(String element) {
 		getAddAgentPage().selectElementFromSystemBackupWizard(element);
@@ -50,7 +49,7 @@ public class AddAgentSteps extends BaseSteps {
 
 	@When("Filling '$text' {email|emails} in '$windowName' window")
 	public void fillEmails(String text, String windowName) {
-		getAddAgentPage().fillEmails(text, windowName);
+		assertThat(getAddAgentPage().fillEmails(text, windowName), Matchers.equalTo(true));
 	}
 
 	@Then("system should be protected successfully")
@@ -69,8 +68,4 @@ public class AddAgentSteps extends BaseSteps {
 		getGenericPage().clickOnElement("IAgreeButton");
 	}
 
-	@When("Filling '$text' in '$element' {field|popup}")
-	public void fillTextInElement(String text, String element) {
-		getAddAgentPage().fillTextInElement(text, element);
-	}
 }

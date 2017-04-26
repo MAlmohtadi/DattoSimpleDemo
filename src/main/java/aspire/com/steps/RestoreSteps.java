@@ -35,7 +35,6 @@ public class RestoreSteps extends BaseSteps {
 		assertThat(getRestorePage().verifyRestoredFiles("1", fileName, volumesName), Matchers.equalTo(true));
 	}
 
-	// ############
 	@When("Removing all restored points from recovery section related to selected system")
 	public void removeRestoredPoints() {
 		getRestorePage().removeRestoredPoints();
@@ -52,10 +51,10 @@ public class RestoreSteps extends BaseSteps {
 			throws MalformedURLException, SmbException {
 		assertThat(getRestorePage().verifyRestoredFiles(number, fileName, volumesName), Matchers.equalTo(true));
 	}
-	
+
 	@Then("'$fileName' file is not retrieved from '$volumes' volumes")
 	public void verifyAFileNotRestored(String fileName, String volumesName) throws MalformedURLException, SmbException {
-		assertThat(getRestorePage().verifyRestoredFiles("1", fileName, volumesName), Matchers.equalTo(true));
+		assertThat(getRestorePage().verifyRestoredFiles("1", fileName, volumesName), Matchers.equalTo(false));
 	}
 
 }

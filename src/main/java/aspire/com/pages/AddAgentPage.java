@@ -24,17 +24,25 @@ public class AddAgentPage extends GenericPage {
 	}
 
 	/**
-	 * Default Selector within the class
+	 * Select/Click element in the first page system backup wizard.
+	 * 
+	 * @param element:
+	 *            element name.
 	 */
-	private By Version = cssSelector("td.mh22-text a");
-
 	public void selectElementFromSystemBackupWizard(String element) {
-		element=element.replace(" ", "_");
+		element = element.replace(" ", "_");
 		waitElementToBeVisible(element, CONST_WAIT_HIGHER_VALUE);
 		clickOnElement(element);
-
 	}
 
+	/**
+	 * fill text in Host name text box and click next it, then return if the IP
+	 * is valid.
+	 * 
+	 * @param text:
+	 *            text to be filled.
+	 * @return boolean
+	 */
 	public boolean fillTextInHostName(String text) {
 		if (text.equalsIgnoreCase("windows")) {
 			text = getProperty(text);
@@ -42,7 +50,6 @@ public class AddAgentPage extends GenericPage {
 		clickOnElement("IpAddressOrHost");
 		enterTextInElement(text, "IpAddressTextBox");
 		clickOnElement("NextButton");
-
 		if (waitElementToBeVisible("nextIcon")) {
 			clickOnElement("NextButton");
 			return true;
@@ -50,6 +57,14 @@ public class AddAgentPage extends GenericPage {
 		return false;
 	}
 
+	/**
+	 * this method is used to check if the window is display and keep the
+	 * default settings and click on next button, otherwise return false.
+	 * 
+	 * @param windowName:
+	 *            name of the window to check.
+	 * @return boolean
+	 */
 	public boolean keepTheDefaultSettingsInWindow(String windowName) {
 		windowName = windowName.replace(" ", "_");
 		boolean isWindowDisplay = waitElementToBeVisible(windowName);
@@ -59,33 +74,44 @@ public class AddAgentPage extends GenericPage {
 		return isWindowDisplay;
 	}
 
-	public void fillEmails(String text, String windowName) {
-		if (windowName.equals("receive screensot proof")) {
-			enterTextInElement(text, "EmailAddress");
-		} else {
-			enterTextInElement(text, "WarningEmail");
-			clickOnElement("CriticalEmail");
-			enterTextInElement(text, "CriticalEmail");
-			clickOnElement("LogDigestEmail");
-			enterTextInElement(text, "LogDigestEmail");
-		}
-		clickOnElement("NextButton");
-	}
-
-	public boolean systemShouldBeProtected() {
-		return waitElementToBeVisible("AgentCreated");
-	}
-
-	public void fillTextInElement(String text, String element) {
-		element = element.replace(" ", "");
-		enterTextInElement(text, element);
-		if (element.contains("Repeat")) {
+	/**
+	 * this method is used to enter text in email text box in system backup
+	 * wizard windows ("receive screenshot proof","send alerts & reports") and
+	 * return true or false based on window displaying.
+	 * 
+	 * @param text:
+	 *            text to be filled.
+	 * @param windowName:
+	 *            window name to be checked.
+	 * 
+	 * @return boolean
+	 */
+	public boolean fillEmails(String text, String windowName) {
+		sleepTime(2000);
+		boolean isWindowDisplayed = isElementDisplayed(windowName);
+		if (isWindowDisplayed) {
+			if (windowName.equals("receive screenshot proof")) {
+				enterTextInElement(text, "EmailAddress");
+			} else {
+				enterTextInElement(text, "WarningEmail");
+				clickOnElement("CriticalEmail");
+				enterTextInElement(text, "CriticalEmail");
+				clickOnElement("LogDigestEmail");
+				enterTextInElement(text, "LogDigestEmail");
+			}
 			clickOnElement("NextButton");
 		}
-		if (element.contains("Verify")) {
-			clickOnElement("Verify");
-		}
+		return isWindowDisplayed;
+	}
 
+	/**
+	 * this method is used to check if the system or agent is added and
+	 * successful message displayed
+	 * 
+	 * @return boolean
+	 */
+	public boolean systemShouldBeProtected() {
+		return waitElementToBeVisible("AgentCreated");
 	}
 
 }

@@ -24,9 +24,9 @@ public class RemoveAgentSteps extends BaseSteps {
 	public void beforeCucmberScenario() {
 	}
 
-	@When("Inserting '$text' text in the '$element' field to confirm")
+	@When("Inserting '$text' text in the '$element' field")
 	public void removeAgent(String text, String element) {
-		getRemoveAgentPage().removeAgent(text,element);
+		getRemoveAgentPage().removeAgent(text);
 	}
 
 }

@@ -29,13 +29,7 @@ public class ProtectSteps extends BaseSteps {
 	@Before
 	public void beforeCucmberScenario() {
 	}
-	@Given("A new $fileName file is added in '$volumesName' volumes")
-	@When("A new $fileName file is added in '$volumesName' volumes")
-	public void addFile(String fileName, String volumesName) {
-		getProtectPage().createTextFile("1", fileName, volumesName);
-	}
 
-	// ##################
 	@Given("There is a protected system")
 	public void checkIfSystemProtected() {
 		assertThat(getProtectPage().checkIfSystemProtected(), Matchers.equalTo(true));
@@ -51,12 +45,6 @@ public class ProtectSteps extends BaseSteps {
 		assertThat(getProtectPage().verifyBuckupFunctionality(), Matchers.equalTo(true));
 	}
 
-	@Given("Delete '$fileName' file from '$volumesName' volumes")
-	@When("Deleting '$fileName' file from '$volumesName' volumes")
-	public void deleteTextFiles(String fileName, String volumesName) {
-		getProtectPage().deleteTextFiles("1", fileName, volumesName);
-	}
-
 	@Given("$number new '$fileName' files are added in '$volumesName' volumes")
 	public void addFiles(String number, String fileName, String volumesName) {
 		getProtectPage().createTextFile(number, fileName, volumesName);
@@ -68,10 +56,5 @@ public class ProtectSteps extends BaseSteps {
 		getGenericPage().clickOnElement("PROTECT");
 		assertThat(getProtectPage().takeOneBackup(), Matchers.equalTo(true));
 		assertThat(getProtectPage().verifyBuckupFunctionality(), Matchers.equalTo(true));
-	}
-
-	@When("Deleting $number '$fileName' files from '$volumesName' volumes")
-	public void deleteTextFiles(String number, String fileName, String volumesName) {
-		getProtectPage().deleteTextFiles(number, fileName, volumesName);
 	}
 }

@@ -22,14 +22,14 @@ public class RemoveAgentPage extends GenericPage {
 	}
 
 	/**
-	 * Default Selector within the class
+	 * this method is used to remove agent by enter text in confirm
+	 * 
+	 * @param text:
+	 *            text to be entered in confirm filed
 	 */
-	private By Version = cssSelector("td.mh22-text a");
-	private final int CONST_WAIT_LOWER_VALUE = 30;
+	public void removeAgent(String text) {
 
-	public void removeAgent(String text, String element) {
-		
-		enterTextInElement(text, element);
+		enterTextInElement(text, "RemoveAgentConfirm");
 		clickOnElement("RemoveAgentDelete");
 	}
 

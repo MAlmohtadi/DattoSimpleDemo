@@ -36,47 +36,38 @@ public class GenericSteps extends BaseSteps {
 		getGenericPage().clickOnElement(element);
 
 	}
-	// @When("I wait '$element' to be visible")
-	// @Then("I wait '$element' to be visible")
-	// public void waitElementToBeVisibile(String element) {
-	// assertThat(getGenericPage().waitElementToBeVisible(element),
-	// Matchers.equalTo(true));
-	//
-	// }
-	//
-	// @When("I wait '$element' to be invisible")
-	// public void waitElementToBeInvisibile(String element) {
-	// assertThat(getGenericPage().waitElementToBeInvisible(element),
-	// Matchers.equalTo(true));
-	//
-	// }
-	//
-	// @When("I wait '$name' image to be visible")
-	// public void waitImageToBeVisible(String name) throws FindFailed {
-	// assertThat(getGenericPage().waitImageToBeVisible(name),
-	// Matchers.equalTo(true));
-	// }
-
-	// @When("I enter '$text' inside $element")
-	// public void waitImageToBeVisible(String text, String element) throws
-	// FindFailed {
-	// getGenericPage().enterTextInElement(text, element);
-	// }
-
-	@When("$element should be displayed")
-	@Then("$element should be displayed")
-	public void isElementDisplayed(String element) {
-		assertThat(getGenericPage().isElementDisplayed(element), Matchers.equalTo(true));
-	}
 
 	@Then("'$element' Url should display")
 	public void urlShouldDisplay(String element) {
-		assertThat(getGenericPage().urlShouldDisplay(element), Matchers.equalTo(true));
+		element = element.replace(" ", "_");
+		assertThat(getGenericPage().isElementDisplayed(element), Matchers.equalTo(true));
 	}
 
-	// ############
 	@When("Navigating to '$name' page")
 	public void navigateUsingClick(String name) throws FindFailed {
-		getGenericPage().navigateUsingClick(name);
+		getGenericPage().selectElement(name);
 	}
+
+	@When("Filling '$text' in '$element' {field|popup}")
+	public void fillTextInElement(String text, String element) {
+		getGenericPage().fillTextInElement(text, element);
+	}
+
+	@When("Deleting $number '$fileName' files from '$volumesName' volumes")
+	public void deleteTextFiles(String number, String fileName, String volumesName) {
+		getGenericPage().deleteTextFiles(number, fileName, volumesName);
+	}
+
+	@Given("Delete '$fileName' file from '$volumesName' volumes")
+	@When("Deleting '$fileName' file from '$volumesName' volumes")
+	public void deleteTextFiles(String fileName, String volumesName) {
+		getGenericPage().deleteTextFiles("1", fileName, volumesName);
+	}
+
+	@Given("A new $fileName file is added in '$volumesName' volumes")
+	@When("A new $fileName file is added in '$volumesName' volumes")
+	public void addFile(String fileName, String volumesName) {
+		getGenericPage().createTextFile("1", fileName, volumesName);
+	}
+
 }
