@@ -17,5 +17,6 @@ Then 'Samba Share' Url should display
 And '<fileName>' file is retrieved from '<volumesName>' volumes
 
 Examples:
-|system|recoveryType|validPassphrase|volumesName|fileName|
-|DATTO-ALMOHTAD|File Restore|123|H,I|Test.txt|
+|system|recoveryType|volumesName|fileName|validPassphrase|
+|DATTO-ALMOHTAD|File Restore|H,I|Test.txt|123|
+

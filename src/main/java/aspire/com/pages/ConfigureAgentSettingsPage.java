@@ -40,35 +40,7 @@ public class ConfigureAgentSettingsPage extends GenericPage {
 			clickOnElement(volumeName);
 		}
 		sleepTime(3000);
-		// if (volumeName.equalsIgnoreCase("c")) {
-		// if
-		// (!getElementByCssSelector("ExecludVolumeCheckboxForC").isSelected())
-		// {
-		// clickOnElement("ExecludVolumeCheckboxForC");
-		// }
-		// } else if (volumeName.equalsIgnoreCase("E")) {
-		// if
-		// (!getElementByCssSelector("ExecludVolumeCheckboxForE").isSelected())
-		// {
-		// clickOnElement("ExecludVolumeCheckboxForE");
-		// }
-		// } else if (volumeName.equalsIgnoreCase("h")) {
-		// if
-		// (!getElementByCssSelector("ExecludVolumeCheckboxForH").isSelected())
-		// {
-		// clickOnElement("ExecludVolumeCheckboxForH");
-		// }
-		// } else if (volumeName.equalsIgnoreCase("I")) {
-		// if
-		// (!getElementByCssSelector("ExecludVolumeCheckboxForI").isSelected())
-		// {
-		// clickOnElement("ExecludVolumeCheckboxForI");
-		// }
-		// }
-		// if (isExecluded) {
-		// sleepTime(3000);
-		// clickOnElement("PopupConfirmButton");
-		// }
+		
 	}
 
 	/**
@@ -84,35 +56,6 @@ public class ConfigureAgentSettingsPage extends GenericPage {
 			clickOnElement(volumeName);
 		}
 		sleepTime(3000);
-		// waitElementToBeVisible("ExecludVolumeCheckboxForH",
-		// CONST_WAIT_LOWER_VALUE);
-		// sleepTime(2000);
-		// if (volumeName.equalsIgnoreCase("c")) {
-		// if
-		// (getElementByCssSelector("ExecludVolumeCheckboxForC").isSelected()) {
-		// clickOnElement("ExecludVolumeCheckboxForC");
-		//
-		// }
-		// } else if (volumeName.equalsIgnoreCase("E")) {
-		// if
-		// (getElementByCssSelector("ExecludVolumeCheckboxForE").isSelected()) {
-		// clickOnElement("ExecludVolumeCheckboxForE");
-		//
-		// }
-		// } else if (volumeName.equalsIgnoreCase("h")) {
-		// if
-		// (getElementByCssSelector("ExecludVolumeCheckboxForH").isSelected()) {
-		// clickOnElement("ExecludVolumeCheckboxForH");
-		//
-		// }
-		// } else if (volumeName.equalsIgnoreCase("I")) {
-		// if
-		// (getElementByCssSelector("ExecludVolumeCheckboxForI").isSelected()) {
-		// clickOnElement("ExecludVolumeCheckboxForI");
-		//
-		// }
-		// }
-		// sleepTime(3000);
 	}
 
 }

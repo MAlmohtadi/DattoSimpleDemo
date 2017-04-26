@@ -12,14 +12,14 @@ And Filling '<MachineIP>' Address in 'Hostname'
 And Keeping the default settings in 'take local backups' window
 And Keeping the default settings in 'send backups to cloud' window
 And Keeping the default settings in 'keep your backups' window
-And Filling 'validEmail' email in 'receive screensot proof' window
-And Filling 'validEmail' emails in 'send alerts & reports' window
+And Filling '<validEmail>' email in 'receive screensot proof' window
+And Filling '<validEmail>' emails in 'send alerts & reports' window
 And Choosing to encrypte the system in 'encrypt the systme(s)' window
 And Accepting agent encryption agrement
-And Filling '<Passphrase>' in 'Enter Passphrase' field
-And Filling '<Passphrase>' in 'Repeat Passphrase' field
+And Filling '<validPassphrase>' in 'Enter Passphrase' field
+And Filling '<validPassphrase>' in 'Repeat Passphrase' field
 Then system should be protected successfully
 
 Examples:
-|MachineIP|validEmail|Passphrase|ValidDeleteText|
-|Windows|malmohtadi@aspire-infotech.net|123|delete my local and cloud data|
+|MachineIP|validEmail|ValidDeleteText|validPassphrase|
+|Windows|malmohtadi@aspire-infotech.net|delete my local and cloud data|123|

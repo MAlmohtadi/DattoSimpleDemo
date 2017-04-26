@@ -4,7 +4,7 @@ Scenario: 008-Before performing first backup after protecting system, select "Co
 
 Given User is logged in to Datto App
 And There is a protected system
-And A new Test.txt file is added in '<volumes>' volumes
+And A new <fileName> file is added in '<volumes>' volumes
 When Navigating to 'Configure Agent Settings' page
 And Excluding '<largeVolume>' volume
 And Confirming excluding the '<largeVolume>' volume
@@ -15,5 +15,5 @@ And Taking one backup
 Then backup should be completed successfully
 
 Examples:
-|largeVolume|volumeToBeExcluded|volumes|
-|C|E|H, I|
+|largeVolume|volumeToBeExcluded|volumes|fileName|
+|C|E|H, I|Test.txt|
