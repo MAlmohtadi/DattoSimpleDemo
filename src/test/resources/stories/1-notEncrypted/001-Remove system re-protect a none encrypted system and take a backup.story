@@ -7,6 +7,7 @@ And There is a protected system
 When Navigating to 'Remove Agent' page
 And Removing all restored points from recovery section related to selected system
 And Inserting '<ValidDeleteText>' text in the 'Confirm' field
+And Selecting 'AGENT BASED SYSTEM' from system backup wizard
 And Filling '<MachineIP>' Address in 'Hostname'
 And Keeping the default settings in 'take local backups' window
 And Keeping the default settings in 'send backups to cloud' window
