@@ -39,7 +39,7 @@ public class AddAgentSteps extends BaseSteps {
 	}
 
 	@When("Filling '$text' Address in 'Hostname'")
-	public void fillTextInHostName(String text, String element) {
+	public void fillTextInHostName(String text) {
 		assertThat(getAddAgentPage().fillTextInHostName(text), Matchers.equalTo(true));
 	}
 

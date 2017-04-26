@@ -29,6 +29,7 @@ public class AddAgentPage extends GenericPage {
 	private By Version = cssSelector("td.mh22-text a");
 
 	public void selectElementFromSystemBackupWizard(String element) {
+		element=element.replace(" ", "_");
 		waitElementToBeVisible(element, CONST_WAIT_HIGHER_VALUE);
 		clickOnElement(element);
 
