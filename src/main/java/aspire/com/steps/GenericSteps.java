@@ -40,7 +40,7 @@ public class GenericSteps extends BaseSteps {
 	@Then("'$element' Url should display")
 	public void urlShouldDisplay(String element) {
 		element = element.replace(" ", "_");
-		assertThat(getGenericPage().isElementDisplayed(element), Matchers.equalTo(true));
+		assertThat(getGenericPage().waitElementToBeVisible(element), Matchers.equalTo(true));
 	}
 
 	@When("Navigating to '$name' page")

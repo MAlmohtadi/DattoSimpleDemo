@@ -53,7 +53,7 @@ public class AddAgentSteps extends BaseSteps {
 	}
 
 	@Then("system should be protected successfully")
-	public void systemShouldBeProtected() {
+	public void systemShouldBeProtected() throws InterruptedException {
 		assertThat(getAddAgentPage().systemShouldBeProtected(), Matchers.equalTo(true));
 	}
 

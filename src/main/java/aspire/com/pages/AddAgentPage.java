@@ -105,11 +105,13 @@ public class AddAgentPage extends GenericPage {
 	 * successful message displayed
 	 * 
 	 * @return boolean
+	 * @throws InterruptedException
 	 */
-	public boolean systemShouldBeProtected() {
+	public boolean systemShouldBeProtected() throws InterruptedException {
 		boolean isAgentCreated = waitElementToBeVisible("AgentCreated");
 		clickOnElement("Continue");
-		waitElementToBeVisible("ProtectedSystemsHeader");
+		waitElementToBeVisible("AgentBlock");
+		sleepTime(3000);
 		boolean isMachineAdded = findElement(By.id(StateHelper.getStoryState("machineIP").toString())).isDisplayed();
 		return isAgentCreated && isMachineAdded;
 	}
