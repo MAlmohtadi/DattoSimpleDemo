@@ -165,7 +165,7 @@ public class GenericPage extends FluentWebDriverPage {
 	 *            element name to get it's value from properties file.
 	 */
 	public void clickOnElement(String elementName) {
-		elementName = elementName.replace(" ", "").trim();
+		elementName = elementName.replace(" ", "_").trim();
 		waitElementToBeClickable(elementName, CONST_WAIT_HIGHER_VALUE);
 		getElementByCssSelector(elementName).click();
 	}

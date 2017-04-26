@@ -51,7 +51,7 @@ public class RestorePage extends GenericPage {
 	 * @throws MalformedURLException.F
 	 */
 	public String getSharedFileURI(String nameOfFile, String volumeName) throws IOException, URISyntaxException {
-		String tempText = getElementByCssSelector("ShareURL").getText().replace("Samba Share:\n\\\\", "")
+		String tempText = getElementByCssSelector("Samba_Share").getText().replace("Samba Share:\n\\\\", "")
 				.replace("\\", "/").trim();
 		String url = "smb://" + tempText;
 		SmbFile file = new SmbFile(url);
@@ -118,9 +118,11 @@ public class RestorePage extends GenericPage {
 	}
 
 	public void chooseOptionInForRestore(String option) {
-		if (option.equalsIgnoreCase("last")) {
-
+		option=option.replace(" ", "");
+		if (!option.equalsIgnoreCase("last")) {
+			clickOnElement(option);
 		}
+		
 
 	}
 

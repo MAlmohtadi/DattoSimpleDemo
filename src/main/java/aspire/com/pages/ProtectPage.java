@@ -168,28 +168,21 @@ public class ProtectPage extends GenericPage {
 		String ipAddress = getProperty("Windows");
 		String[] volumes = nameOfVolume.split(",");
 		int numberOfFilesToBeDeleted = Integer.parseInt(numberOfFiles);
+		boolean isOneFile = false;
+		if (numberOfFilesToBeDeleted == 1) {
+			isOneFile=true;
+		}
 		File file = null;
-		if (numberOfFilesToBeDeleted != 1) {
-			for (int i = 0; i < volumes.length; i++) {
-				for (int j = 1; j <= numberOfFilesToBeDeleted; j++) {
-					try {
+
+		for (int i = 0; i < volumes.length; i++) {
+			for (int j = 1; j <= numberOfFilesToBeDeleted; j++) {
+				try {
+					if (isOneFile) {
+						file = new File(new URI("file:////" + ipAddress + "/" + volumes[i].trim() + "$/" + nameOfFile));
+					} else {
 						file = new File(
 								new URI("file:////" + ipAddress + "/" + volumes[i].trim() + "$/" + j + nameOfFile));
-						if (FileUtils.deleteQuietly(file)) {
-							System.out.println(file.getName() + " is deleted!");
-						} else {
-							System.out.println("Delete operation is failed.");
-							Assert.assertEquals(true, false);
-						}
-					} catch (Exception e) {
-						System.out.println("File Path not exist");
 					}
-				}
-			}
-		} else {
-			for (int i = 0; i < volumes.length; i++) {
-				try {
-					file = new File(new URI("file:////" + ipAddress + "/" + volumes[i].trim() + "$/" + nameOfFile));
 					if (FileUtils.deleteQuietly(file)) {
 						System.out.println(file.getName() + " is deleted!");
 					} else {
@@ -200,6 +193,7 @@ public class ProtectPage extends GenericPage {
 					System.out.println("File Path not exist");
 				}
 			}
+
 		}
 	}
 
