@@ -83,7 +83,7 @@ public class StoriesTest extends JUnitStories {
 			.withFailureTraceCompression(true).withDefaultFormats().withFormats(formats)
 			.withCrossReference(crossReference);
 
-	static String storiesPathToRun = "003-Perform a file restore for a none encrypted system based on the backup in previous story";
+	static String storiesPathToRun = "005-Remove system, re-protect a none encrypted system with no excluded volumes, then take and verify a backup";
 
 	@Override
 	public Configuration configuration() {
@@ -102,7 +102,7 @@ public class StoriesTest extends JUnitStories {
 	@Override
 	protected List<String> storyPaths() {
 		return new StoryFinder().findPaths(codeLocationFromClass(this.getClass()).getFile(),
-				asList("**/" + System.getProperty("storyFilter", storiesPathToRun) + ".story"), null);
+				asList("**/stories/**/" + System.getProperty("storyFilter", storiesPathToRun) + ".story"), null);
 
 	}
 

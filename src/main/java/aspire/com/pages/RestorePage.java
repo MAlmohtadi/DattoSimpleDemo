@@ -3,6 +3,7 @@ package aspire.com.pages;
 import org.apache.commons.io.FileUtils;
 import org.jbehave.web.selenium.WebDriverProvider;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.sikuli.script.FindFailed;
 
 import jcifs.smb.SmbException;
@@ -17,6 +18,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.util.HashMap;
+import java.util.List;
 
 import static org.openqa.selenium.By.cssSelector;
 
@@ -110,19 +112,25 @@ public class RestorePage extends GenericPage {
 	}
 
 	public void removeRestoredPoints() {
-		sleepTime(2000);
+		sleepTime(5000);
 		boolean isDisplayed = isElementDisplayed("RecoverySection");
 		if (isDisplayed) {
-			clickOnElement("RemoveRestore");
+			waitElementToBeClickable("RemoveRestore", CONST_WAIT_LOWER_VALUE);
+			List<WebElement> removeButtons = findElements(By.cssSelector(getProperty("RemoveRestore")));
+			int counter=removeButtons.size();
+			for(int i=0;i<counter;i++){
+				removeButtons.get(i).click();
+				sleepTime(5000);
+			}
+			
 		}
 	}
 
 	public void chooseOptionInForRestore(String option) {
-		option=option.replace(" ", "");
+		option = option.replace(" ", "");
 		if (!option.equalsIgnoreCase("last")) {
 			clickOnElement(option);
 		}
-		
 
 	}
 
