@@ -3,6 +3,7 @@ Meta:
 Scenario: 004-Perform a file restore of any desired timestamp and retrieve 10 files from each backed up volume. 
 
 Given User is logged in to Datto App
+And <number> new '<fileName>' files are added in '<volumesName>' volumes
 And A backup is taken
 When Deleting <number> '<fileName>' files from '<volumesName>' volumes
 And Navigating to 'Restore' page
