@@ -25,7 +25,7 @@ And Clicking 'START FILE RESTORE'
 And Clicking 'MOUNT' to shere file recovery
 And Filling '<validPassphrase>' in 'Verify Passphrase' popup
 Then 'Samba Share' Url should display
-And '<fileName1>' file is retrieved from '<volumes>' volumes
+And '<fileName1>' file is not retrieved from '<volumes>' volumes
 
 Examples:
 |volumes1|volumes2|volumeToBeExcluded|fileName1|fileName2|system|recoveryType|validPassphrase|
