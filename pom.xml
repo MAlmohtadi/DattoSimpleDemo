@@ -14,7 +14,7 @@
 		<springframework.version>4.2.3.RELEASE</springframework.version>
 		<org.seleniumhq.selenium.fluent.version>1.16</org.seleniumhq.selenium.fluent.version>
 		<cucumber.version>1.2.4</cucumber.version>
-		<automation.util.version>4.1.2</automation.util.version>
+		<automation.util.version>4.1.3</automation.util.version>
 		<asreport.version>1.2.3</asreport.version>
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>
