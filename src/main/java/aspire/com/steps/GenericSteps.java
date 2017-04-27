@@ -52,6 +52,13 @@ public class GenericSteps extends BaseSteps {
 	@When("filling '$text' in '$element' {field|popup}")
 	public void fillTextInElement(String text, String element) {
 		getGenericPage().fillTextInElement(text, element);
+		if (element.contains("Repeat")) {
+			getAddAgentPage().clickNextButton();
+		}
+		if (element.contains("Verify")) {
+			getAddAgentPage().clickVerifyButton();
+		}
+
 	}
 
 	@When("deleting $number '$fileName' files from '$volumesName' volumes")

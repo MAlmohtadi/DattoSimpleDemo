@@ -144,6 +144,9 @@ public class AddAgentPage extends GenericPage {
 	public void clickContinueButton() {
 		clickOnElement("Continue");
 	}
+	public void clickVerifyButton() {
+		clickOnElement("Verify");
+	}
 
 	public boolean stateHelperCase() {
 		sleepTime(3000);

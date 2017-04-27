@@ -358,11 +358,5 @@ public class GenericPage extends FluentWebDriverPage {
 	public void fillTextInElement(String text, String element) {
 		element = element.replace(" ", "");
 		enterTextInElement(text, element);
-		if (element.contains("Repeat")) {
-			clickOnElement("NextButton");
-		}
-		if (element.contains("Verify")) {
-			clickOnElement("Verify");
-		}
 	}
 }
