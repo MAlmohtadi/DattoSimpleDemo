@@ -1,7 +1,6 @@
 Meta:
-@Not_Encrypted
-
-Scenario: 002-Before performing first backup after protecting system, select "Configure System Settings", scroll down to "Volume Level Backup Control" and exclude 1 volume. Proceed to take one backup.
+@Encrypted
+Scenario: 008-Before taking backup while encrypted system is protected, Add 1 File, exclude volumes.
 
 Given User is logged in to Datto App
 And There is a protected system

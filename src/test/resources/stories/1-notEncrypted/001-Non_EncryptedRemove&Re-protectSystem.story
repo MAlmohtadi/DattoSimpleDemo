@@ -1,6 +1,6 @@
 Meta:
 @Not_Encrypted
-Scenario: 001-Remove system from Datto appliance and re-protect the system
+Scenario: 001-Remove system from Datto appliance and re-protect the system as non-encrypted
 
 Given User is logged in to Datto App
 And There is a protected system

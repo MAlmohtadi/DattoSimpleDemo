@@ -1,6 +1,6 @@
 Meta:
 @Encrypted
-Scenario: 011-Remove system from Datto appliance and re-protect the system once again. Do not exclude any volume except the bigest one and perform one backup. 
+Scenario: 007-Remove system from Datto appliance and re-protect the system as encrypted
 
 Given User is logged in to Datto App
 And There is a protected system
@@ -18,14 +18,8 @@ And Choosing to encrypte the system in 'encrypt the systme(s)' window
 And Accepting agent encryption agrement
 And Filling '<validPassphrase>' in 'Enter Passphrase' field
 And Filling '<validPassphrase>' in 'Repeat Passphrase' field
-And Clicking 'Continue'
-And Navigating to 'Configure Agent Settings' page
-And Excluding '<largeVolume>' volume
-And Confirming excluding the '<largeVolume>' volume
-And Navigating to 'Protect' page
-And Taking one backup
-Then backup should be completed successfully
+Then system should be protected successfully
 
 Examples:
-|MachineIP|validEmail|ValidDeleteText|largeVolume|fileName|validPassphrase|
-|Windows|malmohtadi@aspire-infotech.net|delete my local and cloud data|C|Test.txt|123|
+|MachineIP|validEmail|ValidDeleteText|validPassphrase|
+|Windows|malmohtadi@aspire-infotech.net|delete my local and cloud data|123|

@@ -1,7 +1,6 @@
 Meta:
 @Encrypted
-Scenario: 012-Before performing backup after protecting system, exclude 1 volume, perform a file restore of any desired timestamp.  Proceed include all volumes and retrieve 1 file from a backed up volume. 
-
+Scenario: 012-Before performing backup and restore for an encrypted protected system, exclude a volume, take backup, include another volume and take another backup, then restore first backup.
 
 Given User is logged in to Datto App
 And There is a protected system

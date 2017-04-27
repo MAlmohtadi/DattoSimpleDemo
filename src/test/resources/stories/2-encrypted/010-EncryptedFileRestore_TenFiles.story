@@ -1,6 +1,6 @@
 Meta:
-@Not_Encrypted
-Scenario: 004-Perform a file restore of any desired timestamp and retrieve 10 files from each backed up volume. 
+@Encrypted
+Scenario: 010-Create 10 files in encrypted protected system, take backup, delete files and verify the files after restore. 
 
 Given User is logged in to Datto App
 And <number> new '<fileName>' files are added in '<volumesName>' volumes
@@ -12,9 +12,10 @@ And Choosing a '<recoveryType>' recovery type
 And Choosing a 'last' recovery point
 And Clicking 'START FILE RESTORE'
 And Clicking 'MOUNT' to shere file recovery
+And Filling '<validPassphrase>' in 'Verify Passphrase' popup
 Then 'Samba Share' Url should display
 And <number> '<fileName>' files are retrieved from '<volumesName>' volumes
 
 Examples:
-|volumesName|number|fileName|system|recoveryType|
-|H,I|10|Test.txt|DATTO-ALMOHTAD|File Restore|
+|volumesName|number|fileName|system|recoveryType|validPassphrase|
+|H,I|10|Test.txt|DATTO-ALMOHTAD|File Restore|123|
