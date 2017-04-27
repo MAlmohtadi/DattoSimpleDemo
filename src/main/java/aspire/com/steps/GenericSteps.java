@@ -2,12 +2,13 @@ package aspire.com.steps;
 
 import static org.junit.Assert.assertThat;
 
-import java.io.IOException;
-
 import org.hamcrest.Matchers;
-import org.jbehave.core.annotations.*;
+import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.Then;
+import org.jbehave.core.annotations.When;
 import org.sikuli.script.FindFailed;
-import aspire.com.pages.*;
+
+import aspire.com.pages.PageFactory;
 import cucumber.api.java.Before;
 
 public class GenericSteps extends BaseSteps {
@@ -25,13 +26,13 @@ public class GenericSteps extends BaseSteps {
 		System.out.println("ttt");
 	}
 
-	@When("Clicking '$element'")
+	@When("clicking '$element'")
 	public void clickOnElement(String element) {
 		getGenericPage().clickOnElement(element);
 
 	}
 
-	@When("Clicking '$element' to $word")
+	@When("clicking '$element' to $word")
 	public void clickOnElementWithExplain(String element, String word) {
 		getGenericPage().clickOnElement(element);
 
@@ -43,29 +44,29 @@ public class GenericSteps extends BaseSteps {
 		assertThat(getGenericPage().waitElementToBeVisible(element), Matchers.equalTo(true));
 	}
 
-	@When("Navigating to '$name' page")
+	@When("navigating to '$name' page")
 	public void navigateUsingClick(String name) throws FindFailed {
 		getGenericPage().selectElement(name);
 	}
 
-	@When("Filling '$text' in '$element' {field|popup}")
+	@When("filling '$text' in '$element' {field|popup}")
 	public void fillTextInElement(String text, String element) {
 		getGenericPage().fillTextInElement(text, element);
 	}
 
-	@When("Deleting $number '$fileName' files from '$volumesName' volumes")
+	@When("deleting $number '$fileName' files from '$volumesName' volumes")
 	public void deleteTextFiles(String number, String fileName, String volumesName) {
 		getGenericPage().deleteTextFiles(number, fileName, volumesName);
 	}
 
-	@Given("Delete '$fileName' file from '$volumesName' volumes")
-	@When("Deleting '$fileName' file from '$volumesName' volumes")
+	@Given("delete '$fileName' file from '$volumesName' volumes")
+	@When("deleting '$fileName' file from '$volumesName' volumes")
 	public void deleteTextFiles(String fileName, String volumesName) {
 		getGenericPage().deleteTextFiles("1", fileName, volumesName);
 	}
 
-	@Given("A new $fileName file is added in '$volumesName' volumes")
-	@When("A new $fileName file is added in '$volumesName' volumes")
+	@Given("a new $fileName file is added in '$volumesName' volumes")
+	@When("a new $fileName file is added in '$volumesName' volumes")
 	public void addFile(String fileName, String volumesName) {
 		getGenericPage().createTextFile("1", fileName, volumesName);
 	}

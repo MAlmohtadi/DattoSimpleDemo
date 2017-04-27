@@ -1,16 +1,12 @@
 package aspire.com.pages;
 
+import java.sql.Connection;
+
 import org.jbehave.web.selenium.WebDriverProvider;
 import org.openqa.selenium.By;
-import org.sikuli.script.FindFailed;
 
 import jo.aspire.generic.StateHelper;
-import jo.aspire.mobile.automationUtil.Helper;
 import jo.aspire.web.automationUtil.BrowserAlertHelper;
-
-import java.io.IOException;
-import java.sql.Connection;
-import static org.openqa.selenium.By.cssSelector;
 
 /**
  * Page object defining the home page
@@ -51,12 +47,7 @@ public class AddAgentPage extends GenericPage {
 		StateHelper.setStoryState("machineIP", text);
 		clickOnElement("IpAddressOrHost");
 		enterTextInElement(text, "IpAddressTextBox");
-		clickOnElement("NextButton");
-		if (waitElementToBeVisible("nextIcon")) {
-			clickOnElement("NextButton");
-			return true;
-		}
-		return false;
+		return waitElementToBeVisible("IpAddress");
 	}
 
 	/**
@@ -69,35 +60,54 @@ public class AddAgentPage extends GenericPage {
 	 */
 	public boolean keepTheDefaultSettingsInWindow(String windowName) {
 		windowName = windowName.replace(" ", "_");
-		boolean isWindowDisplay = waitElementToBeVisible(windowName);
-		if (isWindowDisplay) {
-			clickOnElement("NextButton");
-		}
-		return isWindowDisplay;
+		return waitElementToBeVisible(windowName);
 	}
 
 	/**
-	 * this method is used to enter text in email text box in system backup
-	 * wizard windows ("receive screenshot proof","send alerts & reports").
+	 * this method is used to enter text in screenshot email field in system
+	 * backup wizard windows "receive screenshot proof"
 	 * 
 	 * @param text:
 	 *            text to be filled.
-	 * @param windowName:
-	 *            window name to be checked.
-	 *
 	 */
-	public void fillEmails(String text, String windowName) {
+	public void fillScreenshotEmail(String text) {
+		enterTextInElement(text, "EmailAddress");
+	}
 
-		if (windowName.equals("receive screenshot proof")) {
-			enterTextInElement(text, "EmailAddress");
-		} else {
-			enterTextInElement(text, "WarningEmail");
-			clickOnElement("CriticalEmail");
-			enterTextInElement(text, "CriticalEmail");
-			clickOnElement("LogDigestEmail");
-			enterTextInElement(text, "LogDigestEmail");
-		}
-		clickOnElement("NextButton");
+	/**
+	 * this method is used to enter text in Warning email field in system backup
+	 * wizard windows "send alerts & reports"
+	 * 
+	 * @param text:
+	 *            text to be filled.
+	 */
+	public void fillWarningEmail(String text) {
+		clickOnElement("WarningEmail");
+		enterTextInElement(text, "WarningEmail");
+	}
+
+	/**
+	 * this method is used to enter text in Critical email field in system
+	 * backup wizard windows "send alerts & reports"
+	 * 
+	 * @param text:
+	 *            text to be filled.
+	 */
+	public void fillCriticalEmail(String text) {
+		clickOnElement("CriticalEmail");
+		enterTextInElement(text, "CriticalEmail");
+	}
+
+	/**
+	 * this method is used to enter text in Log Digest email field in system
+	 * backup wizard windows "send alerts & reports"
+	 * 
+	 * @param text:
+	 *            text to be filled.
+	 */
+	public void fillLogDigestEmail(String text) {
+		clickOnElement("LogDigestEmail");
+		enterTextInElement(text, "LogDigestEmail");
 	}
 
 	/**
@@ -107,13 +117,39 @@ public class AddAgentPage extends GenericPage {
 	 * @return boolean
 	 * @throws InterruptedException
 	 */
-	public boolean systemShouldBeProtected() throws InterruptedException {
-		boolean isAgentCreated = waitElementToBeVisible("AgentCreated");
+	public boolean agentShoudBeCreated() throws InterruptedException {
+		return waitElementToBeVisible("AgentCreated");
+	}
+
+	/**
+	 * this method is used to check if the system or agent is added and
+	 * successful message displayed
+	 * 
+	 * @return boolean
+	 * @throws InterruptedException
+	 */
+	public boolean agentBlockShouldBeDisplay() throws InterruptedException {
+
+		return waitElementToBeVisible("AgentBlock");
+
+	}
+
+	public boolean validateIPAddress() {
+		clickOnElement("NextButton");
+		return waitElementToBeVisible("nextIcon");
+	}
+
+	public void clickNextButton() {
+		clickOnElement("NextButton");
+	}
+
+	public void clickContinueButton() {
 		clickOnElement("Continue");
-		waitElementToBeVisible("AgentBlock");
+	}
+
+	public boolean stateHelperCase() {
 		sleepTime(3000);
-		boolean isMachineAdded = findElement(By.id(StateHelper.getStoryState("machineIP").toString())).isDisplayed();
-		return isAgentCreated && isMachineAdded;
+		return findElement(By.id(StateHelper.getStoryState("machineIP").toString())).isDisplayed();
 	}
 
 }

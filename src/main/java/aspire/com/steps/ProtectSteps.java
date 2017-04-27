@@ -3,17 +3,14 @@ package aspire.com.steps;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.io.IOException;
-import java.net.UnknownHostException;
 
 import org.hamcrest.Matchers;
-import org.jbehave.core.annotations.Alias;
-import org.jbehave.core.annotations.Composite;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.sikuli.script.FindFailed;
 
-import aspire.com.pages.*;
+import aspire.com.pages.PageFactory;
 import cucumber.api.java.Before;
 
 public class ProtectSteps extends BaseSteps {
@@ -30,12 +27,13 @@ public class ProtectSteps extends BaseSteps {
 	public void beforeCucmberScenario() {
 	}
 
-	@Given("There is a protected system")
+	@Given("there is a protected system")
 	public void checkIfSystemProtected() {
+		getProtectPage().clickProtectButton();
 		assertThat(getProtectPage().checkIfSystemProtected(), Matchers.equalTo(true));
 	}
 
-	@When("Taking one backup")
+	@When("taking one backup")
 	public void takeOneBackup() throws FindFailed {
 		assertThat(getProtectPage().takeOneBackup(), Matchers.equalTo(true));
 	}
@@ -50,8 +48,8 @@ public class ProtectSteps extends BaseSteps {
 		getProtectPage().createTextFile(number, fileName, volumesName);
 	}
 
-	@Given("A backup is taken")
-	@When("A backup is taken")
+	@Given("a backup is taken")
+	@When("a backup is taken")
 	public void backupIsTaken() throws FindFailed {
 		getGenericPage().clickOnElement("PROTECT");
 		assertThat(getProtectPage().takeOneBackup(), Matchers.equalTo(true));

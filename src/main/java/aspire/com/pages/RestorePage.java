@@ -1,15 +1,6 @@
 package aspire.com.pages;
 
-import org.apache.commons.io.FileUtils;
-import org.jbehave.web.selenium.WebDriverProvider;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.sikuli.script.FindFailed;
-
-import jcifs.smb.SmbException;
-import jcifs.smb.SmbFile;
-import jo.aspire.generic.StateHelper;
-import jo.aspire.web.automationUtil.BrowserAlertHelper;
+import static org.openqa.selenium.By.cssSelector;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,11 +8,16 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.Connection;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 
-import static org.openqa.selenium.By.cssSelector;
+import org.apache.commons.io.FileUtils;
+import org.jbehave.web.selenium.WebDriverProvider;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import jcifs.smb.SmbException;
+import jcifs.smb.SmbFile;
+import jo.aspire.web.automationUtil.BrowserAlertHelper;
 
 /**
  * Page object defining the home page
@@ -113,8 +109,7 @@ public class RestorePage extends GenericPage {
 	}
 
 	public void removeRestoredPoints() {
-		sleepTime(5000);
-		boolean isDisplayed = isElementDisplayed("RecoverySection");
+		boolean isDisplayed = waitElementToBeVisible("RecoverySection");
 		if (isDisplayed) {
 			waitElementToBeClickable("RemoveRestore", CONST_WAIT_LOWER_VALUE);
 			Iterator<WebElement> removeButtons = findElements(By.cssSelector(getProperty("RemoveRestore"))).iterator();
@@ -130,7 +125,6 @@ public class RestorePage extends GenericPage {
 				removeButtons = findElements(By.cssSelector(getProperty("RemoveRestore"))).iterator();
 			}
 		}
-
 	}
 
 	public void chooseOptionInForRestore(String option) {

@@ -2,15 +2,15 @@ Meta:
 @Not_Encrypted
 Scenario: 003-Before performing a file restore for a non-encrypted protected system, delete 1 file and verify it is restored.
 
-Given User is logged in to Datto App
-And There is a protected system
-And Delete '<fileName>' file from '<volumesName>' volumes
-When Navigating to 'RESTORE' page
-And Choosing a '<system>' system to be restored
-And Choosing a '<recoveryType>' recovery type
-And Choosing a 'last' recovery point
-And Clicking 'START FILE RESTORE'
-And Clicking 'MOUNT' to shere file recovery
+Given user is logged in to Datto App
+And there is a protected system
+And delete '<fileName>' file from '<volumesName>' volumes
+When navigating to 'RESTORE' page
+And choosing a '<system>' system to be restored
+And choosing a '<recoveryType>' recovery type
+And choosing a 'last' recovery point
+And clicking 'START FILE RESTORE'
+And clicking 'MOUNT' to shere file recovery
 Then 'Samba Share' Url should display
 And '<fileName>' file is retrieved from '<volumesName>' volumes
 

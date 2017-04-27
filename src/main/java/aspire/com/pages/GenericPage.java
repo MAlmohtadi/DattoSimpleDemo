@@ -1,44 +1,25 @@
 package aspire.com.pages;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.sql.Connection;
+
 import org.apache.commons.io.FileUtils;
 import org.jbehave.web.selenium.FluentWebDriverPage;
 import org.jbehave.web.selenium.WebDriverProvider;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.os.CommandLine;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.seleniumhq.selenium.fluent.FluentWebElement;
 import org.sikuli.script.FindFailed;
 import org.sikuli.script.Screen;
-import com.google.inject.Key;
-import jcifs.smb.SmbException;
-import jcifs.smb.SmbFile;
+
 import jo.aspire.automation.logger.EnvirommentManager;
-import jo.aspire.generic.StateHelper;
 import jo.aspire.web.automationUtil.BrowserAlertHelper;
 import junit.framework.Assert;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
-import java.io.Writer;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.UnknownHostException;
-import java.sql.Connection;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.UUID;
-
-import static org.openqa.selenium.By.cssSelector;
-import static org.seleniumhq.selenium.fluent.Period.secs;
 
 /**
  * Page object defining the home page

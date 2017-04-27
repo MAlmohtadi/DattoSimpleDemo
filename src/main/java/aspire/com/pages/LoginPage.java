@@ -1,12 +1,11 @@
 package aspire.com.pages;
 
-import org.jbehave.web.selenium.WebDriverProvider;
-import org.openqa.selenium.By;
-import jo.aspire.web.automationUtil.BrowserAlertHelper;
-
 import java.io.IOException;
 import java.sql.Connection;
-import static org.openqa.selenium.By.cssSelector;
+
+import org.jbehave.web.selenium.WebDriverProvider;
+
+import jo.aspire.web.automationUtil.BrowserAlertHelper;
 
 /**
  * Page object defining the home page

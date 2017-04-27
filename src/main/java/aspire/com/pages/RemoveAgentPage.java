@@ -1,14 +1,10 @@
 package aspire.com.pages;
 
+import java.sql.Connection;
+
 import org.jbehave.web.selenium.WebDriverProvider;
-import org.openqa.selenium.By;
-import org.sikuli.script.FindFailed;
 
 import jo.aspire.web.automationUtil.BrowserAlertHelper;
-
-import java.io.IOException;
-import java.sql.Connection;
-import static org.openqa.selenium.By.cssSelector;
 
 /**
  * Page object defining the home page
@@ -27,9 +23,8 @@ public class RemoveAgentPage extends GenericPage {
 	 * @param text:
 	 *            text to be entered in confirm filed
 	 */
-	public void removeAgent(String text) {
-
-		enterTextInElement(text, "RemoveAgentConfirm");
+	public void removeAgent(String text, String element) {
+		enterTextInElement(text, element);
 		clickOnElement("RemoveAgentDelete");
 	}
 

@@ -1,23 +1,12 @@
 package aspire.com.pages;
 
-import org.apache.commons.io.FileUtils;
+import java.sql.Connection;
+
 import org.jbehave.web.selenium.WebDriverProvider;
-import org.openqa.selenium.By;
-import org.openqa.selenium.os.CommandLine;
 import org.sikuli.script.FindFailed;
 import org.sikuli.script.Screen;
 
 import jo.aspire.web.automationUtil.BrowserAlertHelper;
-import junit.framework.Assert;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.sql.Connection;
-import static org.openqa.selenium.By.cssSelector;
 
 /**
  * Page object defining the home page
@@ -51,8 +40,11 @@ public class ProtectPage extends GenericPage {
 	 * @return boolean
 	 */
 	public boolean checkIfSystemProtected() {
-		clickOnElement("PROTECT");
 		return waitElementToBeVisible("ProtectedSystemsHeader");
+	}
+
+	public void clickProtectButton() {
+		clickOnElement("PROTECT");
 	}
 
 	/**

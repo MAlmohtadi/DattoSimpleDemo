@@ -5,6 +5,7 @@ import static java.util.Arrays.asList;
 import static org.jbehave.core.io.CodeLocations.codeLocationFromClass;
 import static org.jbehave.core.reporters.Format.CONSOLE;
 import static org.jbehave.web.selenium.WebDriverHtmlOutput.WEB_DRIVER_HTML;
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -14,13 +15,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.TimeZone;
 
-import jo.aspire.automation.logger.AspireLog4j;
-import jo.aspire.automation.logger.EnvirommentManager;
-import jo.aspire.automation.logger.Log4jLevels;
-import jo.aspire.generic.MockServerProxy;
-import jo.aspire.web.automationUtil.DriverProvider;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.jbehave.core.configuration.Configuration;
 import org.jbehave.core.embedder.Embedder;
@@ -48,16 +44,20 @@ import org.jbehave.web.selenium.SeleniumContext;
 import org.jbehave.web.selenium.SeleniumContextOutput;
 import org.jbehave.web.selenium.SeleniumStepMonitor;
 import org.springframework.context.ApplicationContext;
+
 import com.aspire.automationReport.AspireReport;
 import com.aspire.automationReport.ReportDataManager;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import aspire.com.zap.ZapScan;
-import ch.qos.logback.core.util.FileUtil;
 
-import org.apache.commons.io.FileUtils;
+import aspire.com.zap.ZapScan;
+import jo.aspire.automation.logger.AspireLog4j;
+import jo.aspire.automation.logger.EnvirommentManager;
+import jo.aspire.automation.logger.Log4jLevels;
+import jo.aspire.generic.MockServerProxy;
+import jo.aspire.web.automationUtil.DriverProvider;
 
 /**
  * Class which provides the link between the JBehave's executor framework

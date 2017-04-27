@@ -1,13 +1,12 @@
 package aspire.com.steps;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+
 import aspire.com.pages.AddAgentPage;
 import aspire.com.pages.ConfigureAgentSettingsPage;
 import aspire.com.pages.GenericPage;
 import aspire.com.pages.LoginPage;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-
 import aspire.com.pages.PageFactory;
 import aspire.com.pages.ProtectPage;
 import aspire.com.pages.RemoveAgentPage;

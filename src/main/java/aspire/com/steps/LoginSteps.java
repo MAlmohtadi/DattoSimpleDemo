@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import org.jbehave.core.annotations.Given;
 
-import aspire.com.pages.*;
+import aspire.com.pages.PageFactory;
 import cucumber.api.java.Before;
 
 public class LoginSteps extends BaseSteps {
@@ -21,7 +21,7 @@ public class LoginSteps extends BaseSteps {
 	public void beforeCucmberScenario() {
 	}
 
-	@Given("User is logged in to Datto App")
+	@Given("user is logged in to Datto App")
 	public void login() throws IOException {
 		getloginPage().login();
 		
