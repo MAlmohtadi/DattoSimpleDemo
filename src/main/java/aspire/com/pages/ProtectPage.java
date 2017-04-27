@@ -19,7 +19,7 @@ public class ProtectPage extends GenericPage {
 		super(driverProvider);
 	}
 
-	public final int CONST_WAIT_SPECIAL_USAGE = 400;
+	public final int CONST_WAIT_SPECIAL_USAGE = 600;
 
 	/**
 	 * This method used to check if the back up finished.
