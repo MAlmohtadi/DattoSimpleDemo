@@ -40,14 +40,12 @@ public class AddAgentPage extends GenericPage {
 	 * @return boolean
 	 */
 	public boolean fillTextInHostName(String text) {
-		if (text.equalsIgnoreCase("windows")) {
-			text = getProperty(text);
-		}
+		text = getProperty(text);
 		// an example on state helper to use value in other step
 		StateHelper.setStoryState("machineIP", text);
 		clickOnElement("IpAddressOrHost");
 		enterTextInElement(text, "IpAddressTextBox");
-		return waitElementToBeVisible("IpAddress");
+		return waitElementToBeVisible("IpAddressTextBox");
 	}
 
 	/**

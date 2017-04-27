@@ -109,7 +109,8 @@ public class RestorePage extends GenericPage {
 	}
 
 	public void removeRestoredPoints() {
-		boolean isDisplayed = waitElementToBeVisible("RecoverySection");
+		sleepTime(5000);
+		boolean isDisplayed = isElementDisplayed("RecoverySection");
 		if (isDisplayed) {
 			waitElementToBeClickable("RemoveRestore", CONST_WAIT_LOWER_VALUE);
 			Iterator<WebElement> removeButtons = findElements(By.cssSelector(getProperty("RemoveRestore"))).iterator();
